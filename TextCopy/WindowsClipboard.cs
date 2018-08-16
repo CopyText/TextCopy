@@ -82,8 +82,8 @@ static class WindowsClipboard
     [return: MarshalAs(UnmanagedType.Bool)]
     static extern bool GlobalUnlock(IntPtr hMem);
 
-    [DllImport("kernel32.dll")]
-    static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
+    [DllImport("kernel32.dll", EntryPoint = "RtlMoveMemory", ExactSpelling = true)]
+    public static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
 
     [DllImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
