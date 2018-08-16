@@ -13,9 +13,11 @@
     <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)) Simon Cropp. All rights reserved</Copyright>
     <PackageTags>Clipboard, Copy</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/SimonCropp/TextCopy/master/icon.png</PackageIconUrl>
-    <PackageProjectUrl>http://github.com/SimonCropp/TextCopy</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/SimonCropp/TextCopy</PackageProjectUrl>
     <PackageOutputPath>..\nugets</PackageOutputPath>
-    <Description>A netstandard package to copy text to the clipboard.</Description>
+    <Description>A netstandard package to copy text to the clipboard.</Description> 
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
