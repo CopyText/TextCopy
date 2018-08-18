@@ -8,7 +8,7 @@ static class WindowsClipboard
     {
         if (!OpenClipboard(IntPtr.Zero))
         {
-            throw new Win32Exception(Marshal.GetLastWin32Error());
+            ThrowWin32();
         }
 
         EmptyClipboard();
@@ -27,7 +27,7 @@ static class WindowsClipboard
 
             if (target == IntPtr.Zero)
             {
-                throw new Win32Exception(Marshal.GetLastWin32Error());
+                ThrowWin32();
             }
 
             try
@@ -39,9 +39,10 @@ static class WindowsClipboard
                 GlobalUnlock(target);
             }
 
-            if (SetClipboardData(CF_UNICODETEXT, hGlobal) == IntPtr.Zero)
+            const uint cfUnicodeText = 13;
+            if (SetClipboardData(cfUnicodeText, hGlobal) == IntPtr.Zero)
             {
-                throw new Win32Exception(Marshal.GetLastWin32Error());
+                ThrowWin32();
             }
 
             hGlobal = IntPtr.Zero;
@@ -55,6 +56,11 @@ static class WindowsClipboard
 
             CloseClipboard();
         }
+    }
+
+    static void ThrowWin32()
+    {
+        throw new Win32Exception(Marshal.GetLastWin32Error());
     }
 
     [DllImport("kernel32.dll", SetLastError = true)]
@@ -77,6 +83,4 @@ static class WindowsClipboard
 
     [DllImport("user32.dll")]
     static extern bool EmptyClipboard();
-
-    const uint CF_UNICODETEXT = 13;
 }
