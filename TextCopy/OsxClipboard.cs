@@ -6,17 +6,31 @@ static class OsxClipboard
     public static void SetText(string text)
     {
         var nsString = objc_getClass("NSString");
-        var str = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), text);
-        var dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), NSPasteboardTypeString);
+        IntPtr str = default;
+        IntPtr dataType = default;
+        try
+        {
+            str = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), text);
+            dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), NSPasteboardTypeString);
 
-        var nsPasteboard = objc_getClass("NSPasteboard");
-        var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
+            var nsPasteboard = objc_getClass("NSPasteboard");
+            var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
-        objc_msgSend(generalPasteboard, sel_registerName("clearContents"));
-        objc_msgSend(generalPasteboard, sel_registerName("setString:forType:"), str, dataType);
+            objc_msgSend(generalPasteboard, sel_registerName("clearContents"));
+            objc_msgSend(generalPasteboard, sel_registerName("setString:forType:"), str, dataType);
+        }
+        finally
+        {
+            if (str != default)
+            {
+                objc_msgSend(str, sel_registerName("release"));
+            }
 
-        objc_msgSend(str, sel_registerName("release"));
-        objc_msgSend(dataType, sel_registerName("release"));
+            if (dataType != default)
+            {
+                objc_msgSend(dataType, sel_registerName("release"));
+            }
+        }
     }
 
     [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
