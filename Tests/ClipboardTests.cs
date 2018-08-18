@@ -15,12 +15,11 @@ public class ClipboardTests
 
     static void Verify(string expected)
     {
+        TextCopy.Clipboard.SetText(expected);
+
         Exception caught = null;
         var t = new Thread(() =>
         {
-            Clipboard.Clear();
-            TextCopy.Clipboard.SetText(expected);
-
             try
             {
                 var actual = Clipboard.GetText();

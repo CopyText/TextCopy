@@ -11,6 +11,7 @@ static class WindowsClipboard
             throw new Win32Exception(Marshal.GetLastWin32Error());
         }
 
+        EmptyClipboard();
         try
         {
             var bytes = ((uint) text.Length + 1) * 2;
@@ -95,6 +96,9 @@ static class WindowsClipboard
 
     [DllImport("user32.dll", SetLastError = true)]
     static extern IntPtr SetClipboardData(uint uFormat, IntPtr data);
+
+    [DllImport("user32.dll")]
+    static extern bool EmptyClipboard();
 
     const uint CF_UNICODETEXT = 13;
     const uint GMEM_MOVABLE = 0x0002;
