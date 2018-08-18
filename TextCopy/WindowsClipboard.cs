@@ -1,31 +1,30 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 
 static class WindowsClipboard
 {
     public static void SetText(string text)
     {
-        if (!OpenClipboard(IntPtr.Zero))
-        {
-            ThrowWin32();
-        }
+        OpenClipboard();
 
         EmptyClipboard();
-        var hGlobal = IntPtr.Zero;
+        IntPtr hGlobal = default;
         try
         {
             var bytes = (text.Length + 1) * 2;
             hGlobal = Marshal.AllocHGlobal(bytes);
 
-            if (hGlobal == IntPtr.Zero)
+            if (hGlobal == default)
             {
-                throw new Win32Exception(Marshal.GetLastWin32Error());
+                ThrowWin32();
             }
 
             var target = GlobalLock(hGlobal);
 
-            if (target == IntPtr.Zero)
+            if (target == default)
             {
                 ThrowWin32();
             }
@@ -39,17 +38,16 @@ static class WindowsClipboard
                 GlobalUnlock(target);
             }
 
-            const uint cfUnicodeText = 13;
-            if (SetClipboardData(cfUnicodeText, hGlobal) == IntPtr.Zero)
+            if (SetClipboardData(cfUnicodeText, hGlobal) == default)
             {
                 ThrowWin32();
             }
 
-            hGlobal = IntPtr.Zero;
+            hGlobal = default;
         }
         finally
         {
-            if (hGlobal != IntPtr.Zero)
+            if (hGlobal != default)
             {
                 Marshal.FreeHGlobal(hGlobal);
             }
@@ -58,10 +56,81 @@ static class WindowsClipboard
         }
     }
 
+    public static void OpenClipboard()
+    {
+        var num = 10;
+        while (true)
+        {
+            if (OpenClipboard(default))
+            {
+                break;
+            }
+
+            if (--num == 0)
+            {
+                ThrowWin32();
+            }
+
+            Thread.Sleep(100);
+        }
+    }
+
+    public static string GetText()
+    {
+        if (!IsClipboardFormatAvailable(cfUnicodeText))
+        {
+            return null;
+        }
+
+        IntPtr handle = default;
+
+        IntPtr pointer = default;
+        try
+        {
+            OpenClipboard();
+            handle = GetClipboardData(cfUnicodeText);
+            if (handle == default)
+            {
+                return null;
+            }
+
+            pointer = GlobalLock(handle);
+            if (pointer == default)
+            {
+                return null;
+            }
+
+            var size = GlobalSize(handle);
+            var buff = new byte[size];
+
+            Marshal.Copy(pointer, buff, 0, size);
+
+            return Encoding.Unicode.GetString(buff).TrimEnd('\0');
+        }
+        finally
+        {
+            if (pointer != default)
+            {
+                GlobalUnlock(handle);
+            }
+
+            CloseClipboard();
+        }
+    }
+
+    const uint cfUnicodeText = 13;
+
     static void ThrowWin32()
     {
         throw new Win32Exception(Marshal.GetLastWin32Error());
     }
+
+    [DllImport("User32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    static extern bool IsClipboardFormatAvailable(uint format);
+
+    [DllImport("User32.dll", SetLastError = true)]
+    static extern IntPtr GetClipboardData(uint uFormat);
 
     [DllImport("kernel32.dll", SetLastError = true)]
     static extern IntPtr GlobalLock(IntPtr hMem);
@@ -83,4 +152,7 @@ static class WindowsClipboard
 
     [DllImport("user32.dll")]
     static extern bool EmptyClipboard();
+
+    [DllImport("Kernel32.dll", SetLastError = true)]
+    static extern int GlobalSize(IntPtr hMem);
 }

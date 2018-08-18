@@ -1,6 +1,6 @@
 # TextCopy
 
-A netstandard package to copy text to the clipboard.
+A netstandard package to copy text to and from the clipboard.
 
 
 ## NuGet  [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg?style=flat)](https://www.nuget.org/packages/TextCopy/)
@@ -12,8 +12,16 @@ https://nuget.org/packages/TextCopy/
 
 ### Usage
 
+#### SetText
+
 ```csharp
 TextCopy.Clipboard.SetText("Text to place in clipboard");
+```
+
+#### SetText
+
+```csharp
+var text = TextCopy.Clipboard.GetText();
 ```
 
 

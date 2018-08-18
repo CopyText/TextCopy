@@ -5,7 +5,8 @@ namespace TextCopy
 {
     public static class Clipboard
     {
-        static Action<string> action = CreateClipboard();
+        static Action<string> setAction = CreateSet();
+        static Func<string> getFunc = CreateGet();
 
         public static void SetText(string text)
         {
@@ -14,10 +15,15 @@ namespace TextCopy
                 throw new ArgumentNullException(nameof(text));
             }
 
-            action(text);
+            setAction(text);
         }
 
-        static Action<string> CreateClipboard()
+        public static string GetText()
+        {
+           return getFunc();
+        }
+
+        static Action<string> CreateSet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -30,6 +36,17 @@ namespace TextCopy
             }
 
             return s => throw new NotSupportedException();
+        }
+
+        static Func<string> CreateGet()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return WindowsClipboard.GetText;
+            }
+
+
+            return () => throw new NotSupportedException();
         }
     }
 }

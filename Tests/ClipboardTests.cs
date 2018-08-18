@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Windows;
+﻿using TextCopy;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -15,30 +13,10 @@ public class ClipboardTests
 
     static void Verify(string expected)
     {
-        TextCopy.Clipboard.SetText(expected);
+        Clipboard.SetText(expected);
 
-        Exception caught = null;
-        var t = new Thread(() =>
-        {
-            try
-            {
-                var actual = Clipboard.GetText();
-                Assert.Equal(expected, actual);
-            }
-            catch (Exception e)
-            {
-                caught = e;
-            }
-        });
-
-        t.SetApartmentState(ApartmentState.STA);
-        t.Start();
-        t.Join();
-
-        if (caught != null)
-        {
-            throw caught;
-        }
+        var actual = Clipboard.GetText();
+        Assert.Equal(expected, actual);
     }
 
     ITestOutputHelper output;

@@ -4,7 +4,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <LangVersion>latest</LangVersion>
     <NoWarn>CS1591</NoWarn>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <AssemblyVersion>1.0</AssemblyVersion>
     <AssemblyInformationalVersion>$(Version)</AssemblyInformationalVersion>
     <Authors>Simon Cropp</Authors>
@@ -15,7 +15,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/SimonCropp/TextCopy/master/icon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/SimonCropp/TextCopy</PackageProjectUrl>
     <PackageOutputPath>..\nugets</PackageOutputPath>
-    <Description>A netstandard package to copy text to the clipboard.</Description> 
+    <Description>A netstandard package to copy text to the clipboard.</Description>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
