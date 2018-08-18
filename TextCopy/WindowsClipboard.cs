@@ -50,15 +50,12 @@ static class WindowsClipboard
         {
             if (hGlobal != IntPtr.Zero)
             {
-                GlobalFree(hGlobal);
+                Marshal.FreeHGlobal(hGlobal);
             }
 
             CloseClipboard();
         }
     }
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    static extern IntPtr GlobalFree(IntPtr hMem);
 
     [DllImport("kernel32.dll", SetLastError = true)]
     static extern IntPtr GlobalLock(IntPtr hMem);
