@@ -41,7 +41,7 @@ Supported on:
  * Windows with .NET Framework 4.6.1 and up
  * Windows with .NET Core 2.0 and up
 
-### Not Tested
+### Not verified
 
 The following may work but have not been verified:
 
