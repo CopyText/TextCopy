@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp2.1;net472</TargetFrameworks>
+    <!--<PlatformTarget>x86</PlatformTarget>-->
   </PropertyGroup>
 
   <ItemGroup>

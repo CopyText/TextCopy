@@ -12,66 +12,50 @@ static class WindowsClipboard
         }
 
         EmptyClipboard();
+        var hGlobal = IntPtr.Zero;
         try
         {
-            var bytes = ((uint) text.Length + 1) * 2;
-            var hGlobal = GlobalAlloc(GMEM_MOVABLE, (UIntPtr) bytes);
+            var bytes = (text.Length + 1) * 2;
+            hGlobal = Marshal.AllocHGlobal(bytes);
 
             if (hGlobal == IntPtr.Zero)
             {
                 throw new Win32Exception(Marshal.GetLastWin32Error());
             }
 
+            var target = GlobalLock(hGlobal);
+
+            if (target == IntPtr.Zero)
+            {
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+
             try
             {
-                var source = Marshal.StringToHGlobalUni(text);
-
-                try
-                {
-                    var target = GlobalLock(hGlobal);
-
-                    if (target == IntPtr.Zero)
-                    {
-                        throw new Win32Exception(Marshal.GetLastWin32Error());
-                    }
-
-                    try
-                    {
-                        CopyMemory(target, source, bytes);
-                    }
-                    finally
-                    {
-                        GlobalUnlock(target);
-                    }
-
-                    if (SetClipboardData(CF_UNICODETEXT, hGlobal) == IntPtr.Zero)
-                    {
-                        throw new Win32Exception(Marshal.GetLastWin32Error());
-                    }
-
-                    hGlobal = IntPtr.Zero;
-                }
-                finally
-                {
-                    Marshal.FreeHGlobal(source);
-                }
+                Marshal.Copy(text.ToCharArray(), 0, target, text.Length);
             }
             finally
             {
-                if (hGlobal != IntPtr.Zero)
-                {
-                    GlobalFree(hGlobal);
-                }
+                GlobalUnlock(target);
             }
+
+            if (SetClipboardData(CF_UNICODETEXT, hGlobal) == IntPtr.Zero)
+            {
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+            }
+
+            hGlobal = IntPtr.Zero;
         }
         finally
         {
+            if (hGlobal != IntPtr.Zero)
+            {
+                GlobalFree(hGlobal);
+            }
+
             CloseClipboard();
         }
     }
-
-    [DllImport("kernel32.dll", SetLastError = true)]
-    static extern IntPtr GlobalAlloc(uint uFlags, UIntPtr dwBytes);
 
     [DllImport("kernel32.dll", SetLastError = true)]
     static extern IntPtr GlobalFree(IntPtr hMem);
@@ -82,9 +66,6 @@ static class WindowsClipboard
     [DllImport("kernel32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     static extern bool GlobalUnlock(IntPtr hMem);
-
-    [DllImport("kernel32.dll", EntryPoint = "RtlMoveMemory", ExactSpelling = true)]
-    public static extern void CopyMemory(IntPtr dest, IntPtr src, uint count);
 
     [DllImport("user32.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
@@ -101,5 +82,4 @@ static class WindowsClipboard
     static extern bool EmptyClipboard();
 
     const uint CF_UNICODETEXT = 13;
-    const uint GMEM_MOVABLE = 0x0002;
 }
