@@ -58,7 +58,7 @@ If anyone verifies any of the above, please submit a [Pull Request](https://help
  * Linux with .NET Core
  * Xamarin.Android
 
-If other combinations are required please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
+If other combinations are required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
 ## Icon
 
