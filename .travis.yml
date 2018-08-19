@@ -1,0 +1,9 @@
+os:
+  - linux
+  - osx
+language: csharp
+mono: none
+dotnet: 2.1.400
+script:
+ - dotnet restore
+ - dotnet build
