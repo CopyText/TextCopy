@@ -7,4 +7,4 @@ dotnet: 2.1.400
 script:
  - dotnet restore
  - dotnet build
- - dotnet test --no-build
+ - dotnet test ~/Tests/Tests.csproj --no-build
