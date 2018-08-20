@@ -2,6 +2,8 @@ os:
   - linux
   - osx
 language: csharp
+before_install:
+- sudo apt install xclip
 mono: none
 dotnet: 2.1.400
 script:
