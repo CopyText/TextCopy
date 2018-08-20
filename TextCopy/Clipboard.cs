@@ -10,8 +10,11 @@ namespace TextCopy
 
         static Clipboard()
         {
-            IsGetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            IsSetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) || RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            IsGetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            IsSetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
+                             RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+                             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
         }
 
         public static void SetText(string text)
@@ -41,6 +44,11 @@ namespace TextCopy
                 return OsxClipboard.SetText;
             }
 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return LinuxClipboard.SetText;
+            }
+
             return s => throw new NotSupportedException();
         }
 
@@ -51,6 +59,10 @@ namespace TextCopy
                 return WindowsClipboard.GetText;
             }
 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return LinuxClipboard.GetText;
+            }
 
             return () => throw new NotSupportedException();
         }
