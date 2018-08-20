@@ -8,12 +8,13 @@ static class BashRunner
     {
         var errorBuilder = new StringBuilder();
         var outputBuilder = new StringBuilder();
+        var arguments = $"-c \"{commandLine}\"";
         using (var process = new Process
         {
             StartInfo = new ProcessStartInfo
             {
-                FileName = "/bin/bash",
-                Arguments = $"-c \"{commandLine}\"",
+                FileName = "bash",
+                Arguments = arguments,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
@@ -30,7 +31,7 @@ static class BashRunner
                 return outputBuilder.ToString();
             }
 
-            var error = $@"Could not execute process. Command line: {commandLine}.
+            var error = $@"Could not execute process. Command line: bash {arguments}.
 Output: {outputBuilder}
 Error: {errorBuilder}";
             throw new Exception(error);
