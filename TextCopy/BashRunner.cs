@@ -26,15 +26,15 @@ static class BashRunner
             process.OutputDataReceived += (sender, args) => { outputBuilder.AppendLine(args.Data); };
             process.Start();
             process.WaitForExit();
-            if (process.ExitCode == 0)
+            //if (process.ExitCode == 0)
             {
                 return outputBuilder.ToString();
             }
 
-            var error = $@"Could not execute process. Command line: bash {arguments}.
-Output: {outputBuilder}
-Error: {errorBuilder}";
-            throw new Exception(error);
+//            var error = $@"Could not execute process. Command line: bash {arguments}.
+//Output: {outputBuilder}
+//Error: {errorBuilder}";
+//            throw new Exception(error);
         }
     }
 }
