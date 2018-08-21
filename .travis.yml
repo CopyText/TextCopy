@@ -1,6 +1,7 @@
 os:
   - linux
   - osx
+sudo: required
 language: csharp
 before_install:
 - sudo apt-get install -y xclip
