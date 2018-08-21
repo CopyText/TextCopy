@@ -27,7 +27,13 @@ static class BashRunner
             process.BeginOutputReadLine();
             process.ErrorDataReceived += (sender, args) => { errorBuilder.AppendLine(args.Data); };
             process.BeginErrorReadLine();
-            process.WaitForExit();
+            if (!process.WaitForExit(500))
+            {
+                var timeoutError = $@"Process timed out. Command line: bash {arguments}.
+Output: {outputBuilder}
+Error: {errorBuilder}";
+                throw new Exception(timeoutError);
+            }
             if (process.ExitCode == 0)
             {
                 return outputBuilder.ToString();
