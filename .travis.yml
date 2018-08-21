@@ -5,6 +5,7 @@ sudo: required
 language: csharp
 before_install:
 - sudo apt-get install -y xclip
+env: DISPLAY=:99.0
 # Ensure xclip can still run headless
 before_script:
   - sh -e /etc/init.d/xvfb start
