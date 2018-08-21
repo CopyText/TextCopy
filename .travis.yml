@@ -4,7 +4,7 @@ os:
 sudo: required
 language: csharp
 before_install:
- - if [ "$os" == "linux" ]; then sudo apt-get install -y xclip
+- sudo apt-get install -y xclip
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
