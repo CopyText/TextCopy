@@ -5,6 +5,11 @@ sudo: required
 language: csharp
 before_install:
 - sudo apt-get install -y xclip
+# Ensure xclip can still run headless
+before_script:
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+  - if [ "$TRAVIS_CLIP" == "xclip" ]; then uptime | xclip -i -sel p -f | xclip -i -sel c; xclip -o -sel clipboard; fi
 mono: none
 dotnet: 2.1.400
 script:
