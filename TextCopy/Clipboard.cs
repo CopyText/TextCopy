@@ -59,6 +59,11 @@ namespace TextCopy
                 return WindowsClipboard.GetText;
             }
 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return OsxClipboard.GetText;
+            }
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 return LinuxClipboard.GetText;
