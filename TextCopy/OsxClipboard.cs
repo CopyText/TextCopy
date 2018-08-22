@@ -6,6 +6,7 @@ static class OsxClipboard
     public static string GetText()
     {
         var nsString = objc_getClass("NSString");
+       // var string = objc_getClass("NSString");
         IntPtr dataType = default;
         try
         {
@@ -14,10 +15,10 @@ static class OsxClipboard
             var nsPasteboard = objc_getClass("NSPasteboard");
             var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
-            var ptr = objc_msgSend(generalPasteboard, sel_registerName("getString:forType:"), dataType);
-            var charArray = objc_msgSend(nsString, sel_registerName("UTF8String"), ptr);
+            var ptr = objc_msgSend(generalPasteboard, sel_registerName("string:forType:"), dataType);
+            //var charArray = objc_msgSend(nsString, sel_registerName("UTF8String"), ptr);
 
-            return Marshal.PtrToStringAuto(charArray);
+            return Marshal.PtrToStringAuto(ptr);
         }
         finally
         {
@@ -27,6 +28,7 @@ static class OsxClipboard
             }
         }
     }
+
     public static void SetText(string text)
     {
         var nsString = objc_getClass("NSString");
