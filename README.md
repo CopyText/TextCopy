@@ -48,6 +48,7 @@ Supported on:
 The following may work but have not been verified:
 
  * Windows with Mono
+ * Linux with Mono
  * Xamarin.iOS
  * Xamarin.Mac
  * Universal Windows Platform
@@ -56,7 +57,6 @@ If anyone verifies any of the above, please submit a [Pull Request](https://help
 
 ### Not supported
 
- * Linux with Mono
  * Xamarin.Android
 
 If other combinations are required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
