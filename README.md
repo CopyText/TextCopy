@@ -30,9 +30,10 @@ var text = TextCopy.Clipboard.GetText();
 
 Supported on:
 
- * Windows on .NET Framework 4.6.1 and up
- * Windows on .NET Core 2.0 and up
- * OSX on  .NET Core 2.0 and up
+ * Windows with .NET Framework 4.6.1 and up
+ * Windows with .NET Core 2.0 and up
+ * OSX with  .NET Core 2.0 and up
+ * Linux with  .NET Core 2.0 and up
 
 ### GetText
 
@@ -40,6 +41,7 @@ Supported on:
 
  * Windows with .NET Framework 4.6.1 and up
  * Windows with .NET Core 2.0 and up
+ * Linux with  .NET Core 2.0 and up
 
 ### Not verified
 
@@ -55,7 +57,6 @@ If anyone verifies any of the above, please submit a [Pull Request](https://help
 ### Not supported
 
  * Linux with Mono
- * Linux with .NET Core
  * Xamarin.Android
 
 If other combinations are required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
