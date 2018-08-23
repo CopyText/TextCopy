@@ -8,15 +8,6 @@ namespace TextCopy
         static Action<string> setAction = CreateSet();
         static Func<string> getFunc = CreateGet();
 
-        static Clipboard()
-        {
-            IsGetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-            IsSetSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||
-                             RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
-                             RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-        }
-
         public static void SetText(string text)
         {
             if (text == null)
@@ -71,9 +62,5 @@ namespace TextCopy
 
             return () => throw new NotSupportedException();
         }
-
-        public static readonly bool IsSetSupported;
-
-        public static readonly bool IsGetSupported;
     }
 }

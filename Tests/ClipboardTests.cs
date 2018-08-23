@@ -10,13 +10,6 @@ public class ClipboardTests
         Verify("🅢");
     }
 
-    [Fact]
-    public void Supported()
-    {
-        Assert.True(Clipboard.IsGetSupported);
-        Assert.True(Clipboard.IsSetSupported);
-    }
-
     static void Verify(string expected)
     {
         Clipboard.SetText(expected);
