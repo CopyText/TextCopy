@@ -26,22 +26,13 @@ var text = TextCopy.Clipboard.GetText();
 
 ## Compatability
 
-### SetText
-
-Supported on:
+### Supported on:
 
  * Windows with .NET Framework 4.6.1 and up
  * Windows with .NET Core 2.0 and up
  * OSX with  .NET Core 2.0 and up
  * Linux with  .NET Core 2.0 and up
 
-### GetText
-
-Supported on:
-
- * Windows with .NET Framework 4.6.1 and up
- * Windows with .NET Core 2.0 and up
- * Linux with  .NET Core 2.0 and up
 
 ### Not verified
 
