@@ -46,13 +46,18 @@ The following may work but have not been verified:
 
 If anyone verifies any of the above, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) to the readme with the outcome.
 
+
 ### Not supported
 
  * Xamarin.Android
 
-If other combinations are required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
+If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
+
+
+## Notes on Linux
+
+Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
 
 ## Icon
 
 <a href="https://thenounproject.com/term/Clone/207435/" target="_blank">Clone</a> designed by Wes Breazell from The Noun Project
-
