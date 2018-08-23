@@ -5,27 +5,21 @@ static class OsxClipboard
 {
     static IntPtr nsString = objc_getClass("NSString");
     static IntPtr nsPasteboard = objc_getClass("NSPasteboard");
+    static IntPtr dataType ;
+
+    static OsxClipboard()
+    {
+        dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "NSStringPboardType");
+    }
+
     public static string GetText()
     {
-        IntPtr dataType = default;
-        try
-        {
-            dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "NSStringPboardType");
+        var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
-            var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
+        var ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), dataType);
+        var charArray = objc_msgSend(ptr, sel_registerName("UTF8String"));
 
-            var ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), dataType);
-            var charArray = objc_msgSend(ptr, sel_registerName("UTF8String"));
-
-            return Marshal.PtrToStringAnsi(charArray);
-        }
-        finally
-        {
-            if (dataType != default)
-            {
-                objc_msgSend(dataType, sel_registerName("release"));
-            }
-        }
+        return Marshal.PtrToStringAnsi(charArray);
     }
 
     public static void SetText(string text)
@@ -35,7 +29,7 @@ static class OsxClipboard
         try
         {
             str = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), text);
-            dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), NSPasteboardTypeString);
+            dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "public.utf8-plain-text");
 
             var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
@@ -72,6 +66,4 @@ static class OsxClipboard
 
     [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
     static extern IntPtr sel_registerName(string selectorName);
-
-    const string NSPasteboardTypeString = "public.utf8-plain-text";
 }
