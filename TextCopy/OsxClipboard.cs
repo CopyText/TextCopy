@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 static class OsxClipboard
 {
     static IntPtr nsString = objc_getClass("NSString");
+    static IntPtr nsPasteboard = objc_getClass("NSPasteboard");
     public static string GetText()
     {
         IntPtr dataType = default;
@@ -11,7 +12,6 @@ static class OsxClipboard
         {
             dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "NSStringPboardType");
 
-            var nsPasteboard = objc_getClass("NSPasteboard");
             var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
             var ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), dataType);
@@ -37,7 +37,6 @@ static class OsxClipboard
             str = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), text);
             dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), NSPasteboardTypeString);
 
-            var nsPasteboard = objc_getClass("NSPasteboard");
             var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
             objc_msgSend(generalPasteboard, sel_registerName("clearContents"));
