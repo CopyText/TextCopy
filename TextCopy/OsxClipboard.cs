@@ -19,25 +19,9 @@ static class OsxClipboard
 
     public static string GetText()
     {
-        IntPtr ptr = default;
-        IntPtr charArray = default;
-        try
-        {
-            ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), nsStringPboardType);
-            charArray = objc_msgSend(ptr, sel_registerName("UTF8String"));
-            return Marshal.PtrToStringAnsi(charArray);
-        }
-        finally
-        {
-            if (ptr != default)
-            {
-                objc_msgSend(ptr, sel_registerName("release"));
-            }
-            if (charArray != default)
-            {
-                objc_msgSend(charArray, sel_registerName("release"));
-            }
-        }
+        var ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), nsStringPboardType);
+        var charArray = objc_msgSend(ptr, sel_registerName("UTF8String"));
+        return Marshal.PtrToStringAnsi(charArray);
     }
 
     public static void SetText(string text)
