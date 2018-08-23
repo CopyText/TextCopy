@@ -5,20 +5,26 @@ static class OsxClipboard
 {
     public static string GetText()
     {
-        IntPtr ptr=default;
+        var nsString = objc_getClass("NSString");
+       // var string = objc_getClass("NSString");
+        IntPtr dataType = default;
         try
         {
+            dataType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), NSPasteboardTypeString);
+
             var nsPasteboard = objc_getClass("NSPasteboard");
             var generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
 
-            ptr = objc_msgSend(generalPasteboard, sel_registerName("GetStringForType:"), "NSStringPboardType");
+            var ptr = objc_msgSend(generalPasteboard, sel_registerName("string:forType:"), dataType);
+            //var charArray = objc_msgSend(nsString, sel_registerName("UTF8String"), ptr);
+
             return Marshal.PtrToStringAuto(ptr);
         }
         finally
         {
-            if (ptr != default)
+            if (dataType != default)
             {
-                objc_msgSend(ptr, sel_registerName("release"));
+                objc_msgSend(dataType, sel_registerName("release"));
             }
         }
     }
