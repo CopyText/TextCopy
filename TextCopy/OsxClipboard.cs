@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 static class OsxClipboard
 {
+    static IntPtr nsString = objc_getClass("NSString");
     public static string GetText()
     {
-        var nsString = objc_getClass("NSString");
         IntPtr dataType = default;
         try
         {
@@ -30,7 +30,6 @@ static class OsxClipboard
 
     public static void SetText(string text)
     {
-        var nsString = objc_getClass("NSString");
         IntPtr str = default;
         IntPtr dataType = default;
         try
