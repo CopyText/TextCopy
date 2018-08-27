@@ -18,7 +18,7 @@ https://nuget.org/packages/TextCopy/
 TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
 
-#### SetText
+#### GetText
 
 ```csharp
 var text = TextCopy.Clipboard.GetText();
