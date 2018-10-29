@@ -16,14 +16,9 @@
     <PackageOutputPath>..\nugets</PackageOutputPath>
     <Description>A netstandard package to copy text to the clipboard.</Description>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludePDBsInPackage</TargetsForTfmSpecificContentInPackage>
     <AssemblyOriginatorKeyFile>$(SolutionDir)Key.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
-  <Target Name="IncludePDBsInPackage" Condition="'$(IncludeBuildOutput)' != 'false'">
-    <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutputPath)\$(AssemblyName).pdb" PackagePath="lib/$(TargetFramework)" />
-    </ItemGroup>
-  </Target>
 </Project>
