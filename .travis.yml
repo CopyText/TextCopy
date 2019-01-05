@@ -1,7 +1,10 @@
-os:
-  - linux
-  - osx
-sudo: required
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      sudo: required
+    - os: osx
+      sudo: required
 language: csharp
 before_install:
 - if [ $TRAVIS_OS_NAME == "linux" ]; then sudo apt-get install -y xclip; fi
