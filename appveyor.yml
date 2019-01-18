@@ -1,6 +1,8 @@
-version: 1.0.{build}
 image: Visual Studio 2017
 build_script:
-- cmd: dotnet build --configuration Release
+- ps: >-
+    dotnet build src --configuration Release
+
+    dotnet test src --configuration Release --no-build --no-restore
 artifacts:
 - path: nugets\**\*.nupkg
