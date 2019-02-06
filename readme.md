@@ -2,8 +2,6 @@
 
 A netstandard package to copy text to and from the clipboard.
 
-**This project is supported by the community via [Patreon sponsorship](https://www.patreon.com/join/simoncropp). If you are using this project to deliver business value or build commercial software it is expected that you will provide support [via Patreon](https://www.patreon.com/join/simoncropp).**
-
 
 ## NuGet  [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg?style=flat)](https://www.nuget.org/packages/TextCopy/)
 
@@ -13,6 +11,7 @@ https://nuget.org/packages/TextCopy/
 
 
 ### Usage
+
 
 #### SetText
 
@@ -26,7 +25,8 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 var text = TextCopy.Clipboard.GetText();
 ```
 
-## Compatability
+## Compatibility
+
 
 ### Supported on:
 
@@ -59,6 +59,7 @@ If support is required, please submit a [Pull Request](https://help.github.com/a
 ## Notes on Linux
 
 Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
+
 
 ## Icon
 
