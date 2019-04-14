@@ -14,4 +14,4 @@ mono: none
 dotnet: 2.1.400
 script:
  - dotnet build src --configuration Release
- - dotnet test src --configuration Release --no-build --no-restore
+ - dotnet test src/Tests/Tests.csproj --configuration Release --no-build --no-restore
