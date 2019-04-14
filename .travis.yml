@@ -5,11 +5,11 @@ matrix:
       sudo: required
       services:
         - xvfb
-      before_install:
-        - sudo apt-get install -y xclip; fi
     - os: osx
       sudo: required
 language: csharp
+before_install:
+- if [ $TRAVIS_OS_NAME == "linux" ]; then sudo apt-get install -y xclip; fi
 mono: none
 dotnet: 2.1.400
 script:
