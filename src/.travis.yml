@@ -6,7 +6,7 @@ matrix:
     - os: osx
       sudo: required
 services:
-  - xvfb
+ - xvfb
 language: csharp
 before_install:
 - if [ $TRAVIS_OS_NAME == "linux" ]; then sudo apt-get install -y xclip; fi
