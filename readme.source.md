@@ -1,8 +1,3 @@
-<!--
-This file was generate by MarkdownSnippets.
-Source File: /readme.source.md
-To change this file edit the source file and then re-run the generation using either the dotnet global tool (https://github.com/SimonCropp/MarkdownSnippets#githubmarkdownsnippets) or using the api (https://github.com/SimonCropp/MarkdownSnippets#running-as-a-unit-test).
--->
 # TextCopy
 
 A netstandard package to copy text to and from the clipboard.
@@ -20,22 +15,12 @@ https://nuget.org/packages/TextCopy/
 
 #### SetText
 
-<!-- snippet: SetText -->
-```cs
-TextCopy.Clipboard.SetText("Text to place in clipboard");
-```
-<sup>[snippet source](/src/Tests/Snippets.cs#L6-L10)</sup>
-<!-- endsnippet -->
+snippet: SetText
 
 
 #### GetText
 
-<!-- snippet: GetText -->
-```cs
-var text = TextCopy.Clipboard.GetText();
-```
-<sup>[snippet source](/src/Tests/Snippets.cs#L15-L19)</sup>
-<!-- endsnippet -->
+snippet: GetText
 
 
 ## Compatibility
