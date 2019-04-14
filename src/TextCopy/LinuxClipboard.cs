@@ -8,7 +8,7 @@ static class LinuxClipboard
         File.WriteAllText(tempFileName, text);
         try
         {
-            BashRunner.Run($"cat {tempFileName} | xclip");
+            BashRunner.Run($"cat {tempFileName} | xclip -i -selection clipboard");
         }
         finally
         {
@@ -21,7 +21,7 @@ static class LinuxClipboard
         var tempFileName = Path.GetTempFileName();
         try
         {
-            BashRunner.Run($"xclip -o > {tempFileName}");
+            BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
             return File.ReadAllText(tempFileName);
         }
         finally
