@@ -13,6 +13,6 @@ before_install:
 mono: none
 dotnet: 2.1.400
 script:
- - dotnet restore
- - dotnet build
- - dotnet test Tests/Tests.csproj --no-build
+ - dotnet restore src
+ - dotnet build src
+ - dotnet test src Tests/Tests.csproj --no-build
