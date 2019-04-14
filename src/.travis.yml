@@ -5,13 +5,11 @@ matrix:
       sudo: required
     - os: osx
       sudo: required
+services:
+  - xvfb
 language: csharp
 before_install:
 - if [ $TRAVIS_OS_NAME == "linux" ]; then sudo apt-get install -y xclip; fi
-before_script:
-  - "export DISPLAY=:99.0"
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then sh -e /etc/init.d/xvfb start; fi
-  - sleep 3 # give xvfb some time to start
 mono: none
 dotnet: 2.1.400
 script:
