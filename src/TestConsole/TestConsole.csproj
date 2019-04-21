@@ -1,17 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
     <TargetFrameworks>net472;netcoreapp2.1</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
   </ItemGroup>
-
 </Project>
