@@ -8,7 +8,7 @@ To change this file edit the source file and then re-run the generation using ei
 A netstandard package to copy text to and from the clipboard.
 
 
-## NuGet [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg?style=flat)](https://www.nuget.org/packages/TextCopy/)
+## NuGet [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
 
 https://nuget.org/packages/TextCopy/
 
