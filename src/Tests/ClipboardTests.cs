@@ -1,7 +1,9 @@
 ﻿using TextCopy;
 using Xunit;
+using Xunit.Abstractions;
 
-public class ClipboardTests
+public class ClipboardTests :
+    XunitLoggingBase
 {
     [Fact]
     public void Simple()
@@ -16,5 +18,10 @@ public class ClipboardTests
 
         var actual = Clipboard.GetText();
         Assert.Equal(expected, actual);
+    }
+
+    public ClipboardTests(ITestOutputHelper output) :
+        base(output)
+    {
     }
 }
