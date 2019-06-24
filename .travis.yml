@@ -16,4 +16,4 @@ script:
   - nuget install xunit.runner.console -Version 2.4.1 -OutputDirectory testrunner
   - dotnet build src --configuration Release
   - dotnet test src/Tests/Tests.csproj --configuration Release --no-build --no-restore
-  - mono ./testrunner/xunit.runner.console.2.4.1/tools/net472/xunit.console.exe ./src/Tests/bin/Release/net472/MyProject.Tests.dll
+  - mono ./testrunner/xunit.runner.console.2.4.1/tools/net472/xunit.console.exe ./src/Tests/bin/Release/net472/Tests.dll
