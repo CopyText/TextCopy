@@ -13,7 +13,7 @@ language: csharp
 mono: latest
 dotnet: 2.1.400
 script:
-  - export FrameworkPathOverride=/usr/lib/mono/4.5/
+  - export FrameworkPathOverride=/usr/lib/mono/4.7.2/
   - nuget install xunit.runner.console -Version 2.4.1 -OutputDirectory testrunner
   - dotnet build src --configuration Release
   - dotnet test src/Tests/Tests.csproj --configuration Release --framework netcoreapp2.1 --no-build --no-restore
