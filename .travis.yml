@@ -16,5 +16,5 @@ script:
   - export FrameworkPathOverride=/usr/lib/mono/4.5/
   - nuget install xunit.runner.console -Version 2.4.1 -OutputDirectory testrunner
   - dotnet build src --configuration Release
-  - dotnet test src/Tests/Tests.csproj --configuration Release --no-build --no-restore
+  - dotnet test src/Tests/Tests.csproj --configuration Release --framework netcoreapp2.1 --no-build --no-restore
   - mono ./testrunner/xunit.runner.console.2.4.1/tools/net472/xunit.console.exe ./src/Tests/bin/Release/net472/Tests.dll
