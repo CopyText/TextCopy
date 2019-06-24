@@ -10,8 +10,10 @@ matrix:
     - os: osx
       sudo: required
 language: csharp
-mono: none
+mono: latest
 dotnet: 2.1.400
 script:
- - dotnet build src --configuration Release
- - dotnet test src/Tests/Tests.csproj --configuration Release --no-build --no-restore
+  - nuget install xunit.runner.console  -Version 2.4.1 -OutputDirectory testrunner
+  - dotnet build src --configuration Release
+  - dotnet test src/Tests/Tests.csproj --configuration Release --no-build --no-restore
+  - mono ./testrunner/xunit.runners.2.4.1/tools/net472/xunit.console.exe ./src/Tests/bin/Release/net472/MyProject.Tests.dll
