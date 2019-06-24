@@ -2,8 +2,14 @@
 
 class Program
 {
-    static void Main()
+    static int Main()
     {
-        Clipboard.SetText("Hello World!");
+        var text = "Hello World!";
+        Clipboard.SetText(text);
+        if (Clipboard.GetText() == text)
+        {
+            return 0;
+        }
+        return 1;
     }
 }
