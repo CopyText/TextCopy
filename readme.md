@@ -44,7 +44,7 @@ var text = TextCopy.Clipboard.GetText();
 
 ### Supported on:
 
- * Windows with .NET Framework 4.6.1 and up
+ * Windows with .NET Framework 4.7.1 and up
  * Windows with .NET Core 2.0 and up
  * Windows with Mono 5.0 and up
  * OSX with .NET Core 2.0 and up
