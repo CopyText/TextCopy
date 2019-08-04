@@ -8,19 +8,26 @@ static class OsxClipboard
     static IntPtr nsStringPboardType;
     static IntPtr utfTextType;
     static IntPtr generalPasteboard;
+    static IntPtr initWithUtf8Register = sel_registerName("initWithUTF8String:");
+    static IntPtr allocRegister = sel_registerName("alloc");
+    static IntPtr setStringRegister = sel_registerName("setString:forType:");
+    static IntPtr stringForTypeRegister = sel_registerName("stringForType:");
+    static IntPtr utf8Register = sel_registerName("UTF8String");
+    static IntPtr generalPasteboardRegister = sel_registerName("generalPasteboard");
+    static IntPtr clearContentsRegister = sel_registerName("clearContents");
 
     static OsxClipboard()
     {
-        utfTextType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "public.utf8-plain-text");
-        nsStringPboardType = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), "NSStringPboardType");
+        utfTextType = objc_msgSend(objc_msgSend(nsString, allocRegister), initWithUtf8Register, "public.utf8-plain-text");
+        nsStringPboardType = objc_msgSend(objc_msgSend(nsString, allocRegister), initWithUtf8Register, "NSStringPboardType");
 
-        generalPasteboard = objc_msgSend(nsPasteboard, sel_registerName("generalPasteboard"));
+        generalPasteboard = objc_msgSend(nsPasteboard, generalPasteboardRegister);
     }
 
     public static string GetText()
     {
-        var ptr = objc_msgSend(generalPasteboard, sel_registerName("stringForType:"), nsStringPboardType);
-        var charArray = objc_msgSend(ptr, sel_registerName("UTF8String"));
+        var ptr = objc_msgSend(generalPasteboard, stringForTypeRegister, nsStringPboardType);
+        var charArray = objc_msgSend(ptr, utf8Register);
         return Marshal.PtrToStringAnsi(charArray);
     }
 
@@ -29,9 +36,9 @@ static class OsxClipboard
         IntPtr str = default;
         try
         {
-            str = objc_msgSend(objc_msgSend(nsString, sel_registerName("alloc")), sel_registerName("initWithUTF8String:"), text);
-            objc_msgSend(generalPasteboard, sel_registerName("clearContents"));
-            objc_msgSend(generalPasteboard, sel_registerName("setString:forType:"), str, utfTextType);
+            str = objc_msgSend(objc_msgSend(nsString, allocRegister), initWithUtf8Register, text);
+            objc_msgSend(generalPasteboard, clearContentsRegister);
+            objc_msgSend(generalPasteboard, setStringRegister, str, utfTextType);
         }
         finally
         {
