@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>latest</LangVersion>
-    <NoWarn>CS1591</NoWarn>
     <Version>1.7.1</Version>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Copyright $([System.DateTime]::UtcNow.ToString(yyyy)). All rights reserved</Copyright>
     <PackageTags>Clipboard, Copy</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/SimonCropp/TextCopy/master/src/icon.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/SimonCropp/TextCopy</PackageProjectUrl>
-    <PackageOutputPath>..\..\nugets</PackageOutputPath>
     <Description>A netstandard package to copy text to the clipboard.</Description>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <AssemblyOriginatorKeyFile>$(SolutionDir)Key.snk</AssemblyOriginatorKeyFile>
-    <SignAssembly>true</SignAssembly>
-    <DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 </Project>

@@ -1,9 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net472;netcoreapp2.1</TargetFrameworks>
-    <Optimize>false</Optimize>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MarkdownSnippets.MsBuild" Version="16.0.0" />
@@ -13,5 +10,6 @@
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="XunitLogger" Version="2.4.0" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.3" PrivateAssets="All" />
   </ItemGroup>
 </Project>
