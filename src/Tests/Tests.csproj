@@ -10,6 +10,6 @@
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="XunitLogger" Version="2.4.0" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.7" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.8" PrivateAssets="All" />
   </ItemGroup>
 </Project>
