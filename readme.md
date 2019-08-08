@@ -9,18 +9,31 @@ To change this file edit the source file and then run MarkdownSnippets.
 
 A netstandard package to copy text to and from the clipboard.
 
+<!-- toc -->
+## Contents
 
-## NuGet [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
+  * [NuGet](#nuget)
+  * [Usage](#usage)
+    * [SetText](#settext)
+    * [GetText](#gettext)
+  * [Compatibility](#compatibility)
+    * [Supported on](#supported-on)
+    * [Not verified](#not-verified)
+    * [Not supported](#not-supported)
+  * [Notes on Linux](#notes-on-linux)
+<!-- endtoc -->
 
-https://nuget.org/packages/TextCopy/
-
-    PM> Install-Package TextCopy
 
 
-### Usage
+## NuGet
+
+https://nuget.org/packages/TextCopy/ [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
 
 
-#### SetText
+## Usage
+
+
+### SetText
 
 <!-- snippet: SetText -->
 ```cs
@@ -30,7 +43,7 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 <!-- endsnippet -->
 
 
-#### GetText
+### GetText
 
 <!-- snippet: GetText -->
 ```cs
@@ -43,7 +56,7 @@ var text = TextCopy.Clipboard.GetText();
 ## Compatibility
 
 
-### Supported on:
+### Supported on
 
  * Windows with .NET Framework 4.6.1 and up
  * Windows with .NET Core 2.0 and up
@@ -79,4 +92,4 @@ Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As
 
 ## Icon
 
-<a href="https://thenounproject.com/term/Clone/207435/" target="_blank">Clone</a> designed by Wes Breazell from The Noun Project
+[Clone](https://thenounproject.com/term/Clone/207435/) designed by [Wes Breazell](https://thenounproject.com/wes13/) from [The Noun Project](https://thenounproject.com).
