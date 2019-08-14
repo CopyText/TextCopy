@@ -1,5 +1,4 @@
-﻿// ReSharper disable UnusedVariable
-class Snippets
+﻿class Snippets
 {
     void SetText()
     {
