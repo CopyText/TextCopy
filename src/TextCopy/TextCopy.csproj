@@ -2,13 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
   <ItemGroup>
-    <Compile Condition="$(TargetFramework)=='net461'" Remove="netstandard\*.cs" />
-    <Compile Condition="$(TargetFramework)=='netstandard2.0'" Remove="netdesktop\*.cs" />
-
     <PackageReference Include="ProjectDefaults" Version="1.0.16" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" PrivateAssets="All" />
   </ItemGroup>

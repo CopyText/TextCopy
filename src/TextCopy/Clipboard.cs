@@ -1,5 +1,8 @@
 ﻿using System;
+
+#if (NETSTANDARD)
 using System.Runtime.InteropServices;
+#endif
 
 namespace TextCopy
 {
@@ -32,6 +35,7 @@ namespace TextCopy
            return getFunc();
         }
 
+#if (NETSTANDARD)
         static Action<string> CreateSet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -51,7 +55,14 @@ namespace TextCopy
 
             return s => throw new NotSupportedException();
         }
+#else
+        static Action<string> CreateSet()
+        {
+            return WindowsClipboard.SetText;
+        }
+#endif
 
+#if (NETSTANDARD)
         static Func<string> CreateGet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -71,5 +82,11 @@ namespace TextCopy
 
             return () => throw new NotSupportedException();
         }
+#else
+        static Func<string> CreateGet()
+        {
+             return WindowsClipboard.GetText;
+        }
+#endif
     }
 }
