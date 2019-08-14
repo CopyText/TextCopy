@@ -19,11 +19,7 @@ namespace TextCopy
         /// </summary>
         public static void SetText(string text)
         {
-            if (text == null)
-            {
-                throw new ArgumentNullException(nameof(text));
-            }
-
+            Guard.AgainstNull(text, nameof(text));
             setAction(text);
         }
 
