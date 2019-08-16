@@ -40,7 +40,7 @@ https://nuget.org/packages/TextCopy/ [![NuGet Status](http://img.shields.io/nuge
 ```cs
 TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L6-L10) / [anchor](#snippet-settext)</sup>
+<sup>[snippet source](/src/Tests/Snippets.cs#L5-L9) / [anchor](#snippet-settext)</sup>
 <!-- endsnippet -->
 
 
@@ -51,7 +51,7 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```cs
 var text = TextCopy.Clipboard.GetText();
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L15-L19) / [anchor](#snippet-gettext)</sup>
+<sup>[snippet source](/src/Tests/Snippets.cs#L14-L18) / [anchor](#snippet-gettext)</sup>
 <!-- endsnippet -->
 
 
