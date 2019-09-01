@@ -7,6 +7,10 @@ To change this file edit the source file and then run MarkdownSnippets.
 
 # TextCopy
 
+[![Build status](https://ci.appveyor.com/api/projects/status/lsw1b1olku8tg9d1/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/TextCopy)
+[![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg?cacheSeconds=86400)](https://www.nuget.org/packages/TextCopy/)
+
+
 A netstandard package to copy text to and from the clipboard.
 
 <!-- toc -->
@@ -27,7 +31,7 @@ A netstandard package to copy text to and from the clipboard.
 
 ## NuGet
 
-https://nuget.org/packages/TextCopy/ [![NuGet Status](http://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
+https://nuget.org/packages/TextCopy/
 
 
 ## Usage
@@ -90,6 +94,11 @@ If support is required, please submit a [Pull Request](https://help.github.com/a
 ## Notes on Linux
 
 Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
+
+
+## Release Notes
+
+See [closed milestones](../../milestones?state=closed).
 
 
 ## Icon
