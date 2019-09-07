@@ -3,7 +3,7 @@ using Xunit;
 using Xunit.Abstractions;
 
 public class ClipboardTests :
-    XunitLoggingBase
+    XunitApprovalBase
 {
     [Fact]
     public void Simple()
