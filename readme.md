@@ -88,12 +88,12 @@ If anyone verifies any of the above, please submit a [Pull Request](https://help
  * Xamarin.Android
  * Xamarin.Mac
    * Xamarin.Mac fails when calling GetText with:
- ```
- System.DllNotFoundException: User32.dll
-  at at (wrapper managed-to-native) WindowsClipboard.IsClipboardFormatAvailable(uint)
-  at WindowsClipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
-  at TextCopy.Clipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
-```
+     ```
+     System.DllNotFoundException: User32.dll
+       at at (wrapper managed-to-native) WindowsClipboard.IsClipboardFormatAvailable(uint)
+       at WindowsClipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
+       at TextCopy.Clipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
+     ```
 
 If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
