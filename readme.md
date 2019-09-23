@@ -79,6 +79,7 @@ var text = TextCopy.Clipboard.GetText();
 The following may work but have not been verified:
 
  * Xamarin.iOS
+ * Xamarin.Mac
 
 If anyone verifies any of the above, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) to the readme with the outcome.
 
@@ -86,14 +87,13 @@ If anyone verifies any of the above, please submit a [Pull Request](https://help
 ### Not supported
 
  * Xamarin.Android
- * Xamarin.Mac
-   * Xamarin.Mac fails when calling GetText with:
-     ```
-     System.DllNotFoundException: User32.dll
-       at at (wrapper managed-to-native) WindowsClipboard.IsClipboardFormatAvailable(uint)
-       at WindowsClipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
-       at TextCopy.Clipboard.GetText () [0x00000] in <b38d6b05b12944c3a3542953bdff5fbe>:0
-     ```
+ * Xamarin.Mac. Fails when calling GetText with:
+    ```
+    System.DllNotFoundException: User32.dll
+      at at (wrapper managed-to-native)WindowsClipboard.IsClipboardFormatAvailable(uint)
+      at WindowsClipboard.GetText()
+      at TextCopy.Clipboard.GetText()
+    ```
 
 If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
