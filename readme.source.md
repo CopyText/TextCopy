@@ -37,7 +37,7 @@ snippet: GetText
  * Windows with Mono 5.0 and up
  * OSX with .NET Core 2.0 and up
  * OSX with Mono 5.20.1 and up
- * Xamarin.Mac Modern, .NET Core 2.0
+ * Xamarin.Mac Modern
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
  * Universal Windows Platform version 10.0.16299 and up
