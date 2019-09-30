@@ -8,8 +8,8 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Xunit" Version="2.4.1" />
-    <PackageReference Include="XunitLogger" Version="3.0.6" />
-    <PackageReference Include="Xunit.ApprovalTests" Version="3.0.6" />
+    <PackageReference Include="XunitLogger" Version="3.1.0" />
+    <PackageReference Include="Xunit.ApprovalTests" Version="3.1.0" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.25" PrivateAssets="All" />
   </ItemGroup>
