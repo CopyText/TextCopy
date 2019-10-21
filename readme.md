@@ -10,13 +10,11 @@ To change this file edit the source file and then run MarkdownSnippets.
 [![Build status](https://ci.appveyor.com/api/projects/status/lsw1b1olku8tg9d1/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/TextCopy)
 [![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg?cacheSeconds=86400)](https://www.nuget.org/packages/TextCopy/)
 
-
 A netstandard package to copy text to and from the clipboard.
 
 <!-- toc -->
 ## Contents
 
-  * [NuGet](#nuget)
   * [Usage](#usage)
     * [SetText](#settext)
     * [GetText](#gettext)
@@ -27,11 +25,6 @@ A netstandard package to copy text to and from the clipboard.
   * [Notes on Linux](#notes-on-linux)
 <!-- endtoc -->
 
-
-
-## NuGet
-
-https://nuget.org/packages/TextCopy/
 
 
 ## Usage
