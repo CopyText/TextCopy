@@ -1,9 +1,10 @@
 ﻿using TextCopy;
+using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
 
 public class ClipboardTests :
-    XunitApprovalBase
+    VerifyBase
 {
     [Fact]
     public void Simple()
