@@ -9,11 +9,11 @@ public class ClipboardTests :
     [Fact]
     public void Simple()
     {
-        Verify("Foo");
-        Verify("🅢");
+        VerifyInner("Foo");
+        VerifyInner("🅢");
     }
 
-    static void Verify(string expected)
+    static void VerifyInner(string expected)
     {
         Clipboard.SetText(expected);
 
