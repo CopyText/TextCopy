@@ -16,7 +16,7 @@ static class LinuxClipboard
         }
     }
 
-    public static string GetText()
+    public static string? GetText()
     {
         var tempFileName = Path.GetTempFileName();
         try

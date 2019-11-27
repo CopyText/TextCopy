@@ -1,18 +1,19 @@
 ﻿using TextCopy;
+using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
 
 public class ClipboardTests :
-    XunitApprovalBase
+    VerifyBase
 {
     [Fact]
     public void Simple()
     {
-        Verify("Foo");
-        Verify("🅢");
+        VerifyInner("Foo");
+        VerifyInner("🅢");
     }
 
-    static void Verify(string expected)
+    static void VerifyInner(string expected)
     {
         Clipboard.SetText(expected);
 

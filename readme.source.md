@@ -1,17 +1,12 @@
 # <img src="/src/icon.png" height="30px"> TextCopy
 
 [![Build status](https://ci.appveyor.com/api/projects/status/lsw1b1olku8tg9d1/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/TextCopy)
+[![Build status](https://travis-ci.org/SimonCropp/TextCopy.svg?branch=master)](https://travis-ci.org/SimonCropp/TextCopy)
 [![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg?cacheSeconds=86400)](https://www.nuget.org/packages/TextCopy/)
-
 
 A netstandard package to copy text to and from the clipboard.
 
 toc
-
-
-## NuGet
-
-https://nuget.org/packages/TextCopy/
 
 
 ## Usage
@@ -37,6 +32,7 @@ snippet: GetText
  * Windows with Mono 5.0 and up
  * OSX with .NET Core 2.0 and up
  * OSX with Mono 5.20.1 and up
+ * Xamarin.Mac Modern
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
  * Universal Windows Platform version 10.0.16299 and up
@@ -47,22 +43,21 @@ snippet: GetText
 The following may work but have not been verified:
 
  * Xamarin.iOS
- * Xamarin.Mac
 
-If anyone verifies any of the above, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) to the readme with the outcome.
+If anyone verifies this, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) to the readme with the outcome.
 
 
 ### Not supported
 
  * Xamarin.Android
- * Xamarin.Mac. Fails when calling GetText with:
-    ```
+ * Xamarin.Mac Full, .NET Framework 4.7.2
+     ```
     System.DllNotFoundException: User32.dll
       at at (wrapper managed-to-native)WindowsClipboard.IsClipboardFormatAvailable(uint)
       at WindowsClipboard.GetText()
       at TextCopy.Clipboard.GetText()
     ```
-
+ 
 If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
 

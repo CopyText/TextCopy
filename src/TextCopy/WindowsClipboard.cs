@@ -75,7 +75,7 @@ static class WindowsClipboard
         }
     }
 
-    public static string GetText()
+    public static string? GetText()
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {
