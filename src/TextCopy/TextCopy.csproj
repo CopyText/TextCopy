@@ -1,14 +1,10 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;uap10.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
-    <DefineConstants>TRACE;UAP</DefineConstants>
+    <DefineConstants>$(DefineConstants);UAP</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Clipboard_GetUap.cs" />
-    <Compile Remove="Clipboard_SetUap.cs" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ProjectDefaults" Version="1.0.33" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />

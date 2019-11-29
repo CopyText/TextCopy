@@ -27,6 +27,7 @@ static class LinuxClipboard
         {
             BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
             var readAllText = File.ReadAllText(tempFileName);
+            // ReSharper disable once RedundantTypeArgumentsOfMethod
             return Task.FromResult<string?>(readAllText);
         }
         finally
