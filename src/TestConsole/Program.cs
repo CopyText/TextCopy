@@ -1,15 +1,18 @@
-﻿using TextCopy;
+﻿using System.Threading.Tasks;
+using TextCopy;
 
 class Program
 {
-    static int Main()
+    static async Task<int> Main()
     {
         var text = "Hello World!";
-        Clipboard.SetText(text);
-        if (Clipboard.GetText() == text)
+        await Clipboard.SetText(text);
+        var result = await Clipboard.GetText();
+        if (result == text)
         {
             return 0;
         }
+
         return 1;
     }
 }
