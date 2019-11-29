@@ -1,3 +1,4 @@
+#if (NETSTANDARD)
 using System.IO;
 
 static class LinuxClipboard
@@ -30,3 +31,4 @@ static class LinuxClipboard
         }
     }
 }
+#endif

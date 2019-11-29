@@ -1,3 +1,4 @@
+#if (NETSTANDARD)
 using System;
 using System.Runtime.InteropServices;
 
@@ -67,3 +68,4 @@ static class OsxClipboard
     [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
     static extern IntPtr sel_registerName(string selectorName);
 }
+#endif
