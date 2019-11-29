@@ -1,25 +1,13 @@
-﻿using System;
-
-#if (NETSTANDARD)
+﻿#if (NETSTANDARD)
+using System;
 using System.Runtime.InteropServices;
-#endif
+using System.Threading.Tasks;
 
 namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<string?> getFunc = CreateGet();
-
-        /// <summary>
-        /// Retrieves text data from the Clipboard.
-        /// </summary>
-        public static string? GetText()
-        {
-           return getFunc();
-        }
-
-#if (NETSTANDARD)
-        static Func<string?> CreateGet()
+        static Func<Task<string?>> CreateGet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -38,11 +26,6 @@ namespace TextCopy
 
             return () => throw new NotSupportedException();
         }
-#else
-        static Func<string?> CreateGet()
-        {
-             return WindowsClipboard.GetText;
-        }
-#endif
     }
 }
+#endif

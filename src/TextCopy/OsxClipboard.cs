@@ -1,5 +1,7 @@
+#if (NETSTANDARD)
 using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 static class OsxClipboard
 {
@@ -24,14 +26,14 @@ static class OsxClipboard
         generalPasteboard = objc_msgSend(nsPasteboard, generalPasteboardRegister);
     }
 
-    public static string? GetText()
+    public static Task<string?> GetText()
     {
         var ptr = objc_msgSend(generalPasteboard, stringForTypeRegister, nsStringPboardType);
         var charArray = objc_msgSend(ptr, utf8Register);
-        return Marshal.PtrToStringAnsi(charArray);
+        return Task.FromResult<string?>(Marshal.PtrToStringAnsi(charArray));
     }
 
-    public static void SetText(string text)
+    public static Task SetText(string text)
     {
         IntPtr str = default;
         try
@@ -47,6 +49,7 @@ static class OsxClipboard
                 objc_msgSend(str, sel_registerName("release"));
             }
         }
+        return Task.CompletedTask;
     }
 
     [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
@@ -67,3 +70,4 @@ static class OsxClipboard
     [DllImport("/System/Library/Frameworks/AppKit.framework/AppKit")]
     static extern IntPtr sel_registerName(string selectorName);
 }
+#endif

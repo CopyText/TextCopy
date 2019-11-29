@@ -1,26 +1,13 @@
-﻿using System;
-
-#if (NETSTANDARD)
+﻿#if (NETSTANDARD)
+using System;
 using System.Runtime.InteropServices;
-#endif
+using System.Threading.Tasks;
 
 namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Action<string> setAction = CreateSet();
-
-        /// <summary>
-        /// Clears the Clipboard and then adds text data to it.
-        /// </summary>
-        public static void SetText(string text)
-        {
-            Guard.AgainstNull(text, nameof(text));
-            setAction(text);
-        }
-
-#if (NETSTANDARD)
-        static Action<string> CreateSet()
+        static Func<string,Task> CreateSet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -39,11 +26,6 @@ namespace TextCopy
 
             return s => throw new NotSupportedException();
         }
-#else
-        static Action<string> CreateSet()
-        {
-            return WindowsClipboard.SetText;
-        }
-#endif
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if (NETSTANDARD)
 using System;
 using System.Diagnostics;
 using System.Text;
@@ -44,3 +45,4 @@ Error: {errorBuilder}";
         throw new Exception(error);
     }
 }
+#endif

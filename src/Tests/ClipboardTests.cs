@@ -1,4 +1,5 @@
-﻿using TextCopy;
+﻿using System.Threading.Tasks;
+using TextCopy;
 using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
@@ -7,17 +8,17 @@ public class ClipboardTests :
     VerifyBase
 {
     [Fact]
-    public void Simple()
+    public async Task Simple()
     {
-        VerifyInner("Foo");
-        VerifyInner("🅢");
+        await VerifyInner("Foo");
+        await VerifyInner("🅢");
     }
 
-    static void VerifyInner(string expected)
+    static async Task VerifyInner(string expected)
     {
-        Clipboard.SetText(expected);
+        await Clipboard.SetText(expected);
 
-        var actual = Clipboard.GetText();
+        var actual = await Clipboard.GetText();
         Assert.Equal(expected, actual);
     }
 
