@@ -14,19 +14,18 @@ namespace TextCopy
         {
             return async () =>
             {
-                var dataPackageView = UapClipboard.GetContent();
-
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
                 string? value = null;
                 await dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-                    async () => {
-
+                    async () =>
+                    {
+                        var dataPackageView = UapClipboard.GetContent();
                         if (dataPackageView.Contains(StandardDataFormats.Text))
                         {
                             value = await dataPackageView.GetTextAsync();
                             return;
                         }
-                });
+                    });
                 return value;
             };
         }

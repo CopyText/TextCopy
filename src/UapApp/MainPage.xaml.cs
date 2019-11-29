@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Threading;
 
 namespace UapApp
 {
@@ -7,7 +8,8 @@ namespace UapApp
         public MainPage()
         {
             InitializeComponent();
-            OutputClipboardText();
+            var thread1 = new Thread(OutputClipboardText);
+            thread1.Start();
         }
 
         async void OutputClipboardText()
