@@ -8,6 +8,5 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.33" PrivateAssets="All" />
   </ItemGroup>
 </Project>
