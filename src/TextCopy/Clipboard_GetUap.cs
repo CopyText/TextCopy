@@ -2,7 +2,9 @@
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
-using UapClipboard= Windows.ApplicationModel.DataTransfer.Clipboard;
+using UapClipboard = Windows.ApplicationModel.DataTransfer.Clipboard;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 
 namespace TextCopy
 {
@@ -14,12 +16,18 @@ namespace TextCopy
             {
                 var dataPackageView = UapClipboard.GetContent();
 
-                if (dataPackageView.Contains(StandardDataFormats.Text))
-                {
-                    return await dataPackageView.GetTextAsync();
-                }
+                var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
+                string? value = null;
+                await dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                    async () => {
 
-                return null;
+                        if (dataPackageView.Contains(StandardDataFormats.Text))
+                        {
+                            value = await dataPackageView.GetTextAsync();
+                            return;
+                        }
+                });
+                return value;
             };
         }
     }
