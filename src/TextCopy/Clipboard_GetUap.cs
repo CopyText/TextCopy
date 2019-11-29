@@ -23,7 +23,6 @@ namespace TextCopy
                         if (dataPackageView.Contains(StandardDataFormats.Text))
                         {
                             value = await dataPackageView.GetTextAsync();
-                            return;
                         }
                     });
                 return value;
