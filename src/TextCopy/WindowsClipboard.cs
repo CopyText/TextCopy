@@ -3,13 +3,13 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 
 static class WindowsClipboard
 {
-    public static void SetText(string text)
+    public static async Task SetText(string text)
     {
-        OpenClipboard();
+        await OpenClipboard();
 
         EmptyClipboard();
         IntPtr hGlobal = default;
@@ -57,7 +57,7 @@ static class WindowsClipboard
         }
     }
 
-    public static void OpenClipboard()
+    public static async Task OpenClipboard()
     {
         var num = 10;
         while (true)
@@ -72,11 +72,11 @@ static class WindowsClipboard
                 ThrowWin32();
             }
 
-            Thread.Sleep(100);
+            await Task.Delay(100);
         }
     }
 
-    public static string? GetText()
+    public static async Task<string?> GetText()
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {
@@ -88,7 +88,7 @@ static class WindowsClipboard
         IntPtr pointer = default;
         try
         {
-            OpenClipboard();
+            await OpenClipboard();
             handle = GetClipboardData(cfUnicodeText);
             if (handle == default)
             {

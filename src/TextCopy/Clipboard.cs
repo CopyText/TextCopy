@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace TextCopy
 {
@@ -7,25 +8,25 @@ namespace TextCopy
     /// </summary>
     public static partial class Clipboard
     {
-        static Func<string?> getFunc = CreateGet();
+        static Func<Task<string?>> getFunc = CreateGet();
 
         /// <summary>
         /// Retrieves text data from the Clipboard.
         /// </summary>
-        public static string? GetText()
+        public static Task<string?> GetText()
         {
             return getFunc();
         }
 
-        static Action<string> setAction = CreateSet();
+        static Func<string,Task> setAction = CreateSet();
 
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.
         /// </summary>
-        public static void SetText(string text)
+        public static Task SetText(string text)
         {
             Guard.AgainstNull(text, nameof(text));
-            setAction(text);
+            return setAction(text);
         }
     }
 }

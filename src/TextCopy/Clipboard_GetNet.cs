@@ -1,11 +1,12 @@
 ﻿#if NETFRAMEWORK
 using System;
+using System.Threading.Tasks;
 
 namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<string?> CreateGet()
+        static Func<Task<string?>> CreateGet()
         {
             return WindowsClipboard.GetText;
         }

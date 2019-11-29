@@ -1,12 +1,13 @@
 ﻿#if (NETSTANDARD)
 using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Action<string> CreateSet()
+        static Func<string,Task> CreateSet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {

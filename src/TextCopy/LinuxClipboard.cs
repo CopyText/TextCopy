@@ -1,9 +1,10 @@
 #if (NETSTANDARD)
 using System.IO;
+using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
-    public static void SetText(string text)
+    public static Task SetText(string text)
     {
         var tempFileName = Path.GetTempFileName();
         File.WriteAllText(tempFileName, text);
@@ -15,15 +16,18 @@ static class LinuxClipboard
         {
             File.Delete(tempFileName);
         }
+
+        return Task.CompletedTask;
     }
 
-    public static string? GetText()
+    public static Task<string?> GetText()
     {
         var tempFileName = Path.GetTempFileName();
         try
         {
             BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
-            return File.ReadAllText(tempFileName);
+            var readAllText = File.ReadAllText(tempFileName);
+            return Task.FromResult<string?>(readAllText);
         }
         finally
         {
