@@ -5,7 +5,7 @@ build_script:
 - ps: >-
     msbuild.exe src/TextCopy.sln /t:restore
 
-    mbbuild.exe src/TextCopy.sln /t:build
+    msbuild.exe src/TextCopy.sln /t:build
 
     msbuild.exe src/TextCopy.sln /t:pack
 
