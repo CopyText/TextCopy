@@ -3,11 +3,12 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 static class WindowsClipboard
 {
-    public static async Task SetText(string text)
+    public static async Task SetText(string text, CancellationToken cancellation)
     {
         await OpenClipboard();
 
@@ -76,7 +77,7 @@ static class WindowsClipboard
         }
     }
 
-    public static async Task<string?> GetText()
+    public static async Task<string?> GetText(CancellationToken cancellation)
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {

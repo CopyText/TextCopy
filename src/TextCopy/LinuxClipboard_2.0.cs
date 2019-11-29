@@ -1,10 +1,11 @@
 #if (NETSTANDARD2_0)
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
-    public static Task SetText(string text)
+    public static Task SetText(string text, CancellationToken cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         File.WriteAllText(tempFileName, text);
@@ -20,7 +21,7 @@ static class LinuxClipboard
         return Task.CompletedTask;
     }
 
-    public static Task<string?> GetText()
+    public static Task<string?> GetText(CancellationToken cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         try
