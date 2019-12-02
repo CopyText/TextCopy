@@ -10,7 +10,7 @@ static class WindowsClipboard
 {
     public static async Task SetText(string text, CancellationToken cancellation)
     {
-        await OpenClipboard();
+        await TryOpenClipboard(cancellation);
 
         EmptyClipboard();
         IntPtr hGlobal = default;
@@ -58,7 +58,7 @@ static class WindowsClipboard
         }
     }
 
-    public static async Task OpenClipboard()
+    static async Task TryOpenClipboard(CancellationToken cancellation)
     {
         var num = 10;
         while (true)
@@ -73,7 +73,7 @@ static class WindowsClipboard
                 ThrowWin32();
             }
 
-            await Task.Delay(100);
+            await Task.Delay(100, cancellation);
         }
     }
 
@@ -89,7 +89,7 @@ static class WindowsClipboard
         IntPtr pointer = default;
         try
         {
-            await OpenClipboard();
+            await TryOpenClipboard(cancellation);
             handle = GetClipboardData(cfUnicodeText);
             if (handle == default)
             {
