@@ -23,9 +23,7 @@ A netstandard package to copy text to and from the clipboard.
     * [Supported on](#supported-on)
     * [Not verified](#not-verified)
     * [Not supported](#not-supported)
-  * [Notes on Linux](#notes-on-linux)
-<!-- endtoc -->
-
+  * [Notes on Linux](#notes-on-linux)<!-- endtoc -->
 
 
 ## Usage
