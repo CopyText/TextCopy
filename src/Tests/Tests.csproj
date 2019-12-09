@@ -3,14 +3,14 @@
     <TargetFrameworks>net472;netcoreapp3.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MarkdownSnippets.MsBuild" Version="17.0.0" PrivateAssets="all" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" Version="17.1.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="XunitContext" Version="1.5.1" />
-    <PackageReference Include="Verify.Xunit" Version="1.0.0-beta.15" />
+    <PackageReference Include="Verify.Xunit" Version="1.0.0-beta.32" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.33" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.37" PrivateAssets="All" />
   </ItemGroup>
 </Project>

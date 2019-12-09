@@ -1,13 +1,14 @@
 ﻿#if (NETSTANDARD)
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<Task<string?>> CreateGet()
+        static Func<CancellationToken, Task<string?>> CreateGet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -24,7 +25,7 @@ namespace TextCopy
                 return LinuxClipboard.GetText;
             }
 
-            return () => throw new NotSupportedException();
+            return c => throw new NotSupportedException();
         }
     }
 }

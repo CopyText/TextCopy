@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
-    <Version>2.0.0-beta.1</Version>
+    <Version>2.0.0-beta.3</Version>
     <PackageTags>Clipboard, Copy</PackageTags>
     <Description>A netstandard package to copy text to the clipboard.</Description>
   </PropertyGroup>

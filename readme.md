@@ -23,9 +23,7 @@ A netstandard package to copy text to and from the clipboard.
     * [Supported on](#supported-on)
     * [Not verified](#not-verified)
     * [Not supported](#not-supported)
-  * [Notes on Linux](#notes-on-linux)
-<!-- endtoc -->
-
+  * [Notes on Linux](#notes-on-linux)<!-- endtoc -->
 
 
 ## Usage
@@ -36,9 +34,9 @@ A netstandard package to copy text to and from the clipboard.
 <!-- snippet: SetText -->
 <a id='snippet-settext'/></a>
 ```cs
-TextCopy.Clipboard.SetText("Text to place in clipboard");
+await TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L5-L9) / [anchor](#snippet-settext)</sup>
+<sup>[snippet source](/src/Tests/Snippets.cs#L7-L11) / [anchor](#snippet-settext)</sup>
 <!-- endsnippet -->
 
 
@@ -47,9 +45,9 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 <!-- snippet: GetText -->
 <a id='snippet-gettext'/></a>
 ```cs
-var text = TextCopy.Clipboard.GetText();
+var text = await TextCopy.Clipboard.GetText();
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L14-L18) / [anchor](#snippet-gettext)</sup>
+<sup>[snippet source](/src/Tests/Snippets.cs#L16-L20) / [anchor](#snippet-gettext)</sup>
 <!-- endsnippet -->
 
 

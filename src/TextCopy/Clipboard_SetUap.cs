@@ -1,5 +1,6 @@
 ﻿#if (UAP)
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
@@ -10,14 +11,15 @@ namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<string,Task> CreateSet()
+        static Func<string, CancellationToken, Task> CreateSet()
         {
-            return async s =>
+            return (s, cancellation) =>
             {
                 var dataPackage = new DataPackage();
                 dataPackage.SetText(s);
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
-                await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UapClipboard.SetContent(dataPackage));
+                return dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UapClipboard.SetContent(dataPackage))
+                    .AsTask(cancellation);
             };
         }
     }

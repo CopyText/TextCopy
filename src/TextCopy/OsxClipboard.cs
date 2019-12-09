@@ -1,6 +1,7 @@
 #if (NETSTANDARD)
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 static class OsxClipboard
@@ -26,14 +27,14 @@ static class OsxClipboard
         generalPasteboard = objc_msgSend(nsPasteboard, generalPasteboardRegister);
     }
 
-    public static Task<string?> GetText()
+    public static Task<string?> GetText(CancellationToken cancellation)
     {
         var ptr = objc_msgSend(generalPasteboard, stringForTypeRegister, nsStringPboardType);
         var charArray = objc_msgSend(ptr, utf8Register);
         return Task.FromResult<string?>(Marshal.PtrToStringAnsi(charArray));
     }
 
-    public static Task SetText(string text)
+    public static Task SetText(string text, CancellationToken cancellation)
     {
         IntPtr str = default;
         try

@@ -1,19 +1,21 @@
-﻿class Snippets
+﻿using System.Threading.Tasks;
+
+class Snippets
 {
-    void SetText()
+    async Task SetText()
     {
         #region SetText
 
-        TextCopy.Clipboard.SetText("Text to place in clipboard");
+        await TextCopy.Clipboard.SetText("Text to place in clipboard");
 
         #endregion
     }
 
-    void GetText()
+    async Task GetText()
     {
         #region GetText
 
-        var text = TextCopy.Clipboard.GetText();
+        var text = await TextCopy.Clipboard.GetText();
 
         #endregion
     }
