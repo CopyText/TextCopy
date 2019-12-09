@@ -20,6 +20,7 @@ namespace UapApp
             {
                 var thread = new Thread(OutputClipboardText);
                 thread.Start();
+                thread.Join();
                 Thread.Sleep(random.Next(1, 100) * 10);
             }
         }
