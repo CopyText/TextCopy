@@ -36,7 +36,7 @@ A netstandard package to copy text to and from the clipboard.
 ```cs
 await TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L7-L11) / [anchor](#snippet-settext)</sup>
+<sup><a href='/src/Tests/Snippets.cs#L7-L11' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -47,7 +47,7 @@ await TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```cs
 var text = await TextCopy.Clipboard.GetText();
 ```
-<sup>[snippet source](/src/Tests/Snippets.cs#L16-L20) / [anchor](#snippet-gettext)</sup>
+<sup><a href='/src/Tests/Snippets.cs#L16-L20' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
