@@ -15,6 +15,7 @@ namespace TextCopy
         {
             return async cancellation =>
             {
+                using var resetEvent = new ManualResetEvent(false);
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
                 string? value = null;
                 await dispatcher.RunAsync(CoreDispatcherPriority.Normal,
@@ -26,8 +27,11 @@ namespace TextCopy
                                 value = await dataPackageView.GetTextAsync()
                                     .AsTask(cancellation);
                             }
+
+                            resetEvent.Set();
                         })
                     .AsTask(cancellation);
+                resetEvent.WaitOne();
                 return value;
             };
         }
