@@ -12,12 +12,12 @@ toc
 ## Usage
 
 
-### SetText
+### SetTextAsync
 
 snippet: SetTextAsync
 
 
-### GetText
+### GetTextAsync
 
 snippet: GetTextAsync
 
