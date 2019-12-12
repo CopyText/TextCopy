@@ -2,20 +2,20 @@
 
 class Snippets
 {
-    async Task SetText()
+    async Task SetTextAsync()
     {
-        #region SetText
+        #region SetTextAsync
 
-        await TextCopy.Clipboard.SetText("Text to place in clipboard");
+        await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
 
         #endregion
     }
 
-    async Task GetText()
+    async Task GetTextAsync()
     {
-        #region GetText
+        #region GetTextAsync
 
-        var text = await TextCopy.Clipboard.GetText();
+        var text = await TextCopy.Clipboard.GetTextAsync();
 
         #endregion
     }

@@ -14,7 +14,7 @@ namespace TextCopy
         /// <summary>
         /// Retrieves text data from the Clipboard.
         /// </summary>
-        public static Task<string?> GetText(CancellationToken cancellation = default)
+        public static Task<string?> GetTextAsync(CancellationToken cancellation = default)
         {
             return getFunc(cancellation);
         }
@@ -24,7 +24,7 @@ namespace TextCopy
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.
         /// </summary>
-        public static Task SetText(string text, CancellationToken cancellation = default)
+        public static Task SetTextAsync(string text, CancellationToken cancellation = default)
         {
             Guard.AgainstNull(text, nameof(text));
             return setAction(text,cancellation);
