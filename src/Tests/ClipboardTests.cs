@@ -16,9 +16,9 @@ public class ClipboardTests :
 
     static async Task VerifyInner(string expected)
     {
-        await Clipboard.SetText(expected);
+        await Clipboard.SetTextAsync(expected);
 
-        var actual = await Clipboard.GetText();
+        var actual = await Clipboard.GetTextAsync();
         Assert.Equal(expected, actual);
     }
 

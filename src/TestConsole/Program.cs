@@ -6,8 +6,8 @@ class Program
     static async Task<int> Main()
     {
         var text = "Hello World!";
-        await Clipboard.SetText(text);
-        var result = await Clipboard.GetText();
+        await Clipboard.SetTextAsync(text);
+        var result = await Clipboard.GetTextAsync();
         if (result == text)
         {
             return 0;

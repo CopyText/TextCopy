@@ -12,14 +12,14 @@ toc
 ## Usage
 
 
-### SetText
+### SetTextAsync
 
-snippet: SetText
+snippet: SetTextAsync
 
 
-### GetText
+### GetTextAsync
 
-snippet: GetText
+snippet: GetTextAsync
 
 
 ## Compatibility
