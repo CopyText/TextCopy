@@ -27,14 +27,19 @@ static class OsxClipboard
         generalPasteboard = objc_msgSend(nsPasteboard, generalPasteboardRegister);
     }
 
-    public static Task<string?> GetText(CancellationToken cancellation)
+    public static string? GetText()
     {
         var ptr = objc_msgSend(generalPasteboard, stringForTypeRegister, nsStringPboardType);
         var charArray = objc_msgSend(ptr, utf8Register);
-        return Task.FromResult<string?>(Marshal.PtrToStringAnsi(charArray));
+        return Marshal.PtrToStringAnsi(charArray);
     }
 
-    public static Task SetText(string text, CancellationToken cancellation)
+    public static Task<string?> GetTextAsync(CancellationToken cancellation)
+    {
+        return Task.FromResult(GetText());
+    }
+
+    public static void SetText(string text)
     {
         IntPtr str = default;
         try
@@ -50,6 +55,11 @@ static class OsxClipboard
                 objc_msgSend(str, sel_registerName("release"));
             }
         }
+    }
+
+    public static Task SetTextAsync(string text, CancellationToken cancellation)
+    {
+        SetText(text);
         return Task.CompletedTask;
     }
 

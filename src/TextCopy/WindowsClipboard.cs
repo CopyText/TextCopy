@@ -8,10 +8,22 @@ using System.Threading.Tasks;
 
 static class WindowsClipboard
 {
-    public static async Task SetText(string text, CancellationToken cancellation)
+    public static async Task SetTextAsync(string text, CancellationToken cancellation)
     {
-        await TryOpenClipboard(cancellation);
+        await TryOpenClipboardAsync(cancellation);
 
+        InnerSet(text);
+    }
+
+    public static void SetText(string text)
+    {
+        TryOpenClipboard();
+
+        InnerSet(text);
+    }
+
+    static void InnerSet(string text)
+    {
         EmptyClipboard();
         IntPtr hGlobal = default;
         try
@@ -58,7 +70,7 @@ static class WindowsClipboard
         }
     }
 
-    static async Task TryOpenClipboard(CancellationToken cancellation)
+    static async Task TryOpenClipboardAsync(CancellationToken cancellation)
     {
         var num = 10;
         while (true)
@@ -77,19 +89,54 @@ static class WindowsClipboard
         }
     }
 
-    public static async Task<string?> GetText(CancellationToken cancellation)
+    static void TryOpenClipboard()
+    {
+        var num = 10;
+        while (true)
+        {
+            if (OpenClipboard(default))
+            {
+                break;
+            }
+
+            if (--num == 0)
+            {
+                ThrowWin32();
+            }
+
+            Thread.Sleep(100);
+        }
+    }
+
+    public static async Task<string?> GetTextAsync(CancellationToken cancellation)
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {
             return null;
         }
+        await TryOpenClipboardAsync(cancellation);
 
+        return InnerGet();
+    }
+
+    public static string? GetText()
+    {
+        if (!IsClipboardFormatAvailable(cfUnicodeText))
+        {
+            return null;
+        }
+        TryOpenClipboard();
+
+        return InnerGet();
+    }
+
+    static string? InnerGet()
+    {
         IntPtr handle = default;
 
         IntPtr pointer = default;
         try
         {
-            await TryOpenClipboard(cancellation);
             handle = GetClipboardData(cfUnicodeText);
             if (handle == default)
             {

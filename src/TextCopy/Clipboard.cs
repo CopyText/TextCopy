@@ -9,17 +9,27 @@ namespace TextCopy
     /// </summary>
     public static partial class Clipboard
     {
-        static Func<CancellationToken,Task<string?>> getFunc = CreateGet();
+        static Func<CancellationToken, Task<string?>> getAsyncFunc = CreateAsyncGet();
+        static Func<string?> getFunc = CreateGet();
 
         /// <summary>
         /// Retrieves text data from the Clipboard.
         /// </summary>
         public static Task<string?> GetTextAsync(CancellationToken cancellation = default)
         {
-            return getFunc(cancellation);
+            return getAsyncFunc(cancellation);
         }
 
-        static Func<string,CancellationToken,Task> setAction = CreateSet();
+        /// <summary>
+        /// Retrieves text data from the Clipboard.
+        /// </summary>
+        public static string? GetText()
+        {
+            return getFunc();
+        }
+
+        static Func<string, CancellationToken, Task> setAsyncAction = CreateAsyncSet();
+        static Action<string> setAction = CreateSet();
 
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.
@@ -27,7 +37,16 @@ namespace TextCopy
         public static Task SetTextAsync(string text, CancellationToken cancellation = default)
         {
             Guard.AgainstNull(text, nameof(text));
-            return setAction(text,cancellation);
+            return setAsyncAction(text, cancellation);
+        }
+
+        /// <summary>
+        /// Clears the Clipboard and then adds text data to it.
+        /// </summary>
+        public static void SetText(string text)
+        {
+            Guard.AgainstNull(text, nameof(text));
+            setAction(text);
         }
     }
 }

@@ -17,7 +17,9 @@ A netstandard package to copy text to and from the clipboard.
 ## Contents
 
   * [Usage](#usage)
+    * [SetTextAsync](#settextasync)
     * [SetText](#settext)
+    * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
   * [Compatibility](#compatibility)
     * [Supported on](#supported-on)
@@ -29,14 +31,36 @@ A netstandard package to copy text to and from the clipboard.
 ## Usage
 
 
+### SetTextAsync
+
+<!-- snippet: SetTextAsync -->
+<a id='snippet-settextasync'/></a>
+```cs
+await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
+```
+<sup><a href='/src/Tests/Snippets.cs#L25-L29' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
 ### SetText
 
 <!-- snippet: SetText -->
 <a id='snippet-settext'/></a>
 ```cs
-await TextCopy.Clipboard.SetText("Text to place in clipboard");
+TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L7-L11' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
+### GetTextAsync
+
+<!-- snippet: GetTextAsync -->
+<a id='snippet-gettextasync'/></a>
+```cs
+var text = await TextCopy.Clipboard.GetTextAsync();
+```
+<sup><a href='/src/Tests/Snippets.cs#L34-L38' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -45,7 +69,7 @@ await TextCopy.Clipboard.SetText("Text to place in clipboard");
 <!-- snippet: GetText -->
 <a id='snippet-gettext'/></a>
 ```cs
-var text = await TextCopy.Clipboard.GetText();
+var text = TextCopy.Clipboard.GetText();
 ```
 <sup><a href='/src/Tests/Snippets.cs#L16-L20' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
 <!-- endsnippet -->

@@ -7,7 +7,12 @@ namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<CancellationToken, Task<string?>> CreateGet()
+        static Func<CancellationToken, Task<string?>> CreateAsyncGet()
+        {
+            return WindowsClipboard.GetTextAsync;
+        }
+
+        static Func<string?> CreateGet()
         {
             return WindowsClipboard.GetText;
         }

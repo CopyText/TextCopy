@@ -8,7 +8,27 @@ namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<string, CancellationToken, Task> CreateSet()
+        static Func<string, CancellationToken, Task> CreateAsyncSet()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return WindowsClipboard.SetTextAsync;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return OsxClipboard.SetTextAsync;
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return LinuxClipboard.SetTextAsync;
+            }
+
+            return (s,c) => throw new NotSupportedException();
+        }
+
+        static Action<string> CreateSet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
@@ -25,7 +45,7 @@ namespace TextCopy
                 return LinuxClipboard.SetText;
             }
 
-            return (s,c) => throw new NotSupportedException();
+            return s => throw new NotSupportedException();
         }
     }
 }

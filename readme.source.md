@@ -17,9 +17,19 @@ toc
 snippet: SetTextAsync
 
 
+### SetText
+
+snippet: SetText
+
+
 ### GetTextAsync
 
 snippet: GetTextAsync
+
+
+### GetText
+
+snippet: GetText
 
 
 ## Compatibility

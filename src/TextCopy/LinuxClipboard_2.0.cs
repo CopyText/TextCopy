@@ -5,7 +5,14 @@ using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
-    public static Task SetText(string text, CancellationToken cancellation)
+    public static Task SetTextAsync(string text, CancellationToken cancellation)
+    {
+        SetText(text);
+
+        return Task.CompletedTask;
+    }
+
+    public static void SetText(string text)
     {
         var tempFileName = Path.GetTempFileName();
         File.WriteAllText(tempFileName, text);
@@ -17,11 +24,14 @@ static class LinuxClipboard
         {
             File.Delete(tempFileName);
         }
-
-        return Task.CompletedTask;
     }
 
-    public static Task<string?> GetText(CancellationToken cancellation)
+    public static Task<string?> GetTextAsync(CancellationToken cancellation)
+    {
+        return Task.FromResult(GetText());
+    }
+
+    public static string? GetText()
     {
         var tempFileName = Path.GetTempFileName();
         try
@@ -29,7 +39,7 @@ static class LinuxClipboard
             BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
             var readAllText = File.ReadAllText(tempFileName);
             // ReSharper disable once RedundantTypeArgumentsOfMethod
-            return Task.FromResult<string?>(readAllText);
+            return readAllText;
         }
         finally
         {

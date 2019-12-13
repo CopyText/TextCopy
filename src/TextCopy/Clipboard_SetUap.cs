@@ -11,16 +11,22 @@ namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<string, CancellationToken, Task> CreateSet()
+        static Func<string, CancellationToken, Task> CreateAsyncSet()
         {
-            return (s, cancellation) =>
+            return (text, cancellation) =>
             {
                 var dataPackage = new DataPackage();
-                dataPackage.SetText(s);
+                dataPackage.SetText(text);
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
                 return dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UapClipboard.SetContent(dataPackage))
                     .AsTask(cancellation);
             };
+        }
+
+        static Action<string> CreateSet()
+        {
+            var func = CreateAsyncSet();
+            return text => { func(text, CancellationToken.None).GetAwaiter().GetResult(); };
         }
     }
 }

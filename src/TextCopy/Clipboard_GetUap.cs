@@ -11,7 +11,7 @@ namespace TextCopy
 {
     public static partial class Clipboard
     {
-        static Func<CancellationToken, Task<string?>> CreateGet()
+        static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {
             return async cancellation =>
             {
@@ -34,6 +34,12 @@ namespace TextCopy
                 resetEvent.WaitOne();
                 return value;
             };
+        }
+
+        static Func<string?> CreateGet()
+        {
+            var func = CreateAsyncGet();
+            return () => func(CancellationToken.None).GetAwaiter().GetResult();
         }
     }
 }

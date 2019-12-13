@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
-    public static async Task SetText(string text, CancellationToken cancellation)
+    public static async Task SetTextAsync(string text, CancellationToken cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         await File.WriteAllTextAsync(tempFileName, text, cancellation);
@@ -24,7 +24,35 @@ static class LinuxClipboard
         }
     }
 
-    public static async Task<string?> GetText(CancellationToken cancellation)
+    public static void SetText(string text)
+    {
+        var tempFileName = Path.GetTempFileName();
+        File.WriteAllText(tempFileName, text);
+        try
+        {
+            BashRunner.Run($"cat {tempFileName} | xclip -i -selection clipboard");
+        }
+        finally
+        {
+            File.Delete(tempFileName);
+        }
+    }
+
+    public static string? GetText()
+    {
+        var tempFileName = Path.GetTempFileName();
+        try
+        {
+            BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
+            return File.ReadAllText(tempFileName);
+        }
+        finally
+        {
+            File.Delete(tempFileName);
+        }
+    }
+
+    public static async Task<string?> GetTextAsync(CancellationToken cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         try

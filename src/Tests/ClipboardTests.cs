@@ -10,11 +10,21 @@ public class ClipboardTests :
     [Fact]
     public async Task Simple()
     {
-        await VerifyInner("Foo");
-        await VerifyInner("🅢");
+        VerifyInner("Foo");
+        VerifyInner("🅢");
+        await VerifyInnerAsync("Foo");
+        await VerifyInnerAsync("🅢");
     }
 
-    static async Task VerifyInner(string expected)
+    static void VerifyInner(string expected)
+    {
+        Clipboard.SetText(expected);
+
+        var actual = Clipboard.GetText();
+        Assert.Equal(expected, actual);
+    }
+
+    static async Task VerifyInnerAsync(string expected)
     {
         await Clipboard.SetTextAsync(expected);
 
