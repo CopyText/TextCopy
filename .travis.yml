@@ -12,7 +12,7 @@ matrix:
     - os: osx
       sudo: required
       script:
-        - export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/5.20.1/lib/mono/4.7.2-api/
+        - export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/6.6.0/lib/mono/4.7.2-api/
 language: csharp
 mono: latest
 dotnet: 3.1.100
