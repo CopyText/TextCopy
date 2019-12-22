@@ -15,7 +15,7 @@ matrix:
         - export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/5.20.1/lib/mono/4.7.2-api/
 language: csharp
 mono: latest
-dotnet: 3.0.100
+dotnet: 3.1.100
 script:
   - nuget install xunit.runner.console -Version 2.4.1 -OutputDirectory testrunner
   - dotnet build src --configuration Release
