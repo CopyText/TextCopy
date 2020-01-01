@@ -9,6 +9,11 @@ A netstandard package to copy text to and from the clipboard.
 toc
 
 
+## NuGet package
+
+https://nuget.org/packages/TextCopy/
+
+
 ## Usage
 
 

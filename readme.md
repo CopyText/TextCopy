@@ -28,6 +28,11 @@ A netstandard package to copy text to and from the clipboard.
   * [Notes on Linux](#notes-on-linux)<!-- endtoc -->
 
 
+## NuGet package
+
+https://nuget.org/packages/TextCopy/
+
+
 ## Usage
 
 
