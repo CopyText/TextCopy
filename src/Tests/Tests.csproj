@@ -11,6 +11,6 @@
     <PackageReference Include="XunitContext" Version="1.5.2" />
     <PackageReference Include="Verify.Xunit" Version="1.7.1" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.39" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.40" PrivateAssets="All" />
   </ItemGroup>
 </Project>
