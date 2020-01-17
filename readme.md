@@ -25,7 +25,8 @@ A netstandard package to copy text to and from the clipboard.
     * [Supported on](#supported-on)
     * [Not verified](#not-verified)
     * [Not supported](#not-supported)
-  * [Notes on Linux](#notes-on-linux)<!-- endtoc -->
+  * [Notes on Linux](#notes-on-linux)
+  * [Security contact information](#security-contact-information)<!-- endtoc -->
 
 
 ## NuGet package
@@ -122,6 +123,11 @@ If support is required, please submit a [Pull Request](https://help.github.com/a
 ## Notes on Linux
 
 Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
+
+
+## Security contact information
+
+To report a security vulnerability, please use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Release Notes
