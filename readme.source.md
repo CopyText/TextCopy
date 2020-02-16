@@ -6,6 +6,8 @@
 
 A netstandard package to copy text to and from the clipboard.
 
+Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-textcopy?utm_source=nuget-textcopy&utm_medium=referral&utm_campaign=enterprise).
+
 toc
 
 
