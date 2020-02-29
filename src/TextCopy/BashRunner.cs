@@ -51,7 +51,7 @@ Error: {errorBuilder}";
         var result = process.WaitForExit(500);
         if (result)
         {
-            process.WaitForExit();
+            process.WaitForExit(500);
         }
         return result;
     }
