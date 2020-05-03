@@ -12,26 +12,31 @@ namespace TextCopy
         {
             return (text, cancellation) =>
             {
-                var context = Android.App.Application.Context;
-                if (context is null)
-                {
-                    return Task.FromException(new InvalidOperationException("Android context is null"));
-                }
-
-                var clipboard = ClipboardManager.FromContext(context);
-                clipboard.Text = text;
-
+                SetTextAndroid(text);
                 return Task.CompletedTask;
             };
         }
 
         static Action<string> CreateSet()
         {
-            var func = CreateAsyncSet();
-            return text =>
+            return SetTextAndroid;
+        }
+
+        static void SetTextAndroid(string text)
+        {
+            var context = Android.App.Application.Context;
+            if (context is null)
             {
-                func(text, CancellationToken.None).GetAwaiter().GetResult();
-            };
+                throw new InvalidOperationException("Android context is null");
+            }
+
+            var clipboard = ClipboardManager.FromContext(context);
+            if (clipboard is null)
+            {
+                throw new InvalidOperationException("ClipboardManager.FromContext is null");
+            }
+
+            clipboard.Text = text;
         }
     }
 }

@@ -15,8 +15,7 @@ namespace TextCopy
 
         static Func<string?> CreateGet()
         {
-            var func = CreateAsyncGet();
-            return () => func(CancellationToken.None).GetAwaiter().GetResult();
+            return GetTextAndroid;
         }
 
         static string? GetTextAndroid()
@@ -26,7 +25,10 @@ namespace TextCopy
             {
                 return null;
             }
-            return ClipboardManager.FromContext(context).Text;
+
+            var clipboard = ClipboardManager.FromContext(context);
+
+            return clipboard?.Text;
         }
     }
 }
