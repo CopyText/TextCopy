@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Text;
 using Android.Widget;
 using AndroidApp;
 
@@ -25,7 +26,7 @@ public class MainActivity : AppCompatActivity
 
     protected override void OnResume()
     {
-        base.OnPause();
+        base.OnResume();
 
         input = FindViewById<EditText>(Resource.Id.input);
         clipboardContent = FindViewById<TextView>(Resource.Id.clipboardContent);
@@ -33,7 +34,7 @@ public class MainActivity : AppCompatActivity
         input.TextChanged += Input_TextChanged;
     }
 
-    void Input_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+    void Input_TextChanged(object sender, TextChangedEventArgs e)
     {
         TextCopy.Clipboard.SetText(e.Text.ToString());
 
