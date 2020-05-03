@@ -96,7 +96,7 @@ var text = TextCopy.Clipboard.GetText();
  * Xamarin.Mac Modern
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
- * Xamarin.Android 8.1 and up
+ * Xamarin.Android 9.0 and up
  * Universal Windows Platform version 10.0.16299 and up
 
 
