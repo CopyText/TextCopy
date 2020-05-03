@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextCopy", "TextCopy\TextCopy.csproj", "{92E64F4E-6A8E-43C2-9C8D-694E0327BEF0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815} = {7E80FA1F-BA79-4AE2-8E49-7334BE790815}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{87DB4CC0-4AC3-4AC1-97FD-7C55D3B921D9}"
 EndProject
@@ -19,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UapApp", "UapApp\UapApp.csproj", "{2E246AC3-7005-4558-9088-B876DA5FF803}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidApp", "AndroidApp\AndroidApp.csproj", "{2B499E73-CF11-4333-B9DC-691AF5B73D5C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weavers", "Weavers\Weavers.csproj", "{7E80FA1F-BA79-4AE2-8E49-7334BE790815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +155,26 @@ Global
 		{2B499E73-CF11-4333-B9DC-691AF5B73D5C}.Release|x86.ActiveCfg = Debug|Any CPU
 		{2B499E73-CF11-4333-B9DC-691AF5B73D5C}.Release|x86.Build.0 = Debug|Any CPU
 		{2B499E73-CF11-4333-B9DC-691AF5B73D5C}.Release|x86.Deploy.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|x64.Build.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Debug|x86.Build.0 = Debug|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|ARM.Build.0 = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|ARM64.Build.0 = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|x64.ActiveCfg = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|x64.Build.0 = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|x86.ActiveCfg = Release|Any CPU
+		{7E80FA1F-BA79-4AE2-8E49-7334BE790815}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
