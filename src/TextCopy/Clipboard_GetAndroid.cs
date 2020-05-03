@@ -10,7 +10,7 @@ namespace TextCopy
     {
         static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {
-            return (token) => Task.FromResult<string?>(GetTextAndroid());
+            return token => Task.FromResult(GetTextAndroid());
         }
 
         static Func<string?> CreateGet()
@@ -22,7 +22,10 @@ namespace TextCopy
         static string? GetTextAndroid()
         {
             var context = Android.App.Application.Context;
-            if (context is null) return null;
+            if (context is null)
+            {
+                return null;
+            }
             return ClipboardManager.FromContext(context).Text;
         }
     }

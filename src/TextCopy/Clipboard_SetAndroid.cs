@@ -13,7 +13,10 @@ namespace TextCopy
             return (text, cancellation) =>
             {
                 var context = Android.App.Application.Context;
-                if (context is null) return Task.FromException(new InvalidOperationException("Android context is null"));
+                if (context is null)
+                {
+                    return Task.FromException(new InvalidOperationException("Android context is null"));
+                }
 
                 var clipboard = ClipboardManager.FromContext(context);
                 clipboard.Text = text;
@@ -25,7 +28,10 @@ namespace TextCopy
         static Action<string> CreateSet()
         {
             var func = CreateAsyncSet();
-            return text => { func(text, CancellationToken.None).GetAwaiter().GetResult(); };
+            return text =>
+            {
+                func(text, CancellationToken.None).GetAwaiter().GetResult();
+            };
         }
     }
 }
