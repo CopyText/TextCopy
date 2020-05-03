@@ -4,6 +4,6 @@
     <Version>3.1.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>Clipboard, Copy</PackageTags>
-    <Description>A netstandard package to copy text to the clipboard.</Description>
+    <Description>A cross platform package to copy text to the clipboard.</Description>
   </PropertyGroup>
 </Project>

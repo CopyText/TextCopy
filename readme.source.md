@@ -4,7 +4,7 @@
 [![Build status](https://travis-ci.org/SimonCropp/TextCopy.svg?branch=master)](https://travis-ci.org/SimonCropp/TextCopy)
 [![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
 
-A netstandard package to copy text to and from the clipboard.
+A cross platform package to copy text to and from the clipboard.
 
 Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-textcopy?utm_source=nuget-textcopy&utm_medium=referral&utm_campaign=enterprise).
 
