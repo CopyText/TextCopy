@@ -1,9 +1,12 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0;netstandard2.1;uap10.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netstandard2.1;uap10.0;monoandroid9.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
     <DefineConstants>$(DefineConstants);UAP</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
+    <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="ProjectDefaults" Version="1.0.42" PrivateAssets="All" />

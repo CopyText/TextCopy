@@ -96,6 +96,7 @@ var text = TextCopy.Clipboard.GetText();
  * Xamarin.Mac Modern
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
+ * Xamarin.Android 8.1 and up
  * Universal Windows Platform version 10.0.16299 and up
 
 
@@ -110,7 +111,6 @@ If anyone verifies this, please submit a [Pull Request](https://help.github.com/
 
 ### Not supported
 
- * Xamarin.Android
  * Xamarin.Mac Full, .NET Framework 4.7.2
      ```
     System.DllNotFoundException: User32.dll
@@ -118,7 +118,7 @@ If anyone verifies this, please submit a [Pull Request](https://help.github.com/
       at WindowsClipboard.GetText()
       at TextCopy.Clipboard.GetText()
     ```
- 
+
 If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
 
