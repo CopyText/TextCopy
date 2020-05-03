@@ -4,8 +4,10 @@ using Android.Support.V7.App;
 using Android.Widget;
 using AndroidApp;
 
-
-[Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+[Activity(
+    Label = "@string/app_name",
+    Theme = "@style/AppTheme.NoActionBar",
+    MainLauncher = true)]
 public class MainActivity : AppCompatActivity
 {
     EditText input;
@@ -31,7 +33,7 @@ public class MainActivity : AppCompatActivity
         input.TextChanged += Input_TextChanged;
     }
 
-    private void Input_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+    void Input_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
     {
         TextCopy.Clipboard.SetText(e.Text.ToString());
 
