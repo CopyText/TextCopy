@@ -53,16 +53,8 @@ snippet: GetText
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
  * Xamarin.Android 9.0 and up
+ * Xamarin.iOS 10.0 and up
  * Universal Windows Platform version 10.0.16299 and up
-
-
-### Not verified
-
-The following may work but have not been verified:
-
- * Xamarin.iOS
-
-If anyone verifies this, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) to the readme with the outcome.
 
 
 ### Not supported

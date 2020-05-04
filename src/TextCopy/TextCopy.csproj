@@ -1,12 +1,15 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0;netstandard2.1;uap10.0;monoandroid9.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netstandard2.1;uap10.0;monoandroid9.0;xamarin.ios10</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
     <DefineConstants>$(DefineConstants);UAP</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
     <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.StartsWith('xamarin.ios'))">
+    <DefineConstants>$(DefineConstants);IOS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <WeaverFiles Include="$(SolutionDir)Weavers\bin\$(Configuration)\netstandard2.0\Weavers.dll" />
