@@ -25,7 +25,6 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [GetText](#gettext)
   * [Compatibility](#compatibility)
     * [Supported on](#supported-on)
-    * [Not verified](#not-verified)
     * [Not supported](#not-supported)
   * [Notes on Linux](#notes-on-linux)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
