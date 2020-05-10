@@ -25,7 +25,6 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [GetText](#gettext)
   * [Compatibility](#compatibility)
     * [Supported on](#supported-on)
-    * [Not supported](#not-supported)
   * [Notes on Linux](#notes-on-linux)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
 
@@ -92,25 +91,12 @@ var text = TextCopy.Clipboard.GetText();
  * Windows with Mono 5.0 and up
  * OSX with .NET Core 2.0 and up
  * OSX with Mono 5.20.1 and up
- * Xamarin.Mac Modern
+ * Xamarin.Mac
  * Linux with .NET Core 2.0 and up
  * Linux with Mono 5.20.1 and up
  * Xamarin.Android 9.0 and up
  * Xamarin.iOS 10.0 and up
  * Universal Windows Platform version 10.0.16299 and up
-
-
-### Not supported
-
- * Xamarin.Mac Full, .NET Framework 4.7.2
-     ```
-    System.DllNotFoundException: User32.dll
-      at at (wrapper managed-to-native)WindowsClipboard.IsClipboardFormatAvailable(uint)
-      at WindowsClipboard.GetText()
-      at TextCopy.Clipboard.GetText()
-    ```
-
-If support is required, please submit a [Pull Request](https://help.github.com/articles/about-pull-requests/) that adds support.
 
 
 ## Notes on Linux
