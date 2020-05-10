@@ -1,4 +1,4 @@
-#if (NETSTANDARD2_0)
+#if (NETSTANDARD2_0 || NETFRAMEWORK)
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
