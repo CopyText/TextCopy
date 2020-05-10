@@ -23,8 +23,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [SetText](#settext)
     * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
-  * [Compatibility](#compatibility)
-    * [Supported on](#supported-on)
+  * [Supported on](#supported-on)
   * [Notes on Linux](#notes-on-linux)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
 
@@ -81,10 +80,7 @@ var text = TextCopy.Clipboard.GetText();
 <!-- endsnippet -->
 
 
-## Compatibility
-
-
-### Supported on
+## Supported on
 
  * Windows with .NET Framework 4.6.1 and up
  * Windows with .NET Core 2.0 and up
