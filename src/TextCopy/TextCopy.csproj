@@ -12,6 +12,7 @@
     <DefineConstants>$(DefineConstants);IOS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" Condition="$(TargetFramework) == 'net461'" />
     <WeaverFiles Include="$(SolutionDir)Weavers\bin\$(Configuration)\netstandard2.0\Weavers.dll" />
     <PackageReference Include="Fody" Version="6.1.1" PrivateAssets="All" />
     <PackageReference Include="ProjectDefaults" Version="1.0.42" PrivateAssets="All" />
