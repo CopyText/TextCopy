@@ -7,7 +7,7 @@ class Snippets
     {
         #region SetText
 
-        TextCopy.Clipboard.SetText("Text to place in clipboard");
+        TextCopy.ClipboardService.SetText("Text to place in clipboard");
 
         #endregion
     }
@@ -16,7 +16,7 @@ class Snippets
     {
         #region GetText
 
-        var text = TextCopy.Clipboard.GetText();
+        var text = TextCopy.ClipboardService.GetText();
 
         #endregion
     }
@@ -25,7 +25,7 @@ class Snippets
     {
         #region SetTextAsync
 
-        await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
+        await TextCopy.ClipboardService.SetTextAsync("Text to place in clipboard");
 
         #endregion
     }
@@ -34,7 +34,7 @@ class Snippets
     {
         #region GetTextAsync
 
-        var text = await TextCopy.Clipboard.GetTextAsync();
+        var text = await TextCopy.ClipboardService.GetTextAsync();
 
         #endregion
     }

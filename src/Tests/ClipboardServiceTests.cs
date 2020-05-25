@@ -4,7 +4,7 @@ using VerifyXunit;
 using Xunit;
 using Xunit.Abstractions;
 
-public class ClipboardTests :
+public class ClipboardServiceTests :
     VerifyBase
 {
     [Fact]
@@ -20,19 +20,19 @@ public class ClipboardTests :
     {
         ClipboardService.SetText(expected);
 
-        var actual = new Clipboard().GetText();
+        var actual = ClipboardService.GetText();
         Assert.Equal(expected, actual);
     }
 
     static async Task VerifyInnerAsync(string expected)
     {
-        await new Clipboard().SetTextAsync(expected);
+        await ClipboardService.SetTextAsync(expected);
 
         var actual = await ClipboardService.GetTextAsync();
         Assert.Equal(expected, actual);
     }
 
-    public ClipboardTests(ITestOutputHelper output) :
+    public ClipboardServiceTests(ITestOutputHelper output) :
         base(output)
     {
     }

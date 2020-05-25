@@ -14,8 +14,8 @@ namespace UapApp
 
         async void OutputClipboardText()
         {
-            await TextCopy.Clipboard.SetTextAsync("AAA");
-            var text = await TextCopy.Clipboard.GetTextAsync();
+            await TextCopy.ClipboardService.SetTextAsync("AAA");
+            var text = await TextCopy.ClipboardService.GetTextAsync();
             Debug.WriteLine(text);
         }
     }

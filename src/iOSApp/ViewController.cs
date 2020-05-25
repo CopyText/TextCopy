@@ -27,8 +27,8 @@ namespace iOSApp
 
         private void Input_EditingChanged(object sender, EventArgs e)
         {
-            TextCopy.Clipboard.SetText(input.Text);
-            clipboardContent.Text = TextCopy.Clipboard.GetText();
+            TextCopy.ClipboardService.SetText(input.Text);
+            clipboardContent.Text = TextCopy.ClipboardService.GetText();
         }
     }
 }

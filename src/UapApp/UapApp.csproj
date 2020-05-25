@@ -118,6 +118,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\TextCopy\ClipboardService.cs">
+      <Link>ClipboardService.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -148,13 +151,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\TextCopy\Clipboard.cs">
-      <Link>Clipboard.cs</Link>
-    </Compile>
-    <Compile Include="..\TextCopy\Clipboard_GetUap.cs">
+    <Compile Include="..\TextCopy\ClipboardService_GetUap.cs">
       <Link>Clipboard_GetUap.cs</Link>
     </Compile>
-    <Compile Include="..\TextCopy\Clipboard_SetUap.cs">
+    <Compile Include="..\TextCopy\ClipboardService_SetUap.cs">
       <Link>Clipboard_SetUap.cs</Link>
     </Compile>
     <Compile Include="..\TextCopy\Guard.cs">

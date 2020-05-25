@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace TextCopy
 {
-    public static partial class Clipboard
+    public static partial class ClipboardService
     {
         static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {

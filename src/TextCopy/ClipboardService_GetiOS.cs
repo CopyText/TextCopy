@@ -6,19 +6,19 @@ using UIKit;
 
 namespace TextCopy
 {
-    public static partial class Clipboard
+    public static partial class ClipboardService
     {
         static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {
-            return token => Task.FromResult(GetTextiOS());
+            return token => Task.FromResult(GetTextIos());
         }
 
         static Func<string?> CreateGet()
         {
-            return GetTextiOS;
+            return GetTextIos;
         }
 
-        static string? GetTextiOS()
+        static string? GetTextIos()
         {
             return UIPasteboard.General.String;
         }
