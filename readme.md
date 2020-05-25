@@ -43,7 +43,7 @@ https://nuget.org/packages/TextCopy/
 ```cs
 await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L25-L29' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -54,7 +54,7 @@ await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
 ```cs
 TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L7-L11' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L8-L12' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -65,7 +65,7 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 ```cs
 var text = await TextCopy.Clipboard.GetTextAsync();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L34-L38' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L35-L39' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -76,7 +76,7 @@ var text = await TextCopy.Clipboard.GetTextAsync();
 ```cs
 var text = TextCopy.Clipboard.GetText();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L16-L20' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L17-L21' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
