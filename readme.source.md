@@ -39,6 +39,13 @@ snippet: GetTextAsync
 snippet: GetText
 
 
+## Instance API
+
+In adition to the above static API, there is an instance API exposed:
+
+snippet: SetTextInstance
+
+
 ## Supported on
 
  * Windows with .NET Framework 4.6.1 and up

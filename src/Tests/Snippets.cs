@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using TextCopy;
+
 // ReSharper disable UnusedVariable
 
 class Snippets
@@ -7,7 +9,14 @@ class Snippets
     {
         #region SetText
 
-        TextCopy.ClipboardService.SetText("Text to place in clipboard");
+        ClipboardService.SetText("Text to place in clipboard");
+
+        #endregion
+
+        #region SetTextInstance
+
+        var clipboard = new Clipboard();
+        clipboard.SetText("Text to place in clipboard");
 
         #endregion
     }
@@ -16,7 +25,7 @@ class Snippets
     {
         #region GetText
 
-        var text = TextCopy.ClipboardService.GetText();
+        var text = ClipboardService.GetText();
 
         #endregion
     }
@@ -25,7 +34,7 @@ class Snippets
     {
         #region SetTextAsync
 
-        await TextCopy.ClipboardService.SetTextAsync("Text to place in clipboard");
+        await ClipboardService.SetTextAsync("Text to place in clipboard");
 
         #endregion
     }
@@ -34,7 +43,7 @@ class Snippets
     {
         #region GetTextAsync
 
-        var text = await TextCopy.ClipboardService.GetTextAsync();
+        var text = await ClipboardService.GetTextAsync();
 
         #endregion
     }
