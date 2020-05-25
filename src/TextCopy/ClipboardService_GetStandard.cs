@@ -6,46 +6,46 @@ using System.Threading.Tasks;
 
 namespace TextCopy
 {
-    public static partial class Clipboard
+    public static partial class ClipboardService
     {
-        static Func<string, CancellationToken, Task> CreateAsyncSet()
+        static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return WindowsClipboard.SetTextAsync;
+                return WindowsClipboard.GetTextAsync;
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return OsxClipboard.SetTextAsync;
+                return OsxClipboard.GetTextAsync;
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                return LinuxClipboard.SetTextAsync;
+                return LinuxClipboard.GetTextAsync;
             }
 
-            return (s,c) => throw new NotSupportedException();
+            throw new NotSupportedException();
         }
 
-        static Action<string> CreateSet()
+        static Func<string?> CreateGet()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return WindowsClipboard.SetText;
+                return WindowsClipboard.GetText;
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                return OsxClipboard.SetText;
+                return OsxClipboard.GetText;
             }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                return LinuxClipboard.SetText;
+                return LinuxClipboard.GetText;
             }
 
-            return s => throw new NotSupportedException();
+            throw new NotSupportedException();
         }
     }
 }

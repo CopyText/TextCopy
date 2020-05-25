@@ -9,7 +9,7 @@ using Windows.UI.Core;
 
 namespace TextCopy
 {
-    public static partial class Clipboard
+    public static partial class ClipboardService
     {
         static Func<string, CancellationToken, Task> CreateAsyncSet()
         {

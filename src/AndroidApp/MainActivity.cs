@@ -36,8 +36,8 @@ public class MainActivity : AppCompatActivity
 
     void Input_TextChanged(object sender, TextChangedEventArgs e)
     {
-        TextCopy.Clipboard.SetText(e.Text.ToString());
+        TextCopy.ClipboardService.SetText(e.Text.ToString());
 
-        clipboardContent.Text = TextCopy.Clipboard.GetText();
+        clipboardContent.Text = TextCopy.ClipboardService.GetText();
     }
 }

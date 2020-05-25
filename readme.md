@@ -23,6 +23,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [SetText](#settext)
     * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
+  * [Instance API](#instance-api)
   * [Supported on](#supported-on)
   * [Notes on Linux](#notes-on-linux)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
@@ -41,9 +42,9 @@ https://nuget.org/packages/TextCopy/
 <!-- snippet: SetTextAsync -->
 <a id='snippet-settextasync'/></a>
 ```cs
-await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
+await ClipboardService.SetTextAsync("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L35-L39' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -52,9 +53,9 @@ await TextCopy.Clipboard.SetTextAsync("Text to place in clipboard");
 <!-- snippet: SetText -->
 <a id='snippet-settext'/></a>
 ```cs
-TextCopy.Clipboard.SetText("Text to place in clipboard");
+ClipboardService.SetText("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L8-L12' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L10-L14' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -63,9 +64,9 @@ TextCopy.Clipboard.SetText("Text to place in clipboard");
 <!-- snippet: GetTextAsync -->
 <a id='snippet-gettextasync'/></a>
 ```cs
-var text = await TextCopy.Clipboard.GetTextAsync();
+var text = await ClipboardService.GetTextAsync();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L35-L39' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L44-L48' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -74,9 +75,23 @@ var text = await TextCopy.Clipboard.GetTextAsync();
 <!-- snippet: GetText -->
 <a id='snippet-gettext'/></a>
 ```cs
-var text = TextCopy.Clipboard.GetText();
+var text = ClipboardService.GetText();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L17-L21' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
+## Instance API
+
+In adition to the above static API, there is an instance API exposed:
+
+<!-- snippet: SetTextInstance -->
+<a id='snippet-settextinstance'/></a>
+```cs
+var clipboard = new Clipboard();
+clipboard.SetText("Text to place in clipboard");
+```
+<sup><a href='/src/Tests/Snippets.cs#L16-L21' title='File snippet `settextinstance` was extracted from'>snippet source</a> | <a href='#snippet-settextinstance' title='Navigate to start of snippet `settextinstance`'>anchor</a></sup>
 <!-- endsnippet -->
 
 

@@ -6,23 +6,23 @@ using UIKit;
 
 namespace TextCopy
 {
-    public static partial class Clipboard
+    public static partial class ClipboardService
     {
         static Func<string, CancellationToken, Task> CreateAsyncSet()
         {
             return (text, cancellation) =>
             {
-                SetTextiOS(text);
+                SetTextIos(text);
                 return Task.CompletedTask;
             };
         }
 
         static Action<string> CreateSet()
         {
-            return SetTextiOS;
+            return SetTextIos;
         }
 
-        static void SetTextiOS(string text)
+        static void SetTextIos(string text)
         {
             UIPasteboard.General.String = text;
         }

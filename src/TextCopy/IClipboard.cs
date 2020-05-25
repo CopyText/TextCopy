@@ -6,39 +6,26 @@ namespace TextCopy
     /// <summary>
     /// Provides methods to place text on and retrieve text from the system Clipboard.
     /// </summary>
-    public class Clipboard :
-        IClipboard
+    public interface IClipboard
     {
         /// <summary>
         /// Retrieves text data from the Clipboard.
         /// </summary>
-        public virtual Task<string?> GetTextAsync(CancellationToken cancellation = default)
-        {
-            return ClipboardService.GetTextAsync(cancellation);
-        }
+        public Task<string?> GetTextAsync(CancellationToken cancellation = default);
 
         /// <summary>
         /// Retrieves text data from the Clipboard.
         /// </summary>
-        public virtual string? GetText()
-        {
-            return ClipboardService.GetText();
-        }
+        public string? GetText();
 
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.
         /// </summary>
-        public virtual Task SetTextAsync(string text, CancellationToken cancellation = default)
-        {
-            return ClipboardService.SetTextAsync(text, cancellation);
-        }
+        public Task SetTextAsync(string text, CancellationToken cancellation = default);
 
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.
         /// </summary>
-        public virtual void SetText(string text)
-        {
-            ClipboardService.SetText(text);
-        }
+        public void SetText(string text);
     }
 }
