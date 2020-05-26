@@ -72,7 +72,7 @@ snippet: InjectClipboard
 
 Due to the dependency on `JSInterop` the static `ClipboardService` is not supported on Blazor.
 
-Instead inhect an `IClipboard`:
+Instead inject an `IClipboard`:
 
 snippet: BlazorStartup
 
