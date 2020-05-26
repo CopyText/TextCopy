@@ -106,7 +106,7 @@ An instance of `IClipboard` can be injected into `IServiceCollection`:
 ```cs
 serviceCollection.InjectClipboard();
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L17-L19' title='File snippet `injectclipboard` was extracted from'>snippet source</a> | <a href='#snippet-injectclipboard' title='Navigate to start of snippet `injectclipboard`'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L16-L18' title='File snippet `injectclipboard` was extracted from'>snippet source</a> | <a href='#snippet-injectclipboard' title='Navigate to start of snippet `injectclipboard`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
@@ -139,7 +139,7 @@ var serviceCollection = builder.Services;
 serviceCollection.InjectClipboard();
 builder.RootComponents.Add<App>("app");
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L14-L21' title='File snippet `blazorstartup` was extracted from'>snippet source</a> | <a href='#snippet-blazorstartup' title='Navigate to start of snippet `blazorstartup`'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L13-L20' title='File snippet `blazorstartup` was extracted from'>snippet source</a> | <a href='#snippet-blazorstartup' title='Navigate to start of snippet `blazorstartup`'>anchor</a></sup>
 <!-- endsnippet -->
 
 Then consume it:
@@ -147,11 +147,29 @@ Then consume it:
 <!-- snippet: Inject -->
 <a id='snippet-inject'/></a>
 ```cs
-[Inject]
-public IClipboard Clipboard { get; set; }
+public partial class IndexModel :
+    ComponentBase
+{
+    [Inject]
+    public IClipboard Clipboard { get; set; }
+
+    public string Content { get; set; }
+
+    public Task CopyTextToClipboard()
+    {
+        return Clipboard.SetTextAsync(Content);
+    }
+
+    public async Task ReadTextFromClipboard()
+    {
+        Content = await Clipboard.GetTextAsync();
+    }
+}
 ```
-<sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L12-L15' title='File snippet `inject` was extracted from'>snippet source</a> | <a href='#snippet-inject' title='Navigate to start of snippet `inject`'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L9-L28' title='File snippet `inject` was extracted from'>snippet source</a> | <a href='#snippet-inject' title='Navigate to start of snippet `inject`'>anchor</a></sup>
 <!-- endsnippet -->
+
+Blazor support requires the browser APIs [clipboard.readText](https://caniuse.com/#feat=mdn-api_clipboard_readtext) and [clipboard.writeText](https://caniuse.com/#feat=mdn-api_clipboard_writetext).
 
 
 ## Linux

@@ -6,19 +6,18 @@ using TextCopy;
 namespace BlazorSample
 {
     [AddINotifyPropertyChangedInterface]
+    #region Inject
     public partial class IndexModel :
         ComponentBase
     {
-        #region Inject
         [Inject]
         public IClipboard Clipboard { get; set; }
-        #endregion
 
         public string Content { get; set; }
 
-        public async Task CopyTextToClipboard()
+        public Task CopyTextToClipboard()
         {
-            await Clipboard.SetTextAsync(Content);
+            return Clipboard.SetTextAsync(Content);
         }
 
         public async Task ReadTextFromClipboard()
@@ -26,4 +25,5 @@ namespace BlazorSample
             Content = await Clipboard.GetTextAsync();
         }
     }
+    #endregion
 }

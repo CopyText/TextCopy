@@ -80,6 +80,8 @@ Then consume it:
 
 snippet: Inject
 
+Blazor support requires the browser APIs [clipboard.readText](https://caniuse.com/#feat=mdn-api_clipboard_readtext) and [clipboard.writeText](https://caniuse.com/#feat=mdn-api_clipboard_writetext).
+
 
 ## Linux
 
