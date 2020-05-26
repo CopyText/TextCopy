@@ -14,14 +14,19 @@ namespace TextCopy
         /// </summary>
         public static void InjectClipboard(this IServiceCollection services)
         {
-            services.AddSingleton<IClipboard, Clipboard>(provider =>
+            services.AddSingleton<IClipboard>(provider =>
             {
+#if NETSTANDARD2_1
                 var jsRuntimeType = Type.GetType("Microsoft.JSInterop.IJSRuntime",false);
                 if (jsRuntimeType != null)
                 {
                     var jsRuntime = provider.GetService(jsRuntimeType);
-                    Console.WriteLine(jsRuntime == null);
+                    if (jsRuntime != null)
+                    {
+                        return new BlazorClipboard(jsRuntime);
+                    }
                 }
+#endif
 
                 return new Clipboard();
             });
