@@ -1,13 +1,12 @@
 ﻿#if !UAP
-using System;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TextCopy
 {
     /// <summary>
-    /// Provides methods to place text on and retrieve text from the system Clipboard.
+    /// Extensions to <see cref="IServiceCollection"/>.
     /// </summary>
-    public static partial class ClipboardService
+    public static class ServiceExtensions
     {
         /// <summary>
         /// Retrieves text data from the Clipboard.
@@ -16,8 +15,10 @@ namespace TextCopy
         {
             services.AddSingleton<IClipboard>(provider =>
             {
+
 #if NETSTANDARD2_1
-                var jsRuntimeType = Type.GetType("Microsoft.JSInterop.IJSRuntime",false);
+
+                var jsRuntimeType = System.Type.GetType("Microsoft.JSInterop.IJSRuntime, Microsoft.JSInterop", false);
                 if (jsRuntimeType != null)
                 {
                     var jsRuntime = provider.GetService(jsRuntimeType);
@@ -26,6 +27,7 @@ namespace TextCopy
                         return new BlazorClipboard(jsRuntime);
                     }
                 }
+
 #endif
 
                 return new Clipboard();

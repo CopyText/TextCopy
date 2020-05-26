@@ -24,8 +24,10 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
   * [Instance API](#instance-api)
+    * [Dependency Injection](#dependency-injection)
   * [Supported on](#supported-on)
-  * [Notes on Linux](#notes-on-linux)
+  * [Blazor WebAssembly](#blazor-webassembly)
+  * [Linux](#linux)
   * [Security contact information](#security-contact-information)<!-- endtoc -->
 
 
@@ -95,6 +97,19 @@ clipboard.SetText("Text to place in clipboard");
 <!-- endsnippet -->
 
 
+### Dependency Injection
+
+An instance of `IClipboard` can be injected into `IServiceCollection`:
+
+<!-- snippet: InjectClipboard -->
+<a id='snippet-injectclipboard'/></a>
+```cs
+serviceCollection.InjectClipboard();
+```
+<sup><a href='/src/BlazorSample/Program.cs#L17-L19' title='File snippet `injectclipboard` was extracted from'>snippet source</a> | <a href='#snippet-injectclipboard' title='Navigate to start of snippet `injectclipboard`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
 ## Supported on
 
  * Windows with .NET Framework 4.6.1 and up
@@ -107,9 +122,39 @@ clipboard.SetText("Text to place in clipboard");
  * Xamarin.Android 9.0 and up
  * Xamarin.iOS 10.0 and up
  * Universal Windows Platform version 10.0.16299 and up
+ * Blazor WebAssembly
 
 
-## Notes on Linux
+## Blazor WebAssembly 
+
+Due to the dependency on `JSInterop` the static `ClipboardService` is not supported on Blazor.
+
+Instead inhect an `IClipboard`:
+
+<!-- snippet: BlazorStartup -->
+<a id='snippet-blazorstartup'/></a>
+```cs
+var builder = WebAssemblyHostBuilder.CreateDefault();
+var serviceCollection = builder.Services;
+serviceCollection.InjectClipboard();
+builder.RootComponents.Add<App>("app");
+```
+<sup><a href='/src/BlazorSample/Program.cs#L14-L21' title='File snippet `blazorstartup` was extracted from'>snippet source</a> | <a href='#snippet-blazorstartup' title='Navigate to start of snippet `blazorstartup`'>anchor</a></sup>
+<!-- endsnippet -->
+
+Then consume it:
+
+<!-- snippet: Inject -->
+<a id='snippet-inject'/></a>
+```cs
+[Inject]
+public IClipboard Clipboard { get; set; }
+```
+<sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L12-L15' title='File snippet `inject` was extracted from'>snippet source</a> | <a href='#snippet-inject' title='Navigate to start of snippet `inject`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
+## Linux
 
 Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
 

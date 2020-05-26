@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,8 +10,8 @@ namespace TextCopy
     /// </summary>
     public static partial class ClipboardService
     {
-        static Func<CancellationToken, Task<string?>> getAsyncFunc = CreateAsyncGet();
-        static Func<string?> getFunc = CreateGet();
+        static Func<CancellationToken, Task<string?>> getAsyncFunc;
+        static Func<string?> getFunc;
 
         /// <summary>
         /// Retrieves text data from the Clipboard.
@@ -28,8 +29,22 @@ namespace TextCopy
             return getFunc();
         }
 
-        static Func<string, CancellationToken, Task> setAsyncAction = CreateAsyncSet();
-        static Action<string> setAction = CreateSet();
+        static Func<string, CancellationToken, Task> setAsyncAction;
+        static Action<string> setAction;
+
+        static ClipboardService()
+        {
+#if NETSTANDARD2_1
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")))
+            {
+                throw new Exception($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
+            }
+#endif
+            getAsyncFunc = CreateAsyncGet();
+            getFunc = CreateGet();
+            setAsyncAction = CreateAsyncSet();
+            setAction = CreateSet();
+        }
 
         /// <summary>
         /// Clears the Clipboard and then adds text data to it.

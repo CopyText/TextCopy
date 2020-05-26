@@ -10,21 +10,14 @@ public class Program
 {
     public static Task Main()
     {
+        #region BlazorStartup
         var builder = WebAssemblyHostBuilder.CreateDefault();
         var serviceCollection = builder.Services;
-        serviceCollection.AddSingleton<IClipboard, Clipboard>((IServiceProvider provider) =>
-        {
-            var jsRuntimeType = Type.GetType("Microsoft.JSInterop.IJSRuntime",false);
-            if (jsRuntimeType != null)
-            {
-                var jsRuntime = provider.GetService(jsRuntimeType);
-                Console.WriteLine(jsRuntime == null);
-            }
-
-            return new Clipboard();
-        });
+        #region InjectClipboard
+        serviceCollection.InjectClipboard();
+        #endregion
         builder.RootComponents.Add<App>("app");
-
+        #endregion
         serviceCollection.AddTransient(
             provider => new HttpClient
             {

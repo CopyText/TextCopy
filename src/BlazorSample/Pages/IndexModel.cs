@@ -1,7 +1,5 @@
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 using PropertyChanged;
 using TextCopy;
 
@@ -11,30 +9,21 @@ namespace BlazorSample
     public partial class IndexModel :
         ComponentBase
     {
-        [Inject]
-        public IJSRuntime JSRuntime { get; set; }
-
+        #region Inject
         [Inject]
         public IClipboard Clipboard { get; set; }
+        #endregion
 
         public string Content { get; set; }
 
         public async Task CopyTextToClipboard()
         {
-            var runtimeType = JSRuntime.GetType();
-            var methodInfo = runtimeType.GetMethod("InvokeAsync", new[] {typeof(string), typeof(CancellationToken), typeof(object[])});
-            var makeGenericMethod = methodInfo.MakeGenericMethod(typeof(string));
-            var parameters = new object[] {"navigator.clipboard.writeText", CancellationToken.None, new object[] {Content}};
-            await (ValueTask<string>) makeGenericMethod.Invoke(JSRuntime, parameters);
+            await Clipboard.SetTextAsync(Content);
         }
 
         public async Task ReadTextFromClipboard()
         {
-            var runtimeType = JSRuntime.GetType();
-            var methodInfo = runtimeType.GetMethod("InvokeAsync", new[] {typeof(string), typeof(CancellationToken), typeof(object[])});
-            var makeGenericMethod = methodInfo.MakeGenericMethod(typeof(string));
-            var parameters = new object[] {"navigator.clipboard.readText", CancellationToken.None, new object[] {}};
-            Content =   await (ValueTask<string>) makeGenericMethod.Invoke(JSRuntime, parameters);
+            Content = await Clipboard.GetTextAsync();
         }
     }
 }
