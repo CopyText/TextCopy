@@ -12,6 +12,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" PrivateAssets="all" />
+    <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
   </ItemGroup>
 
 </Project>
