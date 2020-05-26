@@ -1,6 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0;netstandard2.1;uap10.0;monoandroid9.0;xamarin.ios10</TargetFrameworks>
+    <NoWarn>CS3001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
     <DefineConstants>$(DefineConstants);UAP</DefineConstants>
@@ -17,5 +18,7 @@
     <PackageReference Include="Fody" Version="6.1.2" PrivateAssets="All" />
     <PackageReference Include="ProjectDefaults" Version="1.0.42" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3"
+                      Condition="'$(TargetFramework)' != 'uap10.0'"/>
   </ItemGroup>
 </Project>

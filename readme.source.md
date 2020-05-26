@@ -46,6 +46,13 @@ In adition to the above static API, there is an instance API exposed:
 snippet: SetTextInstance
 
 
+### Dependency Injection
+
+An instance of `IClipboard` can be injected into `IServiceCollection`:
+
+snippet: InjectClipboard
+
+
 ## Supported on
 
  * Windows with .NET Framework 4.6.1 and up
@@ -58,9 +65,25 @@ snippet: SetTextInstance
  * Xamarin.Android 9.0 and up
  * Xamarin.iOS 10.0 and up
  * Universal Windows Platform version 10.0.16299 and up
+ * Blazor WebAssembly
 
 
-## Notes on Linux
+## Blazor WebAssembly 
+
+Due to the dependency on `JSInterop` the static `ClipboardService` is not supported on Blazor.
+
+Instead inhect an `IClipboard`:
+
+snippet: BlazorStartup
+
+Then consume it:
+
+snippet: Inject
+
+Blazor support requires the browser APIs [clipboard.readText](https://caniuse.com/#feat=mdn-api_clipboard_readtext) and [clipboard.writeText](https://caniuse.com/#feat=mdn-api_clipboard_writetext).
+
+
+## Linux
 
 Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
 

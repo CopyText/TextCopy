@@ -1,0 +1,10 @@
+﻿@page "/"
+@inherits IndexModel
+
+<div class="card">
+    <div class="card-body border-dark">
+        <input @bind="Content" />
+        <button type="button" class="btn btn-primary" @onclick="CopyTextToClipboard">Copy</button>
+        <button type="button" class="btn btn-primary" @onclick="ReadTextFromClipboard">Read</button>
+    </div>
+</div>
