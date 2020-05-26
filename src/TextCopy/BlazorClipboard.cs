@@ -21,6 +21,9 @@ namespace TextCopy
         object jsRuntime;
         MethodInfo invokeAsync;
 
+        /// <summary>
+        /// Construct a new instance.
+        /// </summary>
         public BlazorClipboard(object jsRuntime)
         {
             this.jsRuntime = jsRuntime;
