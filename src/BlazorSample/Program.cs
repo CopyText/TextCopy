@@ -18,6 +18,7 @@ public class Program
         #endregion
         builder.RootComponents.Add<App>("app");
         #endregion
+
         serviceCollection.AddTransient(
             provider => new HttpClient
             {

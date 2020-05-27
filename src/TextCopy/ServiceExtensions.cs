@@ -1,4 +1,6 @@
 ﻿#if !UAP
+using System;
+using System.Runtime.InteropServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TextCopy
@@ -29,17 +31,20 @@ namespace TextCopy
             {
 
 #if NETSTANDARD2_1
-
-                var jsRuntimeType = System.Type.GetType("Microsoft.JSInterop.IJSRuntime, Microsoft.JSInterop", false);
-                if (jsRuntimeType != null)
+                if (RuntimeInformation.OSDescription == "web")
                 {
-                    var jsRuntime = provider.GetService(jsRuntimeType);
-                    if (jsRuntime != null)
+                    var jsRuntimeType = System.Type.GetType("Microsoft.JSInterop.IJSRuntime, Microsoft.JSInterop", false);
+                    if (jsRuntimeType == null)
                     {
-                        return new BlazorClipboard(jsRuntime);
+                        throw new Exception("Running in Blazor but could not resolve JSInterop type.");
                     }
+                    var jsRuntime = provider.GetService(jsRuntimeType);
+                    if (jsRuntime == null)
+                    {
+                        throw new Exception("Running in Blazor but could not get the JSInterop instance from the IServiceProvider.");
+                    }
+                    return new BlazorClipboard(jsRuntime);
                 }
-
 #endif
 
                 return new Clipboard();
