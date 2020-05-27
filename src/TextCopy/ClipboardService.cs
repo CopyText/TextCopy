@@ -35,7 +35,7 @@ namespace TextCopy
         static ClipboardService()
         {
 #if NETSTANDARD2_1
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")))
+            if (RuntimeInformation.OSDescription == "web")
             {
                 throw new Exception($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
             }
