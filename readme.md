@@ -85,7 +85,7 @@ var text = ClipboardService.GetText();
 
 ## Instance API
 
-In adition to the above static API, there is an instance API exposed:
+In addition to the above static API, there is an instance API exposed:
 
 <!-- snippet: SetTextInstance -->
 <a id='snippet-settextinstance'/></a>
@@ -99,7 +99,7 @@ clipboard.SetText("Text to place in clipboard");
 
 ### Dependency Injection
 
-An instance of `IClipboard` can be injected into `IServiceCollection`:
+An instance of `Clipboard` can be injected into `IServiceCollection`:
 
 <!-- snippet: InjectClipboard -->
 <a id='snippet-injectclipboard'/></a>
@@ -108,6 +108,10 @@ serviceCollection.InjectClipboard();
 ```
 <sup><a href='/src/BlazorSample/Program.cs#L16-L18' title='File snippet `injectclipboard` was extracted from'>snippet source</a> | <a href='#snippet-injectclipboard' title='Navigate to start of snippet `injectclipboard`'>anchor</a></sup>
 <!-- endsnippet -->
+
+The instance should be injected by using `IClipboard`.
+
+There is also a `InjectMockClipboard` that injects an instance of `MockClipboard` with all methods stubbed out.
 
 
 ## Supported on
@@ -125,7 +129,7 @@ serviceCollection.InjectClipboard();
  * Blazor WebAssembly
 
 
-## Blazor WebAssembly 
+## Blazor WebAssembly
 
 Due to the dependency on `JSInterop` the static `ClipboardService` is not supported on Blazor.
 
