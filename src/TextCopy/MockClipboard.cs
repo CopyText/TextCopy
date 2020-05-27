@@ -4,31 +4,29 @@ using System.Threading.Tasks;
 namespace TextCopy
 {
     /// <inheritdoc />
-    public class Clipboard :
-        IClipboard
+    public class MockClipboard : IClipboard
     {
         /// <inheritdoc />
         public virtual Task<string?> GetTextAsync(CancellationToken cancellation = default)
         {
-            return ClipboardService.GetTextAsync(cancellation);
+            return Task.FromResult<string?>(null);
         }
 
         /// <inheritdoc />
         public virtual string? GetText()
         {
-            return ClipboardService.GetText();
+            return null;
         }
 
         /// <inheritdoc />
         public virtual Task SetTextAsync(string text, CancellationToken cancellation = default)
         {
-            return ClipboardService.SetTextAsync(text, cancellation);
+            return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public virtual void SetText(string text)
+        public void SetText(string text)
         {
-            ClipboardService.SetText(text);
         }
     }
 }

@@ -41,16 +41,20 @@ snippet: GetText
 
 ## Instance API
 
-In adition to the above static API, there is an instance API exposed:
+In addition to the above static API, there is an instance API exposed:
 
 snippet: SetTextInstance
 
 
 ### Dependency Injection
 
-An instance of `IClipboard` can be injected into `IServiceCollection`:
+An instance of `Clipboard` can be injected into `IServiceCollection`:
 
 snippet: InjectClipboard
+
+The instance should be injected by using `IClipboard`.
+
+There is also a `InjectMockClipboard` that injects an instance of `MockClipboard` with all methods stubbed out.
 
 
 ## Supported on
@@ -68,7 +72,7 @@ snippet: InjectClipboard
  * Blazor WebAssembly
 
 
-## Blazor WebAssembly 
+## Blazor WebAssembly
 
 Due to the dependency on `JSInterop` the static `ClipboardService` is not supported on Blazor.
 

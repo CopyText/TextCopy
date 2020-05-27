@@ -9,10 +9,22 @@ namespace TextCopy
     public static class ServiceExtensions
     {
         /// <summary>
-        /// Retrieves text data from the Clipboard.
+        /// Adds a singleton instance of <see cref="MockClipboard"/> as an
+        /// <see cref="IClipboard"/> to <paramref name="services"/>.
+        /// </summary>
+        public static void InjectMockClipboard(this IServiceCollection services)
+        {
+            Guard.AgainstNull(services, nameof(services));
+            services.AddSingleton<IClipboard>(_ => new MockClipboard());
+        }
+
+        /// <summary>
+        /// Adds a singleton instance of <see cref="Clipboard"/> as an
+        /// <see cref="IClipboard"/> to <paramref name="services"/>.
         /// </summary>
         public static void InjectClipboard(this IServiceCollection services)
         {
+            Guard.AgainstNull(services, nameof(services));
             services.AddSingleton<IClipboard>(provider =>
             {
 
