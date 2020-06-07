@@ -1,13 +1,11 @@
 ﻿using System.Threading.Tasks;
 using TextCopy;
-using VerifyXunit;
-using Xunit;
-using Xunit.Abstractions;
+using NUnit.Framework;
 
-public class ClipboardTests :
-    VerifyBase
+[TestFixture]
+public class ClipboardTests
 {
-    [Fact]
+    [Test]
     public async Task Simple()
     {
         VerifyInner("Foo");
@@ -21,7 +19,7 @@ public class ClipboardTests :
         ClipboardService.SetText(expected);
 
         var actual = new Clipboard().GetText();
-        Assert.Equal(expected, actual);
+        Assert.AreEqual(expected, actual);
     }
 
     static async Task VerifyInnerAsync(string expected)
@@ -29,11 +27,6 @@ public class ClipboardTests :
         await new Clipboard().SetTextAsync(expected);
 
         var actual = await ClipboardService.GetTextAsync();
-        Assert.Equal(expected, actual);
-    }
-
-    public ClipboardTests(ITestOutputHelper output) :
-        base(output)
-    {
+        Assert.AreEqual(expected, actual);
     }
 }
