@@ -23,6 +23,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [SetText](#settext)
     * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
+  * [Clearing The Clipboard](#clearclipboard)
   * [Instance API](#instance-api)
     * [Dependency Injection](#dependency-injection)
   * [Supported on](#supported-on)
@@ -82,6 +83,38 @@ var text = ClipboardService.GetText();
 <sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
 <!-- endsnippet -->
 
+
+## Clearing The Clipboard
+
+There may be situations where you will want to clear the clipboard after receiving the text, so that you can begin processing the next text that gets placed onto the clipboard.
+
+<!-- snippet: ClearClipboard -->
+<a id='snippet-clearclipboard'/></a>
+```cs
+// Get the text
+var text = ClipboardService.GetText();
+
+// Do something here with the text
+
+// Clear the Clipboard
+ClipboardService.SetText("");
+```
+<sup><a href='/src/Tests/Snippets.cs#L53-61' title='File snippet `clearclipboard` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboard' title='Navigate to start of snippet `clearclipboard`'>anchor</a></sup>
+<!-- endsnippet -->
+
+<!-- snippet: ClearClipboardAsync -->
+<a id='snippet-clearclipboardasync'/></a>
+```cs
+// Get the text
+var text = await ClipboardService.GetTextAsync();
+
+// Do something here with the text
+
+// Clear the Clipboard
+await ClipboardService.SetTextAsync("");
+```
+<sup><a href='/src/Tests/Snippets.cs#L69-L75' title='File snippet `clearclipboardasync` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboardasync' title='Navigate to start of snippet `clearclipboardasync`'>anchor</a></sup>
+<!-- endsnippet -->
 
 ## Instance API
 
