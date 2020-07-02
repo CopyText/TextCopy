@@ -47,4 +47,32 @@ class Snippets
 
         #endregion
     }
+    
+    void ClearClipboard()
+    {
+        #region ClearClipboard
+
+        // Get the text
+        var text = ClipboardService.GetText();
+
+        // Do something here with the text
+        
+        // Clear the Clipboard
+        ClipboardService.SetText("");
+        #endregion
+    }
+    
+    async Task ClearClipboardAsync()
+    {
+        #region ClearClipboardAsync
+
+        // Get the text
+        var text = await ClipboardService.GetTextAsync();
+
+        // Do something here with the text
+        
+        // Clear the Clipboard
+        await ClipboardService.SetTextAsync("");
+        #endregion
+    }
 }
