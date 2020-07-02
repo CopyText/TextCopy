@@ -38,6 +38,13 @@ snippet: GetTextAsync
 
 snippet: GetText
 
+## Clearing The Clipboard
+
+There may be situations where you will want to clear the clipboard after receiving the text, so that you can begin processing the next text that gets placed onto the clipboard.
+
+snippet: ClearClipboard
+
+snippet: ClearClipboardAsync
 
 ## Instance API
 
