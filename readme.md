@@ -23,6 +23,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
     * [SetText](#settext)
     * [GetTextAsync](#gettextasync)
     * [GetText](#gettext)
+  * [Clearing The Clipboard](#clearing-the-clipboard)
   * [Instance API](#instance-api)
     * [Dependency Injection](#dependency-injection)
   * [Supported on](#supported-on)
@@ -80,6 +81,25 @@ var text = await ClipboardService.GetTextAsync();
 var text = ClipboardService.GetText();
 ```
 <sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
+<!-- endsnippet -->
+
+
+## Clearing The Clipboard
+
+<!-- snippet: ClearClipboard -->
+<a id='snippet-clearclipboard'/></a>
+```cs
+ClipboardService.SetText("");
+```
+<sup><a href='/src/Tests/Snippets.cs#L53-L55' title='File snippet `clearclipboard` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboard' title='Navigate to start of snippet `clearclipboard`'>anchor</a></sup>
+<!-- endsnippet -->
+
+<!-- snippet: ClearClipboardAsync -->
+<a id='snippet-clearclipboardasync'/></a>
+```cs
+await ClipboardService.SetTextAsync("");
+```
+<sup><a href='/src/Tests/Snippets.cs#L60-L62' title='File snippet `clearclipboardasync` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboardasync' title='Navigate to start of snippet `clearclipboardasync`'>anchor</a></sup>
 <!-- endsnippet -->
 
 
