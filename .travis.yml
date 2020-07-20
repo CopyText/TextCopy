@@ -8,12 +8,12 @@ matrix:
         - xvfb
       before_install:
         - sudo apt-get install -y xclip;
-      script:
+      after_install:
         - export FrameworkPathOverride=/usr/lib/mono/4.7.2-api/
     - os: osx
       sudo: required
       language: csharp
-      script:
+      after_install:
         - export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/6.6.0/lib/mono/4.7.2-api/
 
 android:
