@@ -1,8 +1,8 @@
 # <img src="/src/icon.png" height="30px"> TextCopy
 
-AppVeyor:[![Build status](https://ci.appveyor.com/api/projects/status/35uq76nlt9tl6m3t/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/textcopy)
-TravisCI:[![Build status](https://travis-ci.org/SimonCropp/TextCopy.svg?branch=master)](https://travis-ci.org/SimonCropp/TextCopy)
-[![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
+ * AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/35uq76nlt9tl6m3t/branch/master?svg=true)](https://ci.appveyor.com/project/SimonCropp/textcopy)
+ * TravisCI: [![Build status](https://travis-ci.org/SimonCropp/TextCopy.svg?branch=master)](https://travis-ci.org/SimonCropp/TextCopy)
+ * [![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
 
 A cross platform package to copy text to and from the clipboard.
 
