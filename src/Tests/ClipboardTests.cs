@@ -27,6 +27,6 @@ public class ClipboardTests
         await new Clipboard().SetTextAsync(expected);
 
         var actual = await ClipboardService.GetTextAsync();
-        Assert.AreEqual(expected, "s");
+        Assert.AreEqual(expected, actual);
     }
 }
