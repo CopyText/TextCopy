@@ -4,14 +4,7 @@ image:
 skip_commits:
   message: /doco|Merge pull request.*/
 build_script:
-- ps: >-
-    msbuild.exe src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet
-
-    msbuild.exe src/TextCopy.sln /t:build /p:Configuration=Release -verbosity:quiet
-
-    msbuild.exe src/TextCopy.sln /t:pack /p:Configuration=Release -verbosity:quiet
-
-    dotnet test src --configuration Release --no-build --no-restore
+- ps: build.ps1
 test: off
 artifacts:
 - path: nugets\*.nupkg
