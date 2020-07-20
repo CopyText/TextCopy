@@ -19,7 +19,7 @@ android:
     - android-30
 mono: latest
 language: csharp
-dotnet: 3.1.100
+dotnet: 3.1.201
 script:
   - nuget install NUnit.Console -Version 3.11.1 -OutputDirectory testrunner
   - msbuild src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet
