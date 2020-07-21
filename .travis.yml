@@ -9,6 +9,7 @@ matrix:
         - sudo apt-get install -y xclip;
       after_install:
         - export FrameworkPathOverride=/usr/lib/mono/4.7.2-api/
+        - mv /usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk.WindowsDesktop/targets/Microsoft.WinFx.props /usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk.WindowsDesktop/targets/Microsoft.WinFX.props
     - os: osx
       sudo: required
       after_install:
