@@ -10,6 +10,7 @@ static class BashRunner
         var errorBuilder = new StringBuilder();
         var outputBuilder = new StringBuilder();
         var arguments = $"-c \"{commandLine}\"";
+        //Dont do a using declaration since handlers are attached
         using (var process = new Process
         {
             StartInfo = new ProcessStartInfo
@@ -40,12 +41,12 @@ Error: {errorBuilder}";
             {
                 return outputBuilder.ToString();
             }
+        }
 
-            var error = $@"Could not execute process. Command line: bash {arguments}.
+        var error = $@"Could not execute process. Command line: bash {arguments}.
 Output: {outputBuilder}
 Error: {errorBuilder}";
-            throw new Exception(error);
-        }
+        throw new Exception(error);
     }
 
     //To work around https://github.com/dotnet/runtime/issues/27128
