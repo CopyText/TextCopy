@@ -22,6 +22,7 @@ mono: latest
 language: csharp
 dotnet: 3.1.201
 script:
+  - mv /usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk.WindowsDesktop/targets/Microsoft.WinFx.props /usr/share/dotnet/sdk/3.1.201/Sdks/Microsoft.NET.Sdk.WindowsDesktop/targets/Microsoft.WinFX.props
   - nuget install NUnit.Console -Version 3.11.1 -OutputDirectory testrunner
   - msbuild src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet
   - msbuild src/TextCopy.sln /t:build /p:Configuration=Release -verbosity:quiet
