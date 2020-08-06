@@ -43,7 +43,7 @@ https://nuget.org/packages/TextCopy/
 ### SetTextAsync
 
 <!-- snippet: SetTextAsync -->
-<a id='snippet-settextasync'/></a>
+<a id='snippet-settextasync'></a>
 ```cs
 await ClipboardService.SetTextAsync("Text to place in clipboard");
 ```
@@ -54,7 +54,7 @@ await ClipboardService.SetTextAsync("Text to place in clipboard");
 ### SetText
 
 <!-- snippet: SetText -->
-<a id='snippet-settext'/></a>
+<a id='snippet-settext'></a>
 ```cs
 ClipboardService.SetText("Text to place in clipboard");
 ```
@@ -65,7 +65,7 @@ ClipboardService.SetText("Text to place in clipboard");
 ### GetTextAsync
 
 <!-- snippet: GetTextAsync -->
-<a id='snippet-gettextasync'/></a>
+<a id='snippet-gettextasync'></a>
 ```cs
 var text = await ClipboardService.GetTextAsync();
 ```
@@ -76,7 +76,7 @@ var text = await ClipboardService.GetTextAsync();
 ### GetText
 
 <!-- snippet: GetText -->
-<a id='snippet-gettext'/></a>
+<a id='snippet-gettext'></a>
 ```cs
 var text = ClipboardService.GetText();
 ```
@@ -87,7 +87,7 @@ var text = ClipboardService.GetText();
 ## Clearing The Clipboard
 
 <!-- snippet: ClearClipboard -->
-<a id='snippet-clearclipboard'/></a>
+<a id='snippet-clearclipboard'></a>
 ```cs
 ClipboardService.SetText("");
 ```
@@ -95,7 +95,7 @@ ClipboardService.SetText("");
 <!-- endsnippet -->
 
 <!-- snippet: ClearClipboardAsync -->
-<a id='snippet-clearclipboardasync'/></a>
+<a id='snippet-clearclipboardasync'></a>
 ```cs
 await ClipboardService.SetTextAsync("");
 ```
@@ -108,7 +108,7 @@ await ClipboardService.SetTextAsync("");
 In addition to the above static API, there is an instance API exposed:
 
 <!-- snippet: SetTextInstance -->
-<a id='snippet-settextinstance'/></a>
+<a id='snippet-settextinstance'></a>
 ```cs
 var clipboard = new Clipboard();
 clipboard.SetText("Text to place in clipboard");
@@ -122,7 +122,7 @@ clipboard.SetText("Text to place in clipboard");
 An instance of `Clipboard` can be injected into `IServiceCollection`:
 
 <!-- snippet: InjectClipboard -->
-<a id='snippet-injectclipboard'/></a>
+<a id='snippet-injectclipboard'></a>
 ```cs
 serviceCollection.InjectClipboard();
 ```
@@ -156,7 +156,7 @@ Due to the dependency on `JSInterop` the static `ClipboardService` is not suppor
 Instead inject an `IClipboard`:
 
 <!-- snippet: BlazorStartup -->
-<a id='snippet-blazorstartup'/></a>
+<a id='snippet-blazorstartup'></a>
 ```cs
 var builder = WebAssemblyHostBuilder.CreateDefault();
 var serviceCollection = builder.Services;
@@ -169,7 +169,7 @@ builder.RootComponents.Add<App>("app");
 Then consume it:
 
 <!-- snippet: Inject -->
-<a id='snippet-inject'/></a>
+<a id='snippet-inject'></a>
 ```cs
 public partial class IndexModel :
     ComponentBase
