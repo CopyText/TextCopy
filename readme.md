@@ -29,7 +29,7 @@ Support is available via a [Tidelift Subscription](https://tidelift.com/subscrip
   * [Supported on](#supported-on)
   * [Blazor WebAssembly](#blazor-webassembly)
   * [Linux](#linux)
-  * [Security contact information](#security-contact-information)<!-- endtoc -->
+  * [Security contact information](#security-contact-information)<!-- endToc -->
 
 
 ## NuGet package
@@ -48,7 +48,7 @@ https://nuget.org/packages/TextCopy/
 await ClipboardService.SetTextAsync("Text to place in clipboard");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L35-L39' title='File snippet `settextasync` was extracted from'>snippet source</a> | <a href='#snippet-settextasync' title='Navigate to start of snippet `settextasync`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### SetText
@@ -59,7 +59,7 @@ await ClipboardService.SetTextAsync("Text to place in clipboard");
 ClipboardService.SetText("Text to place in clipboard");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L10-L14' title='File snippet `settext` was extracted from'>snippet source</a> | <a href='#snippet-settext' title='Navigate to start of snippet `settext`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### GetTextAsync
@@ -70,7 +70,7 @@ ClipboardService.SetText("Text to place in clipboard");
 var text = await ClipboardService.GetTextAsync();
 ```
 <sup><a href='/src/Tests/Snippets.cs#L44-L48' title='File snippet `gettextasync` was extracted from'>snippet source</a> | <a href='#snippet-gettextasync' title='Navigate to start of snippet `gettextasync`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### GetText
@@ -81,7 +81,7 @@ var text = await ClipboardService.GetTextAsync();
 var text = ClipboardService.GetText();
 ```
 <sup><a href='/src/Tests/Snippets.cs#L26-L30' title='File snippet `gettext` was extracted from'>snippet source</a> | <a href='#snippet-gettext' title='Navigate to start of snippet `gettext`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ## Clearing The Clipboard
@@ -92,7 +92,7 @@ var text = ClipboardService.GetText();
 ClipboardService.SetText("");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L53-L55' title='File snippet `clearclipboard` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboard' title='Navigate to start of snippet `clearclipboard`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 <!-- snippet: ClearClipboardAsync -->
 <a id='snippet-clearclipboardasync'></a>
@@ -100,7 +100,7 @@ ClipboardService.SetText("");
 await ClipboardService.SetTextAsync("");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L60-L62' title='File snippet `clearclipboardasync` was extracted from'>snippet source</a> | <a href='#snippet-clearclipboardasync' title='Navigate to start of snippet `clearclipboardasync`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ## Instance API
@@ -114,7 +114,7 @@ var clipboard = new Clipboard();
 clipboard.SetText("Text to place in clipboard");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L16-L21' title='File snippet `settextinstance` was extracted from'>snippet source</a> | <a href='#snippet-settextinstance' title='Navigate to start of snippet `settextinstance`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 
 ### Dependency Injection
@@ -127,7 +127,7 @@ An instance of `Clipboard` can be injected into `IServiceCollection`:
 serviceCollection.InjectClipboard();
 ```
 <sup><a href='/src/BlazorSample/Program.cs#L16-L18' title='File snippet `injectclipboard` was extracted from'>snippet source</a> | <a href='#snippet-injectclipboard' title='Navigate to start of snippet `injectclipboard`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 The instance should be injected by using `IClipboard`.
 
@@ -164,7 +164,7 @@ serviceCollection.InjectClipboard();
 builder.RootComponents.Add<App>("app");
 ```
 <sup><a href='/src/BlazorSample/Program.cs#L13-L20' title='File snippet `blazorstartup` was extracted from'>snippet source</a> | <a href='#snippet-blazorstartup' title='Navigate to start of snippet `blazorstartup`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 Then consume it:
 
@@ -191,7 +191,7 @@ public partial class IndexModel :
 }
 ```
 <sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L9-L28' title='File snippet `inject` was extracted from'>snippet source</a> | <a href='#snippet-inject' title='Navigate to start of snippet `inject`'>anchor</a></sup>
-<!-- endsnippet -->
+<!-- endSnippet -->
 
 Blazor support requires the browser APIs [clipboard.readText](https://caniuse.com/#feat=mdn-api_clipboard_readtext) and [clipboard.writeText](https://caniuse.com/#feat=mdn-api_clipboard_writetext).
 
