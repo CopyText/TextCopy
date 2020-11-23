@@ -147,7 +147,7 @@
       <SubType>Designer</SubType>
     </Page>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.11</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
