@@ -16,7 +16,7 @@ static class LinuxClipboard
                 return;
             }
 
-            BashRunner.Run($"cat {tempFileName} | xclip -i -selection clipboard");
+            BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
         }
         finally
         {
@@ -30,7 +30,7 @@ static class LinuxClipboard
         File.WriteAllText(tempFileName, text);
         try
         {
-            BashRunner.Run($"cat {tempFileName} | xclip -i -selection clipboard");
+            BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
         }
         finally
         {
@@ -43,7 +43,7 @@ static class LinuxClipboard
         var tempFileName = Path.GetTempFileName();
         try
         {
-            BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
+            BashRunner.Run($"xsel -o --clipboard > {tempFileName}");
             return File.ReadAllText(tempFileName);
         }
         finally
@@ -57,7 +57,7 @@ static class LinuxClipboard
         var tempFileName = Path.GetTempFileName();
         try
         {
-            BashRunner.Run($"xclip -o -selection clipboard > {tempFileName}");
+            BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
             return await File.ReadAllTextAsync(tempFileName, cancellation);
         }
         finally
