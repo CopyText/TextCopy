@@ -23,12 +23,11 @@ static class BashRunner
             }
         };
         process.Start();
-        
-        // xclip communicates clipboard contents by spawning a child process, which results in the stdout and stderr
-        // file handles not being closed, and so process.WaitForExit() (which would wait for stdout) will never exit,
-        // as a result it's problematic to try to print stdout from xclip.
-        // Context as to why WaitForExit(x) won't reliably print stdout/stderr: https://github.com/dotnet/runtime/issues/27128
-        if (!process.WaitForExit(500))
+        process.OutputDataReceived += (sender, args) => { outputBuilder.AppendLine(args.Data); };
+        process.BeginOutputReadLine();
+        process.ErrorDataReceived += (sender, args) => { errorBuilder.AppendLine(args.Data); };
+        process.BeginErrorReadLine();
+        if (!process.DoubleWaitForExit())
         {
             var timeoutError = $@"Process timed out. Command line: bash {arguments}.
 Output: {outputBuilder}
@@ -44,6 +43,17 @@ Error: {errorBuilder}";
 Output: {outputBuilder}
 Error: {errorBuilder}";
         throw new Exception(error);
+    }
+
+    //To work around https://github.com/dotnet/runtime/issues/27128
+    static bool DoubleWaitForExit(this Process process)
+    {
+        var result = process.WaitForExit(500);
+        if (result)
+        {
+            process.WaitForExit();
+        }
+        return result;
     }
 }
 #endif
