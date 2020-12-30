@@ -1,14 +1,11 @@
 #if (NETSTANDARD || NETFRAMEWORK)
 using System;
 using System.Diagnostics;
-using System.Text;
 
 static class BashRunner
 {
-    public static string Run(string commandLine)
+    public static void Run(string commandLine)
     {
-        var errorBuilder = new StringBuilder();
-        var outputBuilder = new StringBuilder();
         var arguments = $"-c \"{commandLine}\"";
         using var process = new Process
         {
@@ -16,8 +13,6 @@ static class BashRunner
             {
                 FileName = "bash",
                 Arguments = arguments,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = false,
             }
@@ -30,19 +25,15 @@ static class BashRunner
         // Context as to why WaitForExit(x) won't reliably print stdout/stderr: https://github.com/dotnet/runtime/issues/27128
         if (!process.WaitForExit(500))
         {
-            var timeoutError = $@"Process timed out. Command line: bash {arguments}.
-Output: {outputBuilder}
-Error: {errorBuilder}";
+            var timeoutError = $@"Process timed out. Command line: bash {arguments}";
             throw new Exception(timeoutError);
         }
         if (process.ExitCode == 0)
         {
-            return outputBuilder.ToString();
+            return;
         }
 
-        var error = $@"Could not execute process. Command line: bash {arguments}.
-Output: {outputBuilder}
-Error: {errorBuilder}";
+        var error = $@"Could not execute process. Command line: bash {arguments} Exit code: {process.ExitCode}";
         throw new Exception(error);
     }
 }
