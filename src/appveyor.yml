@@ -5,10 +5,7 @@ image:
 skip_commits:
   message: /docs|Merge pull request.*/
 build_script:
-- ps: >-
-    dotnet build src --configuration Release
-
-    dotnet test src --configuration Release --no-build --no-restore --filter Category!=Integration
+- ps: src/build.ps1
 test: off
 artifacts:
 - path: nugets\*.nupkg
