@@ -198,7 +198,7 @@ Blazor support requires the browser APIs [clipboard.readText](https://caniuse.co
 
 ## Linux
 
-Linux uses [xsel](https://github.com/kfish/xsel) to access the clipboard. As such it needs to be installed and callable.
+Linux uses [xclip](https://github.com/astrand/xclip) to access the clipboard. As such it needs to be installed and callable.
 
 
 ## Security contact information
