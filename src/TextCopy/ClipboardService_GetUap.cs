@@ -15,7 +15,7 @@ namespace TextCopy
         {
             return async cancellation =>
             {
-                using var resetEvent = new ManualResetEvent(false);
+                using ManualResetEvent resetEvent = new(false);
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
                 string? value = null;
                 await dispatcher.RunAsync(CoreDispatcherPriority.Normal,

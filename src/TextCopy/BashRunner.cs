@@ -1,5 +1,4 @@
 #if (NETSTANDARD || NETFRAMEWORK || NET5_0)
-using System;
 using System.Diagnostics;
 using System.Text;
 
@@ -7,12 +6,12 @@ static class BashRunner
 {
     public static string Run(string commandLine)
     {
-        var errorBuilder = new StringBuilder();
-        var outputBuilder = new StringBuilder();
+        StringBuilder errorBuilder = new();
+        StringBuilder outputBuilder = new();
         var arguments = $"-c \"{commandLine}\"";
-        using var process = new Process
+        using Process process = new()
         {
-            StartInfo = new ProcessStartInfo
+            StartInfo = new()
             {
                 FileName = "bash",
                 Arguments = arguments,
@@ -32,7 +31,7 @@ static class BashRunner
             var timeoutError = $@"Process timed out. Command line: bash {arguments}.
 Output: {outputBuilder}
 Error: {errorBuilder}";
-            throw new Exception(timeoutError);
+            throw new(timeoutError);
         }
         if (process.ExitCode == 0)
         {
@@ -42,7 +41,7 @@ Error: {errorBuilder}";
         var error = $@"Could not execute process. Command line: bash {arguments}.
 Output: {outputBuilder}
 Error: {errorBuilder}";
-        throw new Exception(error);
+        throw new(error);
     }
 
     //To work around https://github.com/dotnet/runtime/issues/27128

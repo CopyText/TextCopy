@@ -10,7 +10,7 @@ namespace TextCopy
     {
         static Func<string, CancellationToken, Task> CreateAsyncSet()
         {
-            return (text, cancellation) =>
+            return (text, _) =>
             {
                 SetTextIos(text);
                 return Task.CompletedTask;

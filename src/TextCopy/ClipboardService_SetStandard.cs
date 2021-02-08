@@ -25,7 +25,7 @@ namespace TextCopy
                 return LinuxClipboard.SetTextAsync;
             }
 
-            return (s,c) => throw new NotSupportedException();
+            return (_, _) => throw new NotSupportedException();
         }
 
         static Action<string> CreateSet()
@@ -45,7 +45,7 @@ namespace TextCopy
                 return LinuxClipboard.SetText;
             }
 
-            return s => throw new NotSupportedException();
+            return _ => throw new NotSupportedException();
         }
     }
 }

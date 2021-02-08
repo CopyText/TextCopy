@@ -103,7 +103,7 @@ In addition to the above static API, there is an instance API exposed:
 <!-- snippet: SetTextInstance -->
 <a id='snippet-settextinstance'></a>
 ```cs
-var clipboard = new Clipboard();
+Clipboard clipboard = new();
 clipboard.SetText("Text to place in clipboard");
 ```
 <sup><a href='/src/Tests/Snippets.cs#L16-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-settextinstance' title='Start of snippet'>anchor</a></sup>
@@ -119,7 +119,7 @@ An instance of `Clipboard` can be injected into `IServiceCollection`:
 ```cs
 serviceCollection.InjectClipboard();
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L16-L18' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L15-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The instance should be injected by using `IClipboard`.
@@ -156,7 +156,7 @@ var serviceCollection = builder.Services;
 serviceCollection.InjectClipboard();
 builder.RootComponents.Add<App>("app");
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L13-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L12-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then consume it:

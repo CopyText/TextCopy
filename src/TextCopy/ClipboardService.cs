@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+#if NET5_0
+using System.Runtime.InteropServices;
+#endif
 
 namespace TextCopy
 {
@@ -37,7 +39,7 @@ namespace TextCopy
 #if NET5_0
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
             {
-                throw new Exception($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
+                throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
             }
 #endif
             getAsyncFunc = CreateAsyncGet();

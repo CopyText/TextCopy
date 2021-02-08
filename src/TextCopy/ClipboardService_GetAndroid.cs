@@ -10,7 +10,7 @@ namespace TextCopy
     {
         static Func<CancellationToken, Task<string?>> CreateAsyncGet()
         {
-            return token => Task.FromResult(GetTextAndroid());
+            return _ => Task.FromResult(GetTextAndroid());
         }
 
         static Func<string?> CreateGet()

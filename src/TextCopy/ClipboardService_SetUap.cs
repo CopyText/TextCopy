@@ -15,7 +15,7 @@ namespace TextCopy
         {
             return (text, cancellation) =>
             {
-                var dataPackage = new DataPackage();
+                DataPackage dataPackage = new();
                 dataPackage.SetText(text);
                 var dispatcher = CoreApplication.MainView.CoreWindow.Dispatcher;
                 return dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => UapClipboard.SetContent(dataPackage))

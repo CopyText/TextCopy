@@ -15,7 +15,7 @@ class Snippets
 
         #region SetTextInstance
 
-        var clipboard = new Clipboard();
+        Clipboard clipboard = new();
         clipboard.SetText("Text to place in clipboard");
 
         #endregion

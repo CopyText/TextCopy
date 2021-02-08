@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using BlazorSample;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -20,9 +19,9 @@ public class Program
         #endregion
 
         serviceCollection.AddTransient(
-            provider => new HttpClient
+            _ => new HttpClient
             {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+                BaseAddress = new(builder.HostEnvironment.BaseAddress)
             });
 
         return builder.Build().RunAsync();
