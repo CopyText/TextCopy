@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD2_1
+﻿#if NET5_0
 using System;
 using System.Reflection;
 using System.Threading;
@@ -28,7 +28,7 @@ namespace TextCopy
             invokeAsync = jsRuntime.GetType()
                 .GetMethod(
                     "InvokeAsync",
-                    types: types);
+                    types: types)!;
             invokeAsync = invokeAsync.MakeGenericMethod(typeof(string));
         }
 
@@ -36,7 +36,7 @@ namespace TextCopy
         public virtual async Task<string?> GetTextAsync(CancellationToken cancellation = default)
         {
             var parameters = new object[] {"navigator.clipboard.readText", cancellation, Array.Empty<object>()};
-            return await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters);
+            return await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters)!;
         }
 
         /// <inheritdoc />
@@ -49,7 +49,7 @@ namespace TextCopy
         public virtual async Task SetTextAsync(string text, CancellationToken cancellation = default)
         {
             var parameters = new object[] {"navigator.clipboard.writeText", cancellation, new object[] {text}};
-            await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters);
+            await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters)!;
         }
 
         /// <inheritdoc />

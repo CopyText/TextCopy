@@ -1,4 +1,4 @@
-#if (NETSTANDARD || NETFRAMEWORK)
+#if (NETSTANDARD || NETFRAMEWORK || NET5_0)
 using System;
 using System.Diagnostics;
 using System.Text;
@@ -23,9 +23,9 @@ static class BashRunner
             }
         };
         process.Start();
-        process.OutputDataReceived += (sender, args) => { outputBuilder.AppendLine(args.Data); };
+        process.OutputDataReceived += (_, args) => { outputBuilder.AppendLine(args.Data); };
         process.BeginOutputReadLine();
-        process.ErrorDataReceived += (sender, args) => { errorBuilder.AppendLine(args.Data); };
+        process.ErrorDataReceived += (_, args) => { errorBuilder.AppendLine(args.Data); };
         process.BeginErrorReadLine();
         if (!process.DoubleWaitForExit())
         {

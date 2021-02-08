@@ -29,9 +29,8 @@ namespace TextCopy
             Guard.AgainstNull(services, nameof(services));
             services.AddSingleton<IClipboard>(provider =>
             {
-
-#if NETSTANDARD2_1
-                if (RuntimeInformation.OSDescription == "web")
+#if NET5_0
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
                 {
                     var jsRuntimeType = System.Type.GetType("Microsoft.JSInterop.IJSRuntime, Microsoft.JSInterop", false);
                     if (jsRuntimeType == null)

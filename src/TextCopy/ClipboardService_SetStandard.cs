@@ -1,4 +1,4 @@
-﻿#if (NETSTANDARD || NETFRAMEWORK)
+﻿#if (NETSTANDARD || NETFRAMEWORK || NET5_0)
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
