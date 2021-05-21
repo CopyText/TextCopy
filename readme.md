@@ -6,24 +6,6 @@
 
 A cross platform package to copy text to and from the clipboard.
 
-Support is available via a [Tidelift Subscription](https://tidelift.com/subscription/pkg/nuget-textcopy?utm_source=nuget-textcopy&utm_medium=referral&utm_campaign=enterprise).
-
-<!-- toc -->
-## Contents
-
-  * [Usage](#usage)
-    * [SetTextAsync](#settextasync)
-    * [SetText](#settext)
-    * [GetTextAsync](#gettextasync)
-    * [GetText](#gettext)
-  * [Clearing The Clipboard](#clearing-the-clipboard)
-  * [Instance API](#instance-api)
-    * [Dependency Injection](#dependency-injection)
-  * [Supported on](#supported-on)
-  * [Blazor WebAssembly](#blazor-webassembly)
-  * [Linux](#linux)
-  * [Security contact information](#security-contact-information)<!-- endToc -->
-
 
 ## NuGet package
 
@@ -193,10 +175,6 @@ Blazor support requires the browser APIs [clipboard.readText](https://caniuse.co
 
 Linux uses [xsel](https://github.com/kfish/xsel) to access the clipboard. As such it needs to be installed and callable.
 
-
-## Security contact information
-
-To report a security vulnerability, use the [Tidelift security contact](https://tidelift.com/security). Tidelift will coordinate the fix and disclosure.
 
 
 ## Icon
