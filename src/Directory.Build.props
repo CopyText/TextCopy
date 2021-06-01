@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
-    <Version>4.3.0</Version>
+    <Version>4.3.1</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageTags>Clipboard, Copy</PackageTags>
     <Description>A cross platform package to copy text to the clipboard.</Description>
