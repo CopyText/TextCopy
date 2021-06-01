@@ -1,10 +1,18 @@
 #if (NETSTANDARD2_0 || NETFRAMEWORK)
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
+    static bool isWsl;
+
+    static LinuxClipboard()
+    {
+        isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
+    }
+
     public static Task SetTextAsync(string text, CancellationToken cancellation)
     {
         SetText(text);
@@ -18,7 +26,14 @@ static class LinuxClipboard
         File.WriteAllText(tempFileName, text);
         try
         {
-            BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard");
+            if (isWsl)
+            {
+                BashRunner.Run($"cat {tempFileName} | clip.exe ");
+            }
+            else
+            {
+                BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
+            }
         }
         finally
         {
@@ -28,18 +43,23 @@ static class LinuxClipboard
 
     public static Task<string?> GetTextAsync(CancellationToken cancellation)
     {
-        return Task.FromResult(GetText());
+        return Task.FromResult<string?>(GetText());
     }
 
-    public static string? GetText()
+    public static string GetText()
     {
         var tempFileName = Path.GetTempFileName();
         try
         {
-            BashRunner.Run($"xsel -o --clipboard > {tempFileName}");
-            var readAllText = File.ReadAllText(tempFileName);
-            // ReSharper disable once RedundantTypeArgumentsOfMethod
-            return readAllText;
+            if (isWsl)
+            {
+                BashRunner.Run($"powershell.exe Get-Clipboard  > {tempFileName}");
+            }
+            else
+            {
+                BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
+            }
+            return File.ReadAllText(tempFileName);
         }
         finally
         {

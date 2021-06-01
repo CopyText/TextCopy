@@ -3,9 +3,6 @@
     <TargetFramework>net5</TargetFramework>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
   </ItemGroup>
