@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
+    /// <summary>
+    /// Determine whether we should use a local path for xsel binary or not.
+    /// When start up, we will check if xsel exists in the 
+    /// <see cref="AppContext.BaseDirectory"/> or not.
+    /// If it exists, we will use a local xsel for it, otherwise this property
+    /// will be <c>false</c>.
+    /// You can also set it manually, but if it's <c>false</c>, xsel binary
+    /// should exists in the user's path.
+    /// </summary>
+    /// <value>
+    /// <c>true</c> if we have to use local path, otherwise <c>false</c>.
+    /// </value>
+    public static bool UseLocal { get; set; }
     static bool isWsl;
 
     static LinuxClipboard()
     {
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
+        UseLocal = File.Exists(AppContext.BaseDirectory + "xsel");
     }
 
     public static async Task SetTextAsync(string text, CancellationToken cancellation)
@@ -43,7 +57,7 @@ static class LinuxClipboard
             }
             else
             {
-                BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
+                BashRunner.Run($"cat {tempFileName} | {GetXsel()} -i --clipboard ");
             }
         }
         finally
@@ -88,8 +102,16 @@ static class LinuxClipboard
         }
         else
         {
-            BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
+            BashRunner.Run($"{GetXsel()} -o --clipboard  > {tempFileName}");
         }
+    }
+    private static string GetXsel()
+    {
+        if (UseLocal)
+        {
+            return "./" + "xsel";
+        }
+        return "xsel";
     }
 }
 #endif
