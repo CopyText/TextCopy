@@ -176,7 +176,6 @@ Blazor support requires the browser APIs [clipboard.readText](https://caniuse.co
 Linux uses [xsel](https://github.com/kfish/xsel) to access the clipboard. As such it needs to be installed and callable.
 
 
-
 ## Icon
 
 [Clone](https://thenounproject.com/term/Clone/207435/) designed by [Wes Breazell](https://thenounproject.com/wes13/) from [The Noun Project](https://thenounproject.com).

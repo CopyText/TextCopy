@@ -157,9 +157,6 @@
     <Compile Include="..\TextCopy\ClipboardService_SetUap.cs">
       <Link>Clipboard_SetUap.cs</Link>
     </Compile>
-    <Compile Include="..\TextCopy\Guard.cs">
-      <Link>Guard.cs</Link>
-    </Compile>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

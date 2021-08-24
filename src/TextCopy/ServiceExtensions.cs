@@ -18,7 +18,6 @@ namespace TextCopy
         /// </summary>
         public static void InjectMockClipboard(this IServiceCollection services)
         {
-            Guard.AgainstNull(services, nameof(services));
             services.AddSingleton<IClipboard>(_ => new MockClipboard());
         }
 
@@ -28,7 +27,6 @@ namespace TextCopy
         /// </summary>
         public static void InjectClipboard(this IServiceCollection services)
         {
-            Guard.AgainstNull(services, nameof(services));
             services.AddSingleton<IClipboard>(provider =>
             {
 #if NET5_0

@@ -53,7 +53,6 @@ namespace TextCopy
         /// </summary>
         public static Task SetTextAsync(string text, CancellationToken cancellation = default)
         {
-            Guard.AgainstNull(text, nameof(text));
             return setAsyncAction(text, cancellation);
         }
 
@@ -62,7 +61,6 @@ namespace TextCopy
         /// </summary>
         public static void SetText(string text)
         {
-            Guard.AgainstNull(text, nameof(text));
             setAction(text);
         }
     }
