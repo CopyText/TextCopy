@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 static class LinuxClipboard
 {
+    enum WindowSystem
+    {
+        X11,
+        Wayland
+    }
+
     static bool isWsl;
+    static WindowSystem windowSystem;
 
     static LinuxClipboard()
     {
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
+
+        windowSystem = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE") switch
+        {
+            "x11" => WindowSystem.X11,
+            "wayland" => WindowSystem.Wayland,
+            _ => throw new NotSupportedException()
+        };
     }
 
     public static Task SetTextAsync(string text, CancellationToken cancellation)
@@ -32,7 +46,16 @@ static class LinuxClipboard
             }
             else
             {
-                BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
+                switch (windowSystem)
+                {
+                    case WindowSystem.X11:
+                        BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
+                        break;
+                    case WindowSystem.Wayland:
+                        // wl-copy keeps stderr open. Since there is no straightforward way for us to wait for errors, just ignore them.
+                        BashRunner.Run($"cat {tempFileName} | /home/arthur/Documents/wl-clipboard/build/wl-copy -n ");
+                        break;
+                }
             }
         }
         finally
@@ -53,11 +76,19 @@ static class LinuxClipboard
         {
             if (isWsl)
             {
-                BashRunner.Run($"powershell.exe Get-Clipboard  > {tempFileName}");
+                BashRunner.Run($"powershell.exe Get-Clipboard > {tempFileName}");
             }
             else
             {
-                BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
+                switch (windowSystem)
+                {
+                    case WindowSystem.X11:
+                        BashRunner.Run($"xsel -o --clipboard > {tempFileName}");
+                        break;
+                    case WindowSystem.Wayland:
+                        BashRunner.Run($"wl-paste -n > {tempFileName}");
+                        break;
+                }
             }
             return File.ReadAllText(tempFileName);
         }
