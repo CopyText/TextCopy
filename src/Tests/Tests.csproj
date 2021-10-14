@@ -3,7 +3,7 @@
     <TargetFrameworks>net472;netcoreapp3.1;net5</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MarkdownSnippets.MsBuild" Version="24.1.0" />
+    <PackageReference Include="MarkdownSnippets.MsBuild" Version="24.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" />
     <PackageReference Include="Xunit" Version="2.4.1" />
