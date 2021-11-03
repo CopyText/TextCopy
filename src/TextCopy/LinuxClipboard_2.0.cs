@@ -53,7 +53,7 @@ static class LinuxClipboard
                         break;
                     case WindowSystem.Wayland:
                         // wl-copy keeps stderr open. Since there is no straightforward way for us to wait for errors, just ignore them.
-                        BashRunner.Run($"cat {tempFileName} | /home/arthur/Documents/wl-clipboard/build/wl-copy -n ");
+                        BashRunner.Run($"cat {tempFileName} | wl-copy -n 2>/dev/null ");
                         break;
                 }
             }
