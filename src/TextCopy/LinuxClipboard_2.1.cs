@@ -19,12 +19,9 @@ static class LinuxClipboard
     {
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
 
-        windowSystem = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE") switch
-        {
-            "x11" => WindowSystem.X11,
-            "wayland" => WindowSystem.Wayland,
-            _ => throw new NotSupportedException()
-        };
+        // XDG_SESSION_TYPE is a systemd(1) environment variable and is unlikely set in non-systemd environments.
+        // Therefore we check the Wayland specific display environment variable first and fall back to x11.
+        windowSystem = Environment.GetEnvironmentVariable("WAYLAND_DISPLAY") != null ? WindowSystem.Wayland : WindowSystem.X11;
     }
 
     public static async Task SetTextAsync(string text, CancellationToken cancellation)
