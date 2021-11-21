@@ -173,7 +173,11 @@ Blazor support requires the browser APIs [clipboard.readText](https://caniuse.co
 
 ## Linux
 
-Linux uses [xsel](https://github.com/kfish/xsel) to access the clipboard. As such it needs to be installed and callable.
+TextCopy supports X11 and Wayland with additional dependencies.
+
+The following utilities are used to access the clipboard with the respective window system, they must be installed and callable.
+- **X11** [xsel](https://github.com/kfish/xsel)
+- **Wayland** [wl-clipboard](https://github.com/bugaevc/wl-clipboard)
 
 
 ## Icon
