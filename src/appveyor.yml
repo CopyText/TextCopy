@@ -2,8 +2,6 @@ image:
 - Visual Studio 2019
 - macos
 - Ubuntu
-skip_commits:
-  message: /docs|Merge pull request.*/
 build_script:
 - ps: src/build.ps1
 test: off
