@@ -25,11 +25,14 @@ namespace TextCopy
         public BlazorClipboard(object jsRuntime)
         {
             this.jsRuntime = jsRuntime;
-            invokeAsync = jsRuntime.GetType()
-                .GetMethod(
-                    "InvokeAsync",
-                    types: types)!;
-            invokeAsync = invokeAsync.MakeGenericMethod(typeof(string));
+            var type = jsRuntime.GetType();
+            var method = type.GetMethod("InvokeAsync", types);
+            if (method == null)
+            {
+                throw new($"Unable to find InvokeAsync on {type.FullName}");
+            }
+
+            invokeAsync = method.MakeGenericMethod(typeof(string));
         }
 
         /// <inheritdoc />
