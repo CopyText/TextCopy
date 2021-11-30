@@ -100,7 +100,7 @@ An instance of `Clipboard` can be injected into `IServiceCollection`:
 ```cs
 serviceCollection.InjectClipboard();
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L15-L17' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L9-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The instance should be injected by using `IClipboard`.
@@ -137,7 +137,7 @@ var serviceCollection = builder.Services;
 serviceCollection.InjectClipboard();
 builder.RootComponents.Add<App>("app");
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L12-L19' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L6-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then consume it:
