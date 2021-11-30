@@ -1,29 +1,15 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-using BlazorSample;
+﻿using BlazorSample;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using TextCopy;
 
-public class Program
-{
-    public static Task Main()
-    {
-        #region BlazorStartup
-        var builder = WebAssemblyHostBuilder.CreateDefault();
-        var serviceCollection = builder.Services;
-        #region InjectClipboard
-        serviceCollection.InjectClipboard();
-        #endregion
-        builder.RootComponents.Add<App>("app");
-        #endregion
-
-        serviceCollection.AddTransient(
-            _ => new HttpClient
-            {
-                BaseAddress = new(builder.HostEnvironment.BaseAddress)
-            });
-
-        return builder.Build().RunAsync();
-    }
-}
+#region BlazorStartup
+var builder = WebAssemblyHostBuilder.CreateDefault();
+var serviceCollection = builder.Services;
+#region InjectClipboard
+serviceCollection.InjectClipboard();
+#endregion
+builder.RootComponents.Add<App>("app");
+#endregion
+builder.RootComponents.Add<HeadOutlet>("head::after");
+await builder.Build().RunAsync();
