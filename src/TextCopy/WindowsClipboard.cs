@@ -1,4 +1,3 @@
-#if !UAP
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
@@ -205,4 +204,3 @@ static class WindowsClipboard
     [DllImport("Kernel32.dll", SetLastError = true)]
     static extern int GlobalSize(IntPtr hMem);
 }
-#endif

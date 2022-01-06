@@ -1,5 +1,4 @@
-﻿#if !UAP
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 #if NET5_0
 using System;
 using System.Runtime.InteropServices;
@@ -51,4 +50,3 @@ namespace TextCopy
         }
     }
 }
-#endif
