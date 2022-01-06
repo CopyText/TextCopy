@@ -1,43 +1,40 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Text;
 using Android.Widget;
-using AndroidApp;
+using AndroidX.AppCompat.App;
+using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 
-[Activity(
-    Label = "@string/app_name",
-    Theme = "@style/AppTheme.NoActionBar",
-    MainLauncher = true)]
-public class MainActivity : AppCompatActivity
+namespace AndroidApp
 {
-    EditText input;
-    TextView clipboardContent;
-
-    protected override void OnCreate(Bundle savedInstanceState)
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
     {
-        base.OnCreate(savedInstanceState);
-        Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-        SetContentView(Resource.Layout.activity_main);
+        EditText input;
+        TextView clipboardContent;
 
-        var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-        SetSupportActionBar(toolbar);
-    }
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            SetContentView(Resource.Layout.activity_main);
 
-    protected override void OnResume()
-    {
-        base.OnResume();
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+        }
 
-        input = FindViewById<EditText>(Resource.Id.input);
-        clipboardContent = FindViewById<TextView>(Resource.Id.clipboardContent);
+        protected override void OnResume()
+        {
+            base.OnResume();
+            input = FindViewById<EditText>(Resource.Id.input);
+            clipboardContent = FindViewById<TextView>(Resource.Id.clipboardContent);
+            input.TextChanged += Input_TextChanged;
+        }
 
-        input.TextChanged += Input_TextChanged;
-    }
-
-    void Input_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        TextCopy.ClipboardService.SetText(e.Text.ToString());
-
-        clipboardContent.Text = TextCopy.ClipboardService.GetText();
+        void Input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextCopy.ClipboardService.SetText(e.Text.ToString());
+            clipboardContent.Text = TextCopy.ClipboardService.GetText();
+        }
     }
 }

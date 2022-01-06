@@ -3,8 +3,8 @@
           android:versionCode="1"
           android:versionName="1.0"
           package="com.companyname.androidapp">
-  <uses-sdk android:minSdkVersion="21"
-            android:targetSdkVersion="28" />
+  <uses-sdk android:minSdkVersion="31"
+            android:targetSdkVersion="31" />
   <application android:allowBackup="true"
                android:icon="@mipmap/ic_launcher"
                android:label="@string/app_name"
