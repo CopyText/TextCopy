@@ -65,9 +65,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml">
