@@ -1,10 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net461;netstandard2.0;netstandard2.1;uap10.0;monoandroid9.0;xamarin.ios10</TargetFrameworks>
+    <TargetFrameworks>net5.0;net461;netstandard2.0;netstandard2.1;monoandroid9.0;xamarin.ios10</TargetFrameworks>
     <NoWarn>CS3001</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
-    <DefineConstants>$(DefineConstants);UAP</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
     <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
@@ -19,7 +16,6 @@
     <PackageReference Include="Fody" Version="6.6.0" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.63" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"
-                      Condition="'$(TargetFramework)' != 'uap10.0'"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
   </ItemGroup>
 </Project>

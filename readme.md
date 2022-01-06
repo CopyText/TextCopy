@@ -119,7 +119,6 @@ There is also a `InjectMockClipboard` that injects an instance of `MockClipboard
  * Linux with Mono 5.20.1 and up
  * Xamarin.Android 9.0 and up
  * Xamarin.iOS 10.0 and up
- * Universal Windows Platform version 10.0.16299 and up
  * Blazor WebAssembly 5.0 and up
 
 
