@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
 using System.Runtime.InteropServices;
 #endif
 

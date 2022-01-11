@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using TextCopy;
+﻿using TextCopy;
 
 // ReSharper disable UnusedVariable
 

@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using TextCopy;
-using NUnit.Framework;
+﻿using TextCopy;
 
 public class ClipboardServiceTests
 {
