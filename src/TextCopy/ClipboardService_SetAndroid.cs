@@ -1,43 +1,39 @@
 ﻿#if ANDROID
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Android.Content;
 
-namespace TextCopy
+namespace TextCopy;
+
+public static partial class ClipboardService
 {
-    public static partial class ClipboardService
+    static Func<string, CancellationToken, Task> CreateAsyncSet()
     {
-        static Func<string, CancellationToken, Task> CreateAsyncSet()
+        return (text, _) =>
         {
-            return (text, _) =>
-            {
-                SetTextAndroid(text);
-                return Task.CompletedTask;
-            };
+            SetTextAndroid(text);
+            return Task.CompletedTask;
+        };
+    }
+
+    static Action<string> CreateSet()
+    {
+        return SetTextAndroid;
+    }
+
+    static void SetTextAndroid(string text)
+    {
+        var context = Android.App.Application.Context;
+        if (context is null)
+        {
+            throw new InvalidOperationException("Android context is null");
         }
 
-        static Action<string> CreateSet()
+        var clipboard = ClipboardManager.FromContext(context);
+        if (clipboard is null)
         {
-            return SetTextAndroid;
+            throw new InvalidOperationException("ClipboardManager.FromContext is null");
         }
 
-        static void SetTextAndroid(string text)
-        {
-            var context = Android.App.Application.Context;
-            if (context is null)
-            {
-                throw new InvalidOperationException("Android context is null");
-            }
-
-            var clipboard = ClipboardManager.FromContext(context);
-            if (clipboard is null)
-            {
-                throw new InvalidOperationException("ClipboardManager.FromContext is null");
-            }
-
-            clipboard.Text = text;
-        }
+        clipboard.Text = text;
     }
 }
 #endif

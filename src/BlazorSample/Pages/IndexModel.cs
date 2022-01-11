@@ -3,27 +3,26 @@ using Microsoft.AspNetCore.Components;
 using PropertyChanged;
 using TextCopy;
 
-namespace BlazorSample
+namespace BlazorSample;
+
+[AddINotifyPropertyChangedInterface]
+#region Inject
+public partial class IndexModel :
+    ComponentBase
 {
-    [AddINotifyPropertyChangedInterface]
-    #region Inject
-    public partial class IndexModel :
-        ComponentBase
+    [Inject]
+    public IClipboard Clipboard { get; set; }
+
+    public string Content { get; set; }
+
+    public Task CopyTextToClipboard()
     {
-        [Inject]
-        public IClipboard Clipboard { get; set; }
-
-        public string Content { get; set; }
-
-        public Task CopyTextToClipboard()
-        {
-            return Clipboard.SetTextAsync(Content);
-        }
-
-        public async Task ReadTextFromClipboard()
-        {
-            Content = await Clipboard.GetTextAsync();
-        }
+        return Clipboard.SetTextAsync(Content);
     }
-    #endregion
+
+    public async Task ReadTextFromClipboard()
+    {
+        Content = await Clipboard.GetTextAsync();
+    }
 }
+#endregion

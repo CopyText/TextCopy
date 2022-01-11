@@ -1,8 +1,5 @@
-#if (NETSTANDARD || NETFRAMEWORK || NET5_0)
-using System;
+#if (NETSTANDARD || NETFRAMEWORK || NET5_0_OR_GREATER)
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 
 static class OsxClipboard
 {

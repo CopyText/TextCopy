@@ -1,8 +1,4 @@
-#if (NETSTANDARD2_1 || NET5_0)
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
+#if (NETSTANDARD2_1 || NET5_0_OR_GREATER)
 
 static class LinuxClipboard
 {

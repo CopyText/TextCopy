@@ -1,27 +1,23 @@
 ﻿#if IOS
-using System;
-using System.Threading.Tasks;
-using System.Threading;
 using UIKit;
 
-namespace TextCopy
+namespace TextCopy;
+
+public static partial class ClipboardService
 {
-    public static partial class ClipboardService
+    static Func<CancellationToken, Task<string?>> CreateAsyncGet()
     {
-        static Func<CancellationToken, Task<string?>> CreateAsyncGet()
-        {
-            return _ => Task.FromResult(GetTextIos());
-        }
+        return _ => Task.FromResult(GetTextIos());
+    }
 
-        static Func<string?> CreateGet()
-        {
-            return GetTextIos;
-        }
+    static Func<string?> CreateGet()
+    {
+        return GetTextIos;
+    }
 
-        static string? GetTextIos()
-        {
-            return UIPasteboard.General.String;
-        }
+    static string? GetTextIos()
+    {
+        return UIPasteboard.General.String;
     }
 }
 #endif

@@ -1,35 +1,31 @@
 ﻿#if ANDROID
-using System;
-using System.Threading.Tasks;
-using System.Threading;
 using Android.Content;
 
-namespace TextCopy
+namespace TextCopy;
+
+public static partial class ClipboardService
 {
-    public static partial class ClipboardService
+    static Func<CancellationToken, Task<string?>> CreateAsyncGet()
     {
-        static Func<CancellationToken, Task<string?>> CreateAsyncGet()
+        return _ => Task.FromResult(GetTextAndroid());
+    }
+
+    static Func<string?> CreateGet()
+    {
+        return GetTextAndroid;
+    }
+
+    static string? GetTextAndroid()
+    {
+        var context = Android.App.Application.Context;
+        if (context is null)
         {
-            return _ => Task.FromResult(GetTextAndroid());
+            return null;
         }
 
-        static Func<string?> CreateGet()
-        {
-            return GetTextAndroid;
-        }
+        var clipboard = ClipboardManager.FromContext(context);
 
-        static string? GetTextAndroid()
-        {
-            var context = Android.App.Application.Context;
-            if (context is null)
-            {
-                return null;
-            }
-
-            var clipboard = ClipboardManager.FromContext(context);
-
-            return clipboard?.Text;
-        }
+        return clipboard?.Text;
     }
 }
 #endif

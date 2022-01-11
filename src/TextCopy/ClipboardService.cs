@@ -1,67 +1,63 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-#if NET5_0
+﻿#if NET5_0_OR_GREATER
 using System.Runtime.InteropServices;
 #endif
 
-namespace TextCopy
+namespace TextCopy;
+
+/// <summary>
+/// Provides methods to place text on and retrieve text from the system Clipboard.
+/// </summary>
+public static partial class ClipboardService
 {
+    static Func<CancellationToken, Task<string?>> getAsyncFunc;
+    static Func<string?> getFunc;
+
     /// <summary>
-    /// Provides methods to place text on and retrieve text from the system Clipboard.
+    /// Retrieves text data from the Clipboard.
     /// </summary>
-    public static partial class ClipboardService
+    public static Task<string?> GetTextAsync(CancellationToken cancellation = default)
     {
-        static Func<CancellationToken, Task<string?>> getAsyncFunc;
-        static Func<string?> getFunc;
+        return getAsyncFunc(cancellation);
+    }
 
-        /// <summary>
-        /// Retrieves text data from the Clipboard.
-        /// </summary>
-        public static Task<string?> GetTextAsync(CancellationToken cancellation = default)
+    /// <summary>
+    /// Retrieves text data from the Clipboard.
+    /// </summary>
+    public static string? GetText()
+    {
+        return getFunc();
+    }
+
+    static Func<string, CancellationToken, Task> setAsyncAction;
+    static Action<string> setAction;
+
+    static ClipboardService()
+    {
+#if NET6_0
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
         {
-            return getAsyncFunc(cancellation);
+            throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
         }
-
-        /// <summary>
-        /// Retrieves text data from the Clipboard.
-        /// </summary>
-        public static string? GetText()
-        {
-            return getFunc();
-        }
-
-        static Func<string, CancellationToken, Task> setAsyncAction;
-        static Action<string> setAction;
-
-        static ClipboardService()
-        {
-#if NET5_0
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
-            {
-                throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
-            }
 #endif
-            getAsyncFunc = CreateAsyncGet();
-            getFunc = CreateGet();
-            setAsyncAction = CreateAsyncSet();
-            setAction = CreateSet();
-        }
+        getAsyncFunc = CreateAsyncGet();
+        getFunc = CreateGet();
+        setAsyncAction = CreateAsyncSet();
+        setAction = CreateSet();
+    }
 
-        /// <summary>
-        /// Clears the Clipboard and then adds text data to it.
-        /// </summary>
-        public static Task SetTextAsync(string text, CancellationToken cancellation = default)
-        {
-            return setAsyncAction(text, cancellation);
-        }
+    /// <summary>
+    /// Clears the Clipboard and then adds text data to it.
+    /// </summary>
+    public static Task SetTextAsync(string text, CancellationToken cancellation = default)
+    {
+        return setAsyncAction(text, cancellation);
+    }
 
-        /// <summary>
-        /// Clears the Clipboard and then adds text data to it.
-        /// </summary>
-        public static void SetText(string text)
-        {
-            setAction(text);
-        }
+    /// <summary>
+    /// Clears the Clipboard and then adds text data to it.
+    /// </summary>
+    public static void SetText(string text)
+    {
+        setAction(text);
     }
 }

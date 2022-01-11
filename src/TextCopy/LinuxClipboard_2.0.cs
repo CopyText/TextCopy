@@ -1,8 +1,4 @@
 #if (NETSTANDARD2_0 || NETFRAMEWORK)
-using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 static class LinuxClipboard
 {

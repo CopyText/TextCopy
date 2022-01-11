@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net5.0;net461;netstandard2.0;netstandard2.1;monoandroid9.0;xamarin.ios10</TargetFrameworks>
+    <TargetFrameworks>net5.0;net6.0;net461;netstandard2.0;netstandard2.1;monoandroid9.0;xamarin.ios10</TargetFrameworks>
     <NoWarn>CS3001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
