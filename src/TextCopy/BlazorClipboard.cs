@@ -9,12 +9,12 @@ public class BlazorClipboard :
     static Type[] types =
     {
         typeof(string),
-        typeof(CancellationToken),
         typeof(object[])
     };
     object jsRuntime;
     MethodInfo invokeAsync;
 
+    // System.Threading.Tasks.ValueTask`1[TValue] InvokeAsync[TValue](System.String, System.Object[])
     /// <summary>
     /// Construct a new instance.
     /// </summary>
@@ -35,7 +35,7 @@ public class BlazorClipboard :
     /// <inheritdoc />
     public virtual async Task<string?> GetTextAsync(CancellationToken cancellation = default)
     {
-        var parameters = new object[] {"navigator.clipboard.readText", cancellation, Array.Empty<object>()};
+        var parameters = new object[] {"navigator.clipboard.readText", Array.Empty<object>()};
         return await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters)!;
     }
 
@@ -48,7 +48,7 @@ public class BlazorClipboard :
     /// <inheritdoc />
     public virtual async Task SetTextAsync(string text, CancellationToken cancellation = default)
     {
-        var parameters = new object[] {"navigator.clipboard.writeText", cancellation, new object[] {text}};
+        var parameters = new object[] {"navigator.clipboard.writeText", new object[] {text}};
         await (ValueTask<string>) invokeAsync.Invoke(jsRuntime, parameters)!;
     }
 
