@@ -21,7 +21,7 @@ https://nuget.org/packages/TextCopy/
 ```cs
 await ClipboardService.SetTextAsync("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L35-L39' title='Snippet source file'>snippet source</a> | <a href='#snippet-settextasync' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L34-L38' title='Snippet source file'>snippet source</a> | <a href='#snippet-settextasync' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -32,7 +32,7 @@ await ClipboardService.SetTextAsync("Text to place in clipboard");
 ```cs
 ClipboardService.SetText("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L10-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-settext' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L9-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-settext' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -43,7 +43,7 @@ ClipboardService.SetText("Text to place in clipboard");
 ```cs
 var text = await ClipboardService.GetTextAsync();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L44-L48' title='Snippet source file'>snippet source</a> | <a href='#snippet-gettextasync' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L43-L47' title='Snippet source file'>snippet source</a> | <a href='#snippet-gettextasync' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -54,7 +54,7 @@ var text = await ClipboardService.GetTextAsync();
 ```cs
 var text = ClipboardService.GetText();
 ```
-<sup><a href='/src/Tests/Snippets.cs#L26-L30' title='Snippet source file'>snippet source</a> | <a href='#snippet-gettext' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L25-L29' title='Snippet source file'>snippet source</a> | <a href='#snippet-gettext' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -65,7 +65,7 @@ var text = ClipboardService.GetText();
 ```cs
 ClipboardService.SetText("");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L53-L55' title='Snippet source file'>snippet source</a> | <a href='#snippet-clearclipboard' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L52-L54' title='Snippet source file'>snippet source</a> | <a href='#snippet-clearclipboard' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 <!-- snippet: ClearClipboardAsync -->
@@ -73,7 +73,7 @@ ClipboardService.SetText("");
 ```cs
 await ClipboardService.SetTextAsync("");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L60-L62' title='Snippet source file'>snippet source</a> | <a href='#snippet-clearclipboardasync' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L59-L61' title='Snippet source file'>snippet source</a> | <a href='#snippet-clearclipboardasync' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
@@ -87,7 +87,7 @@ In addition to the above static API, there is an instance API exposed:
 Clipboard clipboard = new();
 clipboard.SetText("Text to place in clipboard");
 ```
-<sup><a href='/src/Tests/Snippets.cs#L16-L21' title='Snippet source file'>snippet source</a> | <a href='#snippet-settextinstance' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/Tests/Snippets.cs#L15-L20' title='Snippet source file'>snippet source</a> | <a href='#snippet-settextinstance' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 
