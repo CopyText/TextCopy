@@ -36,7 +36,7 @@ public static partial class ClipboardService
 #if NET6_0
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
         {
-            throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using services.AddSingleton<IClipboard>(_ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()))");
+            throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");
         }
 #endif
         getAsyncFunc = CreateAsyncGet();
