@@ -9,8 +9,7 @@ using TextCopy;
 var builder = WebAssemblyHostBuilder.CreateDefault();
 var serviceCollection = builder.Services;
 #region InjectClipboard
-serviceCollection.AddSingleton<IClipboard>(
-    _ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()));
+serviceCollection.AddSingleton<IClipboard>(_ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()));
 #endregion
 builder.RootComponents.Add<App>("app");
 #endregion

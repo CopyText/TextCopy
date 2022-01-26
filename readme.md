@@ -98,10 +98,9 @@ An instance of `Clipboard` can be injected into `IServiceCollection`:
 <!-- snippet: InjectClipboard -->
 <a id='snippet-injectclipboard'></a>
 ```cs
-serviceCollection.AddSingleton<IClipboard>(
-    _ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()));
+serviceCollection.InjectClipboard();
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L11-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L9-L11' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The instance should be injected by using `IClipboard`.
@@ -134,11 +133,10 @@ Instead inject an `IClipboard`:
 ```cs
 var builder = WebAssemblyHostBuilder.CreateDefault();
 var serviceCollection = builder.Services;
-serviceCollection.AddSingleton<IClipboard>(
-    _ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()));
+serviceCollection.InjectClipboard();
 builder.RootComponents.Add<App>("app");
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L8-L16' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L6-L13' title='Snippet source file'>snippet source</a> | <a href='#snippet-blazorstartup' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Then consume it:
