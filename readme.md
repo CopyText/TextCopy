@@ -95,18 +95,20 @@ clipboard.SetText("Text to place in clipboard");
 
 An instance of `Clipboard` can be injected into `IServiceCollection`:
 
-<!-- snippet: InjectClipboard -->
-<a id='snippet-injectclipboard'></a>
+`serviceCollection.AddSingleton<IClipboard>(new Clipboard())`
+
+Or in Blazor:
+
+<!-- snippet: InjectClipboardBlazor -->
+<a id='snippet-injectclipboardblazor'></a>
 ```cs
 serviceCollection.AddSingleton<IClipboard>(
     _ => new BlazorClipboard(_.GetRequiredService<IJSRuntime>()));
 ```
-<sup><a href='/src/BlazorSample/Program.cs#L11-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboard' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Program.cs#L11-L14' title='Snippet source file'>snippet source</a> | <a href='#snippet-injectclipboardblazor' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 The instance should be injected by using `IClipboard`.
-
-There is also a `InjectMockClipboard` that injects an instance of `MockClipboard` with all methods stubbed out.
 
 
 ## Supported on
