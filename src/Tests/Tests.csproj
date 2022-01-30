@@ -9,6 +9,6 @@
     <PackageReference Include="Xunit" Version="2.4.1" />
     <PackageReference Include="Verify.NUnit" Version="15.1.1" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.63" PrivateAssets="All" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.64" PrivateAssets="all" />
   </ItemGroup>
 </Project>
