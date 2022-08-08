@@ -14,7 +14,7 @@
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" Condition="$(TargetFramework) == 'net461'" />
     <WeaverFiles Include="$(SolutionDir)Weavers\bin\$(Configuration)\netstandard2.0\Weavers.dll" />
     <PackageReference Include="Fody" Version="6.6.3" PrivateAssets="all" />
-    <PackageReference Include="ProjectDefaults" Version="1.0.78" PrivateAssets="all" />
+    <PackageReference Include="ProjectDefaults" Version="1.0.79" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
