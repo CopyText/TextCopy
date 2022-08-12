@@ -7,7 +7,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" />
     <PackageReference Include="Xunit" Version="2.4.2" />
-    <PackageReference Include="Verify.NUnit" Version="17.8.1" />
+    <PackageReference Include="Verify.NUnit" Version="17.9.0" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
     <PackageReference Include="ProjectDefaults" Version="1.0.80" PrivateAssets="all" />
   </ItemGroup>
