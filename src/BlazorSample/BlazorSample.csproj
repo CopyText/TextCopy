@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Fody" Version="6.6.3" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.9" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.10" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.0.2" PrivateAssets="all" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
   </ItemGroup>
