@@ -103,7 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.5.1.1" />
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.6.1.1" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.7.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj">
       <Project>{92e64f4e-6a8e-43c2-9c8d-694e0327bef0}</Project>
