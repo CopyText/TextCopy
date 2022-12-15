@@ -49,7 +49,7 @@ static class LinuxClipboard
         {
             if (isWsl)
             {
-                BashRunner.Run($"powershell.exe Get-Clipboard  > {tempFileName}");
+                BashRunner.Run($"powershell.exe -NoProfile Get-Clipboard  > {tempFileName}");
             }
             else
             {
