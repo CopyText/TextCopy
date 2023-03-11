@@ -9,7 +9,7 @@ namespace TextCopy;
 /// </summary>
 public static partial class ClipboardService
 {
-    static Func<CancellationToken, Task<string?>> getAsyncFunc;
+    static Func<Cancellation, Task<string?>> getAsyncFunc;
     static Func<string?> getFunc;
 
     /// <summary>
@@ -28,7 +28,7 @@ public static partial class ClipboardService
         return getFunc();
     }
 
-    static Func<string, CancellationToken, Task> setAsyncAction;
+    static Func<string, Cancellation, Task> setAsyncAction;
     static Action<string> setAction;
 
     static ClipboardService()

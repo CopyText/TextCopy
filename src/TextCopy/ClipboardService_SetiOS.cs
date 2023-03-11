@@ -5,7 +5,7 @@ namespace TextCopy;
 
 public static partial class ClipboardService
 {
-    static Func<string, CancellationToken, Task> CreateAsyncSet()
+    static Func<string, Cancellation, Task> CreateAsyncSet()
     {
         return (text, _) =>
         {

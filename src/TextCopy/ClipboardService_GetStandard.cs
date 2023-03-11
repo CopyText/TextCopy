@@ -5,7 +5,7 @@ namespace TextCopy;
 
 public static partial class ClipboardService
 {
-    static Func<CancellationToken, Task<string?>> CreateAsyncGet()
+    static Func<Cancellation, Task<string?>> CreateAsyncGet()
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
