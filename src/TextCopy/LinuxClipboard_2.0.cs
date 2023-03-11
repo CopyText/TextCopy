@@ -9,7 +9,7 @@ static class LinuxClipboard
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
     }
 
-    public static Task SetTextAsync(string text, CancellationToken cancellation)
+    public static Task SetTextAsync(string text, Cancellation cancellation)
     {
         SetText(text);
 
@@ -37,7 +37,7 @@ static class LinuxClipboard
         }
     }
 
-    public static Task<string?> GetTextAsync(CancellationToken cancellation)
+    public static Task<string?> GetTextAsync(Cancellation cancellation)
     {
         return Task.FromResult<string?>(GetText());
     }

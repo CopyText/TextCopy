@@ -9,7 +9,7 @@ static class LinuxClipboard
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
     }
 
-    public static async Task SetTextAsync(string text, CancellationToken cancellation)
+    public static async Task SetTextAsync(string text, Cancellation cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         await File.WriteAllTextAsync(tempFileName, text, cancellation);
@@ -62,7 +62,7 @@ static class LinuxClipboard
         }
     }
 
-    public static async Task<string?> GetTextAsync(CancellationToken cancellation)
+    public static async Task<string?> GetTextAsync(Cancellation cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         try

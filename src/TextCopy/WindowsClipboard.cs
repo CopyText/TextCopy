@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 static class WindowsClipboard
 {
-    public static async Task SetTextAsync(string text, CancellationToken cancellation)
+    public static async Task SetTextAsync(string text, Cancellation cancellation)
     {
         await TryOpenClipboardAsync(cancellation);
 
@@ -65,7 +65,7 @@ static class WindowsClipboard
         }
     }
 
-    static async Task TryOpenClipboardAsync(CancellationToken cancellation)
+    static async Task TryOpenClipboardAsync(Cancellation cancellation)
     {
         var num = 10;
         while (true)
@@ -103,7 +103,7 @@ static class WindowsClipboard
         }
     }
 
-    public static async Task<string?> GetTextAsync(CancellationToken cancellation)
+    public static async Task<string?> GetTextAsync(Cancellation cancellation)
     {
         if (!IsClipboardFormatAvailable(cfUnicodeText))
         {

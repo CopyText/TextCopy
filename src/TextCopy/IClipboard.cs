@@ -8,7 +8,7 @@ public interface IClipboard
     /// <summary>
     /// Retrieves text data from the Clipboard.
     /// </summary>
-    public Task<string?> GetTextAsync(CancellationToken cancellation = default);
+    public Task<string?> GetTextAsync(Cancellation cancellation = default);
 
     /// <summary>
     /// Retrieves text data from the Clipboard.
@@ -18,7 +18,7 @@ public interface IClipboard
     /// <summary>
     /// Clears the Clipboard and then adds text data to it.
     /// </summary>
-    public Task SetTextAsync(string text, CancellationToken cancellation = default);
+    public Task SetTextAsync(string text, Cancellation cancellation = default);
 
     /// <summary>
     /// Clears the Clipboard and then adds text data to it.

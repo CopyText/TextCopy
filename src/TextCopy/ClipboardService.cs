@@ -15,7 +15,7 @@ public static partial class ClipboardService
     /// <summary>
     /// Retrieves text data from the Clipboard.
     /// </summary>
-    public static Task<string?> GetTextAsync(CancellationToken cancellation = default)
+    public static Task<string?> GetTextAsync(Cancellation cancellation = default)
     {
         return getAsyncFunc(cancellation);
     }
@@ -48,7 +48,7 @@ public static partial class ClipboardService
     /// <summary>
     /// Clears the Clipboard and then adds text data to it.
     /// </summary>
-    public static Task SetTextAsync(string text, CancellationToken cancellation = default)
+    public static Task SetTextAsync(string text, Cancellation cancellation = default)
     {
         return setAsyncAction(text, cancellation);
     }

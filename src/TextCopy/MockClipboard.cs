@@ -4,7 +4,7 @@
 public class MockClipboard : IClipboard
 {
     /// <inheritdoc />
-    public virtual Task<string?> GetTextAsync(CancellationToken cancellation = default)
+    public virtual Task<string?> GetTextAsync(Cancellation cancellation = default)
     {
         return Task.FromResult<string?>(null);
     }
@@ -16,7 +16,7 @@ public class MockClipboard : IClipboard
     }
 
     /// <inheritdoc />
-    public virtual Task SetTextAsync(string text, CancellationToken cancellation = default)
+    public virtual Task SetTextAsync(string text, Cancellation cancellation = default)
     {
         return Task.CompletedTask;
     }

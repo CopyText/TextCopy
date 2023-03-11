@@ -31,7 +31,7 @@ static class OsxClipboard
         return Marshal.PtrToStringAnsi(charArray);
     }
 
-    public static Task<string?> GetTextAsync(CancellationToken cancellation)
+    public static Task<string?> GetTextAsync(Cancellation cancellation)
     {
         return Task.FromResult(GetText());
     }
@@ -54,7 +54,7 @@ static class OsxClipboard
         }
     }
 
-    public static Task SetTextAsync(string text, CancellationToken cancellation)
+    public static Task SetTextAsync(string text, Cancellation cancellation)
     {
         SetText(text);
         return Task.CompletedTask;
