@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFrameworks>net6.0;net462;netstandard2.0;netstandard2.1;monoandroid9.0;xamarin.ios10</TargetFrameworks>
     <NoWarn>CS3001</NoWarn>
@@ -10,7 +10,7 @@
     <DefineConstants>$(DefineConstants);IOS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Polyfill" Version="1.8.0" PrivateAssets="all" />
+    <PackageReference Include="Polyfill" Version="1.9.1" PrivateAssets="all" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" Condition="$(TargetFramework) == 'net462'" />
     <WeaverFiles Include="$(SolutionDir)Weavers\bin\$(Configuration)\netstandard2.0\Weavers.dll" />
     <PackageReference Include="Fody" Version="6.6.4" PrivateAssets="all" />
