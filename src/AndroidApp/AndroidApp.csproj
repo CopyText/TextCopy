@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -102,8 +102,8 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0" />
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0.1" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.8.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj">
       <Project>{92e64f4e-6a8e-43c2-9c8d-694e0327bef0}</Project>
