@@ -15,14 +15,10 @@ public partial class IndexModel :
 
     public string Content { get; set; }
 
-    public Task CopyTextToClipboard()
-    {
-        return Clipboard.SetTextAsync(Content);
-    }
+    public Task CopyTextToClipboard() =>
+        Clipboard.SetTextAsync(Content);
 
-    public async Task ReadTextFromClipboard()
-    {
+    public async Task ReadTextFromClipboard() =>
         Content = await Clipboard.GetTextAsync();
-    }
 }
 #endregion
