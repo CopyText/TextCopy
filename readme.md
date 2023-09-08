@@ -152,18 +152,14 @@ public partial class IndexModel :
 
     public string Content { get; set; }
 
-    public Task CopyTextToClipboard()
-    {
-        return Clipboard.SetTextAsync(Content);
-    }
+    public Task CopyTextToClipboard() =>
+        Clipboard.SetTextAsync(Content);
 
-    public async Task ReadTextFromClipboard()
-    {
+    public async Task ReadTextFromClipboard() =>
         Content = await Clipboard.GetTextAsync();
-    }
 }
 ```
-<sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L9-L28' title='Snippet source file'>snippet source</a> | <a href='#snippet-inject' title='Start of snippet'>anchor</a></sup>
+<sup><a href='/src/BlazorSample/Pages/IndexModel.cs#L9-L24' title='Snippet source file'>snippet source</a> | <a href='#snippet-inject' title='Start of snippet'>anchor</a></sup>
 <!-- endSnippet -->
 
 Blazor support requires the browser APIs [clipboard.readText](https://caniuse.com/#feat=mdn-api_clipboard_readtext) and [clipboard.writeText](https://caniuse.com/#feat=mdn-api_clipboard_writetext).
