@@ -25,7 +25,7 @@ public class BlazorClipboard :
         var method = type.GetMethod("InvokeAsync", types);
         if (method == null)
         {
-            var methodNames = type.GetMethods().Select(x => x.ToString());
+            var methodNames = type.GetMethods().Select(_ => _.ToString());
             throw new($"Unable to find InvokeAsync on {type.FullName}. Methods:{Environment.NewLine}{string.Join(Environment.NewLine, methodNames)}");
         }
 

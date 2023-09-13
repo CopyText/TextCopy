@@ -8,7 +8,7 @@ public class ModuleWeaver :
     public override void Execute()
     {
         var types = ModuleDefinition.Types;
-        var resourceType = types.SingleOrDefault(x => x.Name == "Resource");
+        var resourceType = types.SingleOrDefault(_ => _.Name == "Resource");
         if (resourceType != null)
         {
             types.Remove(resourceType);
