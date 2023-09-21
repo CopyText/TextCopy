@@ -5,6 +5,8 @@
 
 A cross platform package to copy text to and from the clipboard.
 
+**See [Milestones](../../milestones?state=closed) for release notes.**
+
 
 ## NuGet package
 
