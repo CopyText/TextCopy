@@ -7,5 +7,7 @@
     <PackageTags>Clipboard, Copy</PackageTags>
     <Description>A cross platform package to copy text to the clipboard.</Description>
     <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
   </PropertyGroup>
 </Project>
