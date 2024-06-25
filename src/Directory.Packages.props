@@ -14,10 +14,10 @@
     <PackageVersion Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
     <PackageVersion Include="Polyfill" Version="5.5.3" />
-    <PackageVersion Include="ProjectDefaults" Version="1.0.127" />
+    <PackageVersion Include="ProjectDefaults" Version="1.0.128" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageVersion Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
-    <PackageVersion Include="Verify.NUnit" Version="25.0.3" />
+    <PackageVersion Include="Verify.NUnit" Version="25.0.4" />
     <PackageVersion Include="Xamarin.Essentials" Version="1.8.0" />
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.10.0.1" />
     <PackageVersion Include="Xunit" Version="2.8.1" />
