@@ -13,8 +13,8 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageVersion Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
-    <PackageVersion Include="Polyfill" Version="6.1.1" />
-    <PackageVersion Include="ProjectDefaults" Version="1.0.133" />
+    <PackageVersion Include="Polyfill" Version="6.2.0" />
+    <PackageVersion Include="ProjectDefaults" Version="1.0.134" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageVersion Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
     <PackageVersion Include="Verify.NUnit" Version="26.1.6" />
