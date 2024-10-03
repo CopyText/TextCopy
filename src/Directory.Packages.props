@@ -14,7 +14,7 @@
     <PackageVersion Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
     <PackageVersion Include="Polyfill" Version="6.13.0" />
-    <PackageVersion Include="ProjectDefaults" Version="1.0.135" />
+    <PackageVersion Include="ProjectDefaults" Version="1.0.136" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageVersion Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
     <PackageVersion Include="Verify.NUnit" Version="27.0.0-beta.5" />
