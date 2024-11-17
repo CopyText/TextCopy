@@ -149,7 +149,9 @@ static class WindowsClipboard
 
             Marshal.Copy(pointer, buff, 0, size);
 
-            return Encoding.Unicode.GetString(buff).TrimEnd('\0');
+            var result = Encoding.Unicode.GetString(buff);
+            var nullCharIndex = result.IndexOf('\0');
+            return nullCharIndex == -1 ? result : result[..nullCharIndex];
         }
         finally
         {
