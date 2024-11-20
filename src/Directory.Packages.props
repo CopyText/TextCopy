@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="FodyHelpers" Version="6.8.2" />
-    <PackageVersion Include="Fody" Version="6.8.2" />
+    <PackageVersion Include="Fody" Version="6.9.1" />
     <PackageVersion Include="MarkdownSnippets.MsBuild" Version="27.0.2" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.8" />
