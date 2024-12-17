@@ -17,7 +17,7 @@
     <PackageVersion Include="ProjectDefaults" Version="1.0.144" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageVersion Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
-    <PackageVersion Include="Verify.NUnit" Version="28.3.2" />
+    <PackageVersion Include="Verify.NUnit" Version="28.6.0" />
     <PackageVersion Include="Xamarin.Essentials" Version="1.8.0" />
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.10.0.1" />
   </ItemGroup>
