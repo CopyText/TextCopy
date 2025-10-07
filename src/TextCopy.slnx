@@ -1,0 +1,57 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM" />
+    <Platform Name="ARM64" />
+    <Platform Name="iPhone" />
+    <Platform Name="iPhoneSimulator" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="../readme.md" />
+    <File Path=".editorconfig" />
+    <File Path="appveyor.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Project Path="AndroidApp/AndroidApp.csproj">
+    <BuildType Project="Debug" />
+    <Build Solution="Release|Any CPU" Project="false" />
+    <Deploy Solution="*|ARM" />
+    <Deploy Solution="*|ARM64" />
+    <Deploy Solution="*|iPhone" />
+    <Deploy Solution="*|iPhoneSimulator" />
+    <Deploy Solution="*|x64" />
+    <Deploy Solution="*|x86" />
+    <Deploy Solution="Debug|Any CPU" />
+  </Project>
+  <Project Path="BlazorSample/BlazorSample.csproj" />
+  <Project Path="iOSApp/iOSApp.csproj">
+    <Platform Solution="*|Any CPU" Project="iPhone" />
+    <Platform Solution="*|ARM" Project="iPhone" />
+    <Platform Solution="*|ARM64" Project="iPhone" />
+    <Platform Solution="*|iPhone" Project="iPhone" />
+    <Platform Solution="*|iPhoneSimulator" Project="iPhoneSimulator" />
+    <Platform Solution="*|x64" Project="iPhone" />
+    <Platform Solution="*|x86" Project="iPhone" />
+    <Build Solution="*|Any CPU" Project="false" />
+    <Build Solution="*|ARM" Project="false" />
+    <Build Solution="*|ARM64" Project="false" />
+    <Build Solution="*|x64" Project="false" />
+    <Build Solution="*|x86" Project="false" />
+  </Project>
+  <Project Path="TestConsole/TestConsole.csproj">
+    <Build Solution="*|iPhone" Project="false" />
+    <Build Solution="*|iPhoneSimulator" Project="false" />
+  </Project>
+  <Project Path="Tests/Tests.csproj">
+    <Build Solution="*|iPhone" Project="false" />
+    <Build Solution="*|iPhoneSimulator" Project="false" />
+  </Project>
+  <Project Path="TextCopy/TextCopy.csproj">
+    <BuildDependency Project="Weavers/Weavers.csproj" />
+  </Project>
+  <Project Path="Weavers/Weavers.csproj" />
+</Solution>
