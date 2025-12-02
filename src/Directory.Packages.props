@@ -17,7 +17,7 @@
     <PackageVersion Include="Polyfill" Version="9.0.3" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.162" />
 =======
-    <PackageVersion Include="Polyfill" Version="9.3.0" />
+    <PackageVersion Include="Polyfill" Version="9.3.1" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.163" />
 >>>>>>> c6d4b49f8bbe6fa8b238f875f31ae046a43d20f0
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
