@@ -10,7 +10,7 @@
   </Configurations>
   <Folder Name="/Solution Items/">
     <File Path="../readme.md" />
-    <File Path=".editorconfig" />
+    <File Path="../.editorconfig" />
     <File Path="appveyor.yml" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
