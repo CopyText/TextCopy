@@ -7,6 +7,11 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" />
     <PackageReference Include="Verify.Nunit" />
+    <PackageReference Include="Argon" />
+    <PackageReference Include="DiffEngine" />
+    <PackageReference Include="EmptyFiles" />
+    <PackageReference Include="SimpleInfoName" />
+    <PackageReference Include="Verify" />
     <ProjectReference Include="..\TextCopy\TextCopy.csproj" />
     <PackageReference Include="ProjectDefaults" PrivateAssets="all" />
   </ItemGroup>
