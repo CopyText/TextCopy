@@ -13,18 +13,18 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     <PackageVersion Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
     <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
-    <PackageVersion Include="Polyfill" Version="9.18.0" />
+    <PackageVersion Include="Polyfill" Version="9.22.0" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.172" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageVersion Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
-    <PackageVersion Include="Verify.NUnit" Version="31.13.2" />
+    <PackageVersion Include="Verify.NUnit" Version="31.13.5" />
     <PackageVersion Include="Xamarin.Essentials" Version="1.8.1" />
     <PackageVersion Include="Xamarin.Google.Android.Material" Version="1.13.0.2" />
     <PackageVersion Include="Microsoft.Sbom.Targets" Version="4.1.5" />
     <PackageVersion Include="Argon" Version="0.33.5" />
-    <PackageVersion Include="DiffEngine" Version="19.0.0" />
+    <PackageVersion Include="DiffEngine" Version="19.1.2" />
     <PackageVersion Include="EmptyFiles" Version="8.17.2" />
     <PackageVersion Include="SimpleInfoName" Version="3.2.0" />
-    <PackageVersion Include="Verify" Version="31.13.2" />
+    <PackageVersion Include="Verify" Version="31.13.5" />
   </ItemGroup>
 </Project>
