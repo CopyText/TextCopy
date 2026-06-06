@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <Version>6.2.1</Version>
+    <LangVersion>preview</LangVersion>
+    <NoWarn>NU1608</NoWarn>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <PackageTags>Clipboard, Copy</PackageTags>
+    <Description>A cross platform package to copy text to the clipboard.</Description>
+    <ResolveAssemblyReferencesSilent>true</ResolveAssemblyReferencesSilent>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+  </PropertyGroup>
+</Project>

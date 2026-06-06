@@ -28,6 +28,28 @@ public static partial class ClipboardService
         return getFunc();
     }
 
+    /// <summary>
+    /// Retrieves text data from the Clipboard and splits it into lines.
+    /// </summary>
+    public static async Task<string[]?> GetLinesAsync(Cancellation cancellation = default)
+    {
+        var text = await GetTextAsync(cancellation);
+        if (text == null)
+            return null;
+        return text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+    }
+
+    /// <summary>
+    /// Retrieves text data from the Clipboard and splits it into lines.
+    /// </summary>
+    public static string[]? GetLines()
+    {
+        var text = GetText();
+        if (text == null)
+            return null;
+        return text.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+    }
+
     static Func<string, Cancellation, Task> setAsyncAction;
     static Action<string> setAction;
 
@@ -61,18 +83,21 @@ public static partial class ClipboardService
         setAction(text);
     }
 
-    ///// <summary>
-    ///// Clears the Clipboard and then adds text data to it.
-    ///// </summary>
-    //public static Task SetLinesAsync(List<string> lines, Cancellation cancellation = default)
-    //{
-    //    return setAsyncAction(string.Join(Environment.), cancellation);
-    //}
-    ///// <summary>
-    ///// Clears the Clipboard and then adds text data to it.
-    ///// </summary>
-    //public static void SetLines(List<string> lines)
-    //{
-    //    setAction();
-    //}
+    /// <summary>
+    /// Clears the Clipboard and then adds lines of text data to it.
+    /// </summary>
+    public static Task SetLinesAsync(string[] lines, Cancellation cancellation = default)
+    {
+        var text = string.Join(Environment.NewLine, lines);
+        return SetTextAsync(text, cancellation);
+    }
+
+    /// <summary>
+    /// Clears the Clipboard and then adds lines of text data to it.
+    /// </summary>
+    public static void SetLines(string[] lines)
+    {
+        var text = string.Join(Environment.NewLine, lines);
+        SetText(text);
+    }
 }
