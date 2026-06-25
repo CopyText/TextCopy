@@ -4,10 +4,34 @@ static class BashRunner
 {
     public static string Run(string commandLine)
     {
-        StringBuilder errorBuilder = new();
-        StringBuilder outputBuilder = new();
         var arguments = $"-c \"{commandLine}\"";
-        using Process process = new()
+        using var process = StartBash(arguments, out var outputBuilder, out var errorBuilder);
+        if (!process.DoubleWaitForExit())
+        {
+            var timeoutError = $@"Process timed out. Command line: bash {arguments}.
+Output: {outputBuilder}
+Error: {errorBuilder}";
+            throw new(timeoutError);
+        }
+
+        return GetResult(process, arguments, outputBuilder, errorBuilder);
+    }
+
+    public static async Task<string> RunAsync(string commandLine, Cancellation cancellation)
+    {
+        var arguments = $"-c \"{commandLine}\"";
+        using var process = StartBash(arguments, out var outputBuilder, out var errorBuilder);
+
+        await process.WaitForExitAsync(cancellation);
+
+        return GetResult(process, arguments, outputBuilder, errorBuilder);
+    }
+
+    static Process StartBash(string arguments, out StringBuilder outputBuilder, out StringBuilder errorBuilder)
+    {
+        var output = new StringBuilder();
+        var error = new StringBuilder();
+        var process = new Process
         {
             StartInfo = new()
             {
@@ -20,17 +44,17 @@ static class BashRunner
             }
         };
         process.Start();
-        process.OutputDataReceived += (_, args) => { outputBuilder.AppendLine(args.Data); };
+        process.OutputDataReceived += (_, args) => { output.AppendLine(args.Data); };
         process.BeginOutputReadLine();
-        process.ErrorDataReceived += (_, args) => { errorBuilder.AppendLine(args.Data); };
+        process.ErrorDataReceived += (_, args) => { error.AppendLine(args.Data); };
         process.BeginErrorReadLine();
-        if (!process.DoubleWaitForExit())
-        {
-            var timeoutError = $@"Process timed out. Command line: bash {arguments}.
-Output: {outputBuilder}
-Error: {errorBuilder}";
-            throw new(timeoutError);
-        }
+        outputBuilder = output;
+        errorBuilder = error;
+        return process;
+    }
+
+    static string GetResult(Process process, string arguments, StringBuilder outputBuilder, StringBuilder errorBuilder)
+    {
         if (process.ExitCode == 0)
         {
             return outputBuilder.ToString();
