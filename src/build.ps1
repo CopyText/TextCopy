@@ -1,7 +1,7 @@
-dotnet msbuild src/TextCopy.slnx -t:restore -p:Configuration=Release -verbosity:quiet
+dotnet restore src/TextCopy.slnx --verbosity quiet
 
-dotnet msbuild src/TextCopy.slnx -t:build -p:Configuration=Release -verbosity:quiet
+dotnet build src/TextCopy.slnx --configuration Release --no-restore --verbosity quiet
 
-dotnet msbuild src/TextCopy.slnx -t:pack -p:Configuration=Release -verbosity:quiet
+dotnet pack src/TextCopy.slnx --configuration Release --no-restore --verbosity quiet
 
 dotnet test src --configuration Release --no-build --no-restore --nologo
