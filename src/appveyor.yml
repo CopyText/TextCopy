@@ -5,8 +5,17 @@ image:
 environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+for:
+- matrix:
+    only:
+    - image: Ubuntu
+  install:
+  - sh: sudo apt-get update && sudo apt-get install --yes xsel xvfb
+# cmd runs only on Windows, sh runs only on macOS/Ubuntu.
+# invoking via -File makes a script failure exit non-zero, which fails the build
 build_script:
-- ps: src/build.ps1
+- cmd: powershell -NoProfile -File src\build.ps1
+- sh: pwsh -NoProfile -File src/build.ps1
 test: off
 artifacts:
 - path: nugets\*.nupkg
