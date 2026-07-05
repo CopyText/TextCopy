@@ -12,7 +12,7 @@ if ($env:OS -eq 'Windows_NT') {
     exec { msbuild.exe src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet }
     exec { msbuild.exe src/TextCopy.sln /t:build /p:Configuration=Release -verbosity:quiet }
     exec { msbuild.exe src/TextCopy.sln /t:pack /p:Configuration=Release -verbosity:quiet }
-    exec { dotnet test src --configuration Release --no-build --no-restore }
+    exec { dotnet test src --configuration Release --no-build --no-restore -- RunConfiguration.TreatNoTestsAsError=true }
 }
 else {
     # the Xamarin targets and the legacy Android/iOS projects cannot build on the dotnet CLI,
@@ -20,9 +20,9 @@ else {
     exec { dotnet build src/Weavers --configuration Release }
     if ($IsLinux) {
         # xsel requires an X display
-        exec { xvfb-run --auto-servernum dotnet test src/Tests --configuration Release --framework net6.0 }
+        exec { xvfb-run --auto-servernum dotnet test src/Tests --configuration Release --framework net6.0 -- RunConfiguration.TreatNoTestsAsError=true }
     }
     else {
-        exec { dotnet test src/Tests --configuration Release --framework net6.0 }
+        exec { dotnet test src/Tests --configuration Release --framework net6.0 -- RunConfiguration.TreatNoTestsAsError=true }
     }
 }
