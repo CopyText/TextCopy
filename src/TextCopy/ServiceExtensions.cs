@@ -27,7 +27,7 @@ public static class ServiceExtensions
     {
         services.AddSingleton<IClipboard>(provider =>
         {
-#if NET6_0
+#if NET6_0_OR_GREATER
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
             {
                 var jsRuntimeType = Type.GetType("Microsoft.JSInterop.IJSRuntime, Microsoft.JSInterop", false);

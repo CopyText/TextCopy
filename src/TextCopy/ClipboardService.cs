@@ -33,7 +33,7 @@ public static partial class ClipboardService
 
     static ClipboardService()
     {
-#if NET6_0
+#if NET6_0_OR_GREATER
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("Browser")))
         {
             throw new($"The static class ClipboardService is not supported on Blazor. Instead inject an {nameof(IClipboard)} using {nameof(ServiceExtensions)}{nameof(ServiceExtensions.InjectClipboard)}.");

@@ -1,19 +1,11 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net462;netstandard2.0;netstandard2.1;monoandroid9.0;xamarin.ios10</TargetFrameworks>
+    <TargetFrameworks>net10.0;net8.0;net462;netstandard2.0;netstandard2.1</TargetFrameworks>
     <NoWarn>CS3001</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('monoandroid'))">
-    <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="$(TargetFramework.StartsWith('xamarin.ios'))">
-    <DefineConstants>$(DefineConstants);IOS</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Using Remove="System.Net.Http" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" Condition="$(TargetFramework) == 'net462'" />
-    <WeaverFiles Include="$(MSBuildThisFileDirectory)..\Weavers\bin\$(Configuration)\netstandard2.0\Weavers.dll" />
-    <PackageReference Include="Fody" Version="6.6.4" PrivateAssets="all" />
     <PackageReference Include="ProjectDefaults" Version="1.0.84" PrivateAssets="all" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" Condition="$(Configuration) == 'Release'" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />

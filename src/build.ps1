@@ -7,22 +7,46 @@ function exec($command) {
     }
 }
 
-if ($env:OS -eq 'Windows_NT') {
-    # full MSBuild is required for the Xamarin targets and the legacy Android/iOS projects
-    exec { msbuild.exe src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet }
-    exec { msbuild.exe src/TextCopy.sln /t:build /p:Configuration=Release -verbosity:quiet }
-    exec { msbuild.exe src/TextCopy.sln /t:pack /p:Configuration=Release -verbosity:quiet }
-    exec { dotnet test src --configuration Release --no-build --no-restore -- RunConfiguration.TreatNoTestsAsError=true }
+$repoRoot = Split-Path $PSScriptRoot
+$src = $PSScriptRoot
+
+# ensure the SDK pinned in global.json is available, installing a repo-local copy if not
+$sdkAvailable = $false
+try {
+    dotnet --version *> $null
+    $sdkAvailable = $LastExitCode -eq 0
 }
-else {
-    # the Xamarin targets and the legacy Android/iOS projects cannot build on the dotnet CLI,
-    # so build only what the tests need and run the net6.0 tests against the OS clipboard
-    exec { dotnet build src/Weavers --configuration Release }
-    if ($IsLinux) {
-        # xsel requires an X display
-        exec { xvfb-run --auto-servernum dotnet test src/Tests --configuration Release --framework net6.0 -- RunConfiguration.TreatNoTestsAsError=true }
+catch {
+}
+if (!$sdkAvailable) {
+    $installDir = Join-Path $repoRoot '.dotnet'
+    $jsonFile = Join-Path $repoRoot 'global.json'
+    if ($env:OS -eq 'Windows_NT') {
+        $installScript = Join-Path ([IO.Path]::GetTempPath()) 'dotnet-install.ps1'
+        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile $installScript
+        & $installScript -JSonFile $jsonFile -InstallDir $installDir
+        $env:Path = "$installDir;$env:Path"
     }
     else {
-        exec { dotnet test src/Tests --configuration Release --framework net6.0 -- RunConfiguration.TreatNoTestsAsError=true }
+        $installScript = Join-Path ([IO.Path]::GetTempPath()) 'dotnet-install.sh'
+        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.sh' -OutFile $installScript
+        exec { bash $installScript --jsonfile $jsonFile --install-dir $installDir }
+        $env:PATH = "${installDir}:$env:PATH"
     }
+    $env:DOTNET_ROOT = $installDir
+}
+
+exec { dotnet build $src --configuration Release }
+
+$tests = Join-Path $src 'Tests'
+if ($env:OS -eq 'Windows_NT') {
+    # Windows runs tests for all target frameworks, including net472
+    exec { dotnet test $tests --configuration Release --no-build --no-restore -- RunConfiguration.TreatNoTestsAsError=true }
+}
+elseif ($IsLinux) {
+    # xsel requires an X display
+    exec { xvfb-run --auto-servernum dotnet test $tests --configuration Release --framework net10.0 --no-build --no-restore -- RunConfiguration.TreatNoTestsAsError=true }
+}
+else {
+    exec { dotnet test $tests --configuration Release --framework net10.0 --no-build --no-restore -- RunConfiguration.TreatNoTestsAsError=true }
 }
