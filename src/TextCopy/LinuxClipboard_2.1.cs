@@ -13,13 +13,7 @@ static class LinuxClipboard
     {
         var tempFileName = Path.GetTempFileName();
         await File.WriteAllTextAsync(tempFileName, text, cancellation);
-
-        if (cancellation.IsCancellationRequested)
-        {
-            return;
-        }
-
-        InnerSetText(tempFileName);
+        await InnerSetTextAsync(tempFileName, cancellation);
     }
 
     public static void SetText(string text)
@@ -48,6 +42,30 @@ static class LinuxClipboard
         }
     }
 
+    static async Task InnerSetTextAsync(string tempFileName, Cancellation cancellation)
+    {
+        try
+        {
+            if (cancellation.IsCancellationRequested)
+            {
+                return;
+            }
+
+            if (isWsl)
+            {
+                await BashRunner.RunAsync($"cat {tempFileName} | clip.exe ", cancellation);
+            }
+            else
+            {
+                await BashRunner.RunAsync($"cat {tempFileName} | xsel -i --clipboard ", cancellation);
+            }
+        }
+        finally
+        {
+            File.Delete(tempFileName);
+        }
+    }
+
     public static string? GetText()
     {
         var tempFileName = Path.GetTempFileName();
@@ -67,7 +85,7 @@ static class LinuxClipboard
         var tempFileName = Path.GetTempFileName();
         try
         {
-            InnerGetText(tempFileName);
+            await InnerGetTextAsync(tempFileName, cancellation);
             return await File.ReadAllTextAsync(tempFileName, cancellation);
         }
         finally
@@ -85,6 +103,18 @@ static class LinuxClipboard
         else
         {
             BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
+        }
+    }
+
+    static async Task InnerGetTextAsync(string tempFileName, Cancellation cancellation)
+    {
+        if (isWsl)
+        {
+            await BashRunner.RunAsync($"powershell.exe -NoProfile Get-Clipboard  > {tempFileName}", cancellation);
+        }
+        else
+        {
+            await BashRunner.RunAsync($"xsel -o --clipboard  > {tempFileName}", cancellation);
         }
     }
 }
