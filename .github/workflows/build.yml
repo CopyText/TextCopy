@@ -54,13 +54,13 @@ jobs:
         run: echo "VERSION_ARGUMENT=-p:Version=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
 
       - name: Restore
-        run: msbuild src/TextCopy.sln /t:restore /p:Configuration=Release -verbosity:quiet
+        run: msbuild src/TextCopy.slnx /t:restore /p:Configuration=Release -verbosity:quiet
 
       - name: Build
-        run: msbuild src/TextCopy.sln /t:build /p:Configuration=Release -verbosity:quiet ${{ env.VERSION_ARGUMENT }}
+        run: msbuild src/TextCopy.slnx /t:build /p:Configuration=Release -verbosity:quiet ${{ env.VERSION_ARGUMENT }}
 
       - name: Pack
-        run: msbuild src/TextCopy.sln /t:pack /p:Configuration=Release -verbosity:quiet ${{ env.VERSION_ARGUMENT }}
+        run: msbuild src/TextCopy.slnx /t:pack /p:Configuration=Release -verbosity:quiet ${{ env.VERSION_ARGUMENT }}
 
       - name: Test
         run: dotnet test src --configuration Release --no-build --no-restore
