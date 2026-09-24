@@ -1,6 +1,6 @@
 # <img src="/src/icon.png" height="30px"> TextCopy
 
-[![Build status](https://img.shields.io/appveyor/build/SimonCropp/textcopy)](https://ci.appveyor.com/project/SimonCropp/textcopy)
+[![Build status](https://github.com/CopyText/TextCopy/actions/workflows/build.yml/badge.svg)](https://github.com/CopyText/TextCopy/actions/workflows/build.yml)
 [![NuGet Status](https://img.shields.io/nuget/v/TextCopy.svg)](https://www.nuget.org/packages/TextCopy/)
 
 A cross platform package to copy text to and from the clipboard.
