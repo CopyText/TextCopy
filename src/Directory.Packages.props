@@ -12,7 +12,6 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageVersion Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
-    <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
     <PackageVersion Include="Polyfill" Version="11.4.0" />
     <PackageVersion Include="ProjectDefaults" Version="1.0.181" />
     <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />

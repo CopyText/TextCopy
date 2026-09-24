@@ -5,7 +5,6 @@
   <ItemGroup>
     <PackageReference Include="MarkdownSnippets.MsBuild" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" />
     <PackageReference Include="Verify.Nunit" />
     <PackageReference Include="Argon" />
     <PackageReference Include="DiffEngine" />

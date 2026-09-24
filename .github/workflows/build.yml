@@ -22,7 +22,8 @@ env:
 
 jobs:
   build:
-    runs-on: windows-latest
+    # Xamarin targets (monoandroid, xamarin.ios) need the Visual Studio tooling on windows-2022.
+    runs-on: windows-2022
     timeout-minutes: 60
     steps:
       - name: Checkout
