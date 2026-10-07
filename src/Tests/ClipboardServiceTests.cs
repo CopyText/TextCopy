@@ -1,4 +1,5 @@
-﻿using TextCopy;
+using System.Runtime.InteropServices;
+using TextCopy;
 
 public class ClipboardServiceTests
 {
@@ -9,6 +10,19 @@ public class ClipboardServiceTests
         VerifyInner("🅢");
         await VerifyInnerAsync("Foo");
         await VerifyInnerAsync("🅢");
+    }
+
+    [Test]
+    public async Task PassesCancellationToken()
+    {
+        // A token that is never cancelled must not interfere with normal operation.
+        using var source = new CancellationTokenSource();
+        var token = source.Token;
+
+        await ClipboardService.SetTextAsync("Foo", token);
+
+        var actual = await ClipboardService.GetTextAsync(token);
+        Assert.AreEqual("Foo", actual);
     }
 
     static void VerifyInner(string expected)

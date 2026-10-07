@@ -9,11 +9,18 @@ static class LinuxClipboard
         isWsl = Environment.GetEnvironmentVariable("WSL_DISTRO_NAME") != null;
     }
 
-    public static Task SetTextAsync(string text, Cancellation cancellation)
+    public static async Task SetTextAsync(string text, Cancellation cancellation)
     {
-        SetText(text);
-
-        return Task.CompletedTask;
+        var tempFileName = Path.GetTempFileName();
+        File.WriteAllText(tempFileName, text);
+        try
+        {
+            await BashRunner.RunAsync(SetCommand(tempFileName), cancellation);
+        }
+        finally
+        {
+            File.Delete(tempFileName);
+        }
     }
 
     public static void SetText(string text)
@@ -22,14 +29,7 @@ static class LinuxClipboard
         File.WriteAllText(tempFileName, text);
         try
         {
-            if (isWsl)
-            {
-                BashRunner.Run($"cat {tempFileName} | clip.exe ");
-            }
-            else
-            {
-                BashRunner.Run($"cat {tempFileName} | xsel -i --clipboard ");
-            }
+            BashRunner.Run(SetCommand(tempFileName));
         }
         finally
         {
@@ -37,24 +37,17 @@ static class LinuxClipboard
         }
     }
 
-    public static Task<string?> GetTextAsync(Cancellation cancellation)
-    {
-        return Task.FromResult<string?>(GetText());
-    }
+    static string SetCommand(string tempFileName) =>
+        isWsl
+            ? $"cat {tempFileName} | clip.exe "
+            : $"cat {tempFileName} | xsel -i --clipboard ";
 
-    public static string GetText()
+    public static async Task<string?> GetTextAsync(Cancellation cancellation)
     {
         var tempFileName = Path.GetTempFileName();
         try
         {
-            if (isWsl)
-            {
-                BashRunner.Run($"powershell.exe -NoProfile Get-Clipboard  > {tempFileName}");
-            }
-            else
-            {
-                BashRunner.Run($"xsel -o --clipboard  > {tempFileName}");
-            }
+            await BashRunner.RunAsync(GetCommand(tempFileName), cancellation);
             return File.ReadAllText(tempFileName);
         }
         finally
@@ -62,5 +55,24 @@ static class LinuxClipboard
             File.Delete(tempFileName);
         }
     }
+
+    public static string GetText()
+    {
+        var tempFileName = Path.GetTempFileName();
+        try
+        {
+            BashRunner.Run(GetCommand(tempFileName));
+            return File.ReadAllText(tempFileName);
+        }
+        finally
+        {
+            File.Delete(tempFileName);
+        }
+    }
+
+    static string GetCommand(string tempFileName) =>
+        isWsl
+            ? $"powershell.exe -NoProfile Get-Clipboard  > {tempFileName}"
+            : $"xsel -o --clipboard  > {tempFileName}";
 }
 #endif
